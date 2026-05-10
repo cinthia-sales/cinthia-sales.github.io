@@ -3,220 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Direito Econômico e Financeiro — Cinthia Sales</title>
+<title>Direito Econômico e Financeiro — Cínthia Sales</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --ink: #1a1209;
-    --cream: #faf6ee;
-    --gold: #a07828;
-    --gold-light: #c9932a;
-    --rust: #7a3a1a;
-    --sage: #4a6741;
-    --blue: #1e3a5f;
-    --muted: #6b6050;
-    --border: #d4b97a;
-    --bg: #f4ede0;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); font-family: 'Source Serif 4', Georgia, serif; color: var(--ink); min-height: 100vh; }
+:root {
+  --ink: #1e1810;
+  --bg: #f4ede0;
+  --gold: #a07828;
+  --muted: #6b6050;
+  --eco-cap: #4a6b82;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); font-family: 'Source Serif 4', Georgia, serif; color: var(--ink); min-height: 100vh; }
 
-  .topbar {
-    padding: 16px 40px;
-    border-bottom: 1px solid rgba(160,120,40,0.15);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    background: white;
-  }
-  .topbar a { color: var(--gold-light); text-decoration: none; }
-  .topbar a:hover { color: var(--rust); }
+.topbar {
+  padding: 14px 40px;
+  border-bottom: 1px solid rgba(74,107,130,0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  background: white;
+}
+.topbar a { color: var(--eco-cap); text-decoration: none; font-weight: 600; }
+.topbar a:hover { opacity: 0.8; }
 
-  header {
-    padding: 50px 40px 40px;
-    max-width: 900px;
-    margin: 0 auto;
-    border-bottom: 1px solid rgba(160,120,40,0.15);
-  }
+header {
+  background: var(--eco-cap);
+  padding: 50px 40px 45px;
+  text-align: center;
+}
+.materia-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.8rem;
+  display: block;
+}
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
+}
+.desc { font-size: 1rem; color: rgba(255,255,255,0.65); font-style: italic; }
+.prof-info { margin-top: 0.6rem; font-size: 0.82rem; color: rgba(255,255,255,0.5); }
 
-  .materia-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 1rem;
-    display: block;
-  }
+main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
 
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 900;
-    color: var(--ink);
-    line-height: 1.15;
-    margin-bottom: 0.5rem;
-  }
+.section-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--eco-cap);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(74,107,130,0.2);
+}
 
-  .desc {
-    font-size: 1rem;
-    color: var(--muted);
-    font-style: italic;
-    line-height: 1.7;
-  }
+.aulas-list { display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 3rem; }
 
-  .prof-info {
-    margin-top: 1rem;
-    font-size: 0.82rem;
-    color: var(--muted);
-  }
+.aula-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  padding: 1.3rem 1.5rem;
+  background: white;
+  border: 1px solid rgba(74,107,130,0.15);
+  border-left: 3px solid var(--eco-cap);
+  border-radius: 2px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: all 0.2s;
+  align-items: center;
+}
+.aula-card:hover {
+  border-color: var(--eco-cap);
+  transform: translateX(4px);
+  box-shadow: 0 2px 12px rgba(30,24,16,0.07);
+}
+.aula-num { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; margin-bottom: 0.3rem; display: block; }
+.aula-titulo { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; line-height: 1.3; }
+.aula-sub { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+.aula-meta { text-align: right; }
+.aula-data { font-size: 0.72rem; color: var(--muted); display: block; margin-bottom: 0.3rem; }
+.aula-arrow { font-size: 1.1rem; color: var(--eco-cap); }
 
-  main {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 50px 40px 80px;
-  }
+.ref-box {
+  background: rgba(74,107,130,0.06);
+  border: 1px solid rgba(74,107,130,0.15);
+  border-radius: 3px;
+  padding: 1.2rem 1.5rem;
+}
+.ref-title { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--eco-cap); margin-bottom: 0.6rem; display: block; }
+.ref-box p { font-size: 0.88rem; color: var(--ink); line-height: 1.7; }
 
-  .section-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.4em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: rgba(74,103,65,0.2);
-  }
-
-  .aulas-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    margin-bottom: 3rem;
-  }
-
-  .aula-card {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1rem;
-    padding: 1.3rem 1.5rem;
-    background: white;
-    border: 1px solid rgba(74,103,65,0.15);
-    border-radius: 3px;
-    text-decoration: none;
-    color: var(--ink);
-    transition: all 0.2s;
-    align-items: center;
-  }
-
-  .aula-card:hover {
-    border-color: rgba(74,103,65,0.35);
-    transform: translateX(4px);
-    box-shadow: 0 2px 12px rgba(30,24,16,0.07);
-  }
-
-  .aula-num {
-    font-size: 0.6rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.3rem;
-    display: block;
-  }
-
-  .aula-titulo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 0.3rem;
-    line-height: 1.3;
-  }
-
-  .aula-sub {
-    font-size: 0.8rem;
-    color: var(--muted);
-    line-height: 1.5;
-  }
-
-  .aula-meta { text-align: right; }
-
-  .aula-data {
-    font-size: 0.72rem;
-    color: var(--muted);
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-
-  .aula-arrow { font-size: 1.1rem; color: var(--sage); }
-
-  /* TÓPICOS GRID */
-  .topicos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-
-  .topico-card {
-    background: white;
-    border: 1px solid rgba(74,103,65,0.15);
-    border-radius: 3px;
-    padding: 1.2rem;
-    border-top: 3px solid var(--sage);
-  }
-
-  .topico-icon { font-size: 1.2rem; margin-bottom: 0.5rem; display: block; }
-
-  .topico-titulo {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 0.4rem;
-    line-height: 1.3;
-  }
-
-  .topico-desc {
-    font-size: 0.78rem;
-    color: var(--muted);
-    line-height: 1.6;
-  }
-
-  .ref-box {
-    background: rgba(74,103,65,0.06);
-    border: 1px solid rgba(74,103,65,0.15);
-    border-radius: 3px;
-    padding: 1.2rem 1.5rem;
-  }
-
-  .ref-title {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--sage);
-    margin-bottom: 0.6rem;
-    display: block;
-  }
-
-  .ref-box p {
-    font-size: 0.88rem;
-    color: var(--ink);
-    line-height: 1.7;
-  }
-
-  @media (max-width: 600px) {
-    .topbar, header, main { padding-left: 24px; padding-right: 24px; }
-    .aula-card { grid-template-columns: 1fr; }
-    .aula-meta { text-align: left; }
-    .topicos { grid-template-columns: 1fr; }
-  }
+@media (max-width: 600px) {
+  .topbar, header, main { padding-left: 24px; padding-right: 24px; }
+  .aula-card { grid-template-columns: 1fr; }
+  .aula-meta { text-align: left; }
+}
 </style>
 </head>
 <body>
@@ -224,13 +121,13 @@
 <div class="topbar">
   <a href="../index.html">← Portal de Estudos</a>
   <span>/</span>
-  <span>Direito Econômico e Financeiro</span>
+  <span>📘 Direito Econômico e Financeiro</span>
 </div>
 
 <header>
-  <span class="materia-label">UVA Marapendi · Direito · 2026</span>
-  <h1>Direito Econômico e Financeiro</h1>
-  <p class="desc">Intervenção do Estado na economia, Constituição Econômica, CADE e Sistema Financeiro Nacional.</p>
+  <span class="materia-label">UVA Marapendi · Barra Marapendi · Direito · 2026</span>
+  <h1>📘 Direito Econômico e Financeiro</h1>
+  <p class="desc">Intervenção do Estado, Art. 170, CADE e Sistema Financeiro Nacional.</p>
   <p class="prof-info">Prof. Irapuã Beltrão · irapua.beltrao@uva.br</p>
 </header>
 
@@ -241,9 +138,9 @@
   <div class="aulas-list">
     <a class="aula-card" href="dir-eco-aula-09-05.html">
       <div>
-        <span class="aula-num">Aula 4 · 09/05/2026</span>
-        <div class="aula-titulo">Infrações à Ordem Econômica e Controle Antitruste</div>
-        <div class="aula-sub">Art. 36 e 37 · Sanções · Responsabilidade Solidária · Desconsideração da Personalidade Jurídica</div>
+        <span class="aula-num">Aula · 09/05/2026</span>
+        <div class="aula-titulo">CADE — Controle Antitruste e Infrações à Ordem Econômica</div>
+        <div class="aula-sub">Art. 36 e 37 · Atos de Concentração · Responsabilidade Solidária · Desconsideração da PJ</div>
       </div>
       <div class="aula-meta">
         <span class="aula-data">09/05/2026</span>
@@ -255,48 +152,13 @@
       <div>
         <span class="aula-num">Material Completo · 2026</span>
         <div class="aula-titulo">Guia Completo — Direito Econômico e Financeiro</div>
-        <div class="aula-sub">Art. 170 · Intervenção do Estado · CADE · Sistema Financeiro · 9 Princípios da Ordem Econômica</div>
+        <div class="aula-sub">Art. 170 · 9 Princípios · Intervenção do Estado · CADE · Sistema Financeiro Nacional</div>
       </div>
       <div class="aula-meta">
         <span class="aula-data">2026</span>
         <span class="aula-arrow">→</span>
       </div>
     </a>
-  </div>
-
-  <div class="section-label">Tópicos da Matéria</div>
-
-  <div class="topicos">
-    <div class="topico-card">
-      <span class="topico-icon">⚖️</span>
-      <div class="topico-titulo">O que é Direito Econômico</div>
-      <p class="topico-desc">Definições de Washington Peluso, Leopoldino e Julio Queiroz. Maleabilidade e ecletismo.</p>
-    </div>
-    <div class="topico-card">
-      <span class="topico-icon">📜</span>
-      <div class="topico-titulo">Art. 170 — Os 9 Princípios</div>
-      <p class="topico-desc">Soberania, propriedade privada, função social, livre concorrência, defesa do consumidor e mais.</p>
-    </div>
-    <div class="topico-card">
-      <span class="topico-icon">🏛️</span>
-      <div class="topico-titulo">Intervenção Direta — Art. 173</div>
-      <p class="topico-desc">Estado como jogador. Empresas públicas, SEM e participação societária. Subsidiariedade.</p>
-    </div>
-    <div class="topico-card">
-      <span class="topico-icon">🔧</span>
-      <div class="topico-titulo">Intervenção Indireta — Art. 174</div>
-      <p class="topico-desc">Estado como árbitro. Fiscalização, incentivo e planejamento. Tabelamento = inconstitucional.</p>
-    </div>
-    <div class="topico-card">
-      <span class="topico-icon">🛡️</span>
-      <div class="topico-titulo">CADE</div>
-      <p class="topico-desc">Estrutura, papéis preventivo/repressivo/educativo. SBDC. 240 dias para fusões.</p>
-    </div>
-    <div class="topico-card">
-      <span class="topico-icon">🏦</span>
-      <div class="topico-titulo">Sistema Financeiro Nacional</div>
-      <p class="topico-desc">Art. 192. CMN → BACEN → CVM. O banco dos bancos e o mercado de capitais.</p>
-    </div>
   </div>
 
   <div class="section-label">Referências</div>
@@ -306,9 +168,8 @@
     <p>
       SOUZA, Washington Peluso Albino de. <strong>Direito Econômico</strong>.<br><br>
       FONSECA, João Bosco Leopoldino da. <strong>Direito Econômico</strong>.<br><br>
-      MOREIRA NETO, Diogo de Figueiredo. <strong>Curso de Direito Administrativo</strong>. (fonte das 3 dimensões)<br><br>
-      <strong>Lei 12.529/2011</strong> — Estrutura atual do CADE e SBDC.<br>
-      <strong>CF/88, Arts. 170–177 e 192</strong> — Ordem Econômica e Financeira.
+      <strong>CF/88, Arts. 170–177 e 192</strong> — Ordem Econômica e Financeira.<br>
+      <strong>Lei 12.529/2011</strong> — Estrutura do SBDC e do CADE.
     </p>
   </div>
 
