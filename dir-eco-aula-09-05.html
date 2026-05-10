@@ -56,8 +56,8 @@ body { background: var(--bg); font-family: 'EB Garamond', Georgia, serif; color:
 }
 .cover-frame { position: absolute; inset: 18px; border: 1px solid rgba(201,147,42,0.2); pointer-events: none; }
 .cover-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.5em; color: rgba(201,147,42,0.7); margin-bottom: 2rem; display: block; position: relative; }
-.cover-title { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 700; color: var(--bg); line-height: 1.15; position: relative; margin-bottom: 0.5rem; }
-.cover-title em { display: block; color: var(--gold-light); font-style: italic; font-family: 'EB Garamond', serif; font-size: 1.1em; margin-top: 0.3rem; }
+.cover-title { font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3.5vw, 2.4rem); font-weight: 700; color: var(--bg); line-height: 1.2; position: relative; margin-bottom: 0.5rem; }
+.cover-title em { display: block; color: var(--gold-light); font-style: italic; font-family: 'EB Garamond', serif; font-size: 1.1em; margin-top: 0.4rem; }
 .cover-divider { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 1.8rem auto; }
 .cover-sub { font-size: 0.95rem; font-style: italic; color: rgba(244,237,224,0.7); position: relative; margin-bottom: 2rem; }
 .cover-meta { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; position: relative; }
@@ -77,7 +77,7 @@ body { background: var(--bg); font-family: 'EB Garamond', Georgia, serif; color:
 .ch-marker { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
 .ch-num { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
 .ch-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
-.ch-title { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 0.5rem; }
+.ch-title { font-family: 'Cinzel', serif; font-size: clamp(1.2rem, 2.8vw, 1.8rem); font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 0.5rem; }
 .ch-intro { font-size: 1rem; font-style: italic; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(200,168,96,0.25); }
 
 .sec { margin-bottom: 2.5rem; }
@@ -104,34 +104,24 @@ p.t em { color: var(--blue-deep); font-style: italic; }
 .box ul li:last-child { border-bottom: none; }
 .box ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
 
+.art-box { margin: 1.5rem 0; border: 1px solid rgba(13,34,64,0.2); border-radius: 2px; overflow: hidden; }
+.art-head { background: var(--cover-bg); color: var(--gold-light); padding: 8px 16px; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; }
+.art-body { padding: 1.2rem 1.5rem; background: rgba(13,34,64,0.03); font-size: 0.95rem; line-height: 1.8; color: var(--ink); font-style: italic; }
+
 .tbl { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.88rem; }
 .tbl th { background: var(--cover-bg); color: var(--gold-light); padding: 10px 14px; text-align: left; font-family: 'Cinzel', serif; font-weight: 400; font-size: 0.62rem; letter-spacing: 0.15em; }
 .tbl td { padding: 10px 14px; border-bottom: 1px solid rgba(200,168,96,0.2); vertical-align: top; line-height: 1.65; }
 .tbl tr:nth-child(even) td { background: rgba(200,168,96,0.06); }
 .tbl td:first-child { font-weight: 600; color: var(--terra); }
 
-.art-box {
-  margin: 1.5rem 0;
-  border: 1px solid rgba(13,34,64,0.2);
-  border-radius: 2px;
-  overflow: hidden;
-}
-.art-head {
-  background: var(--cover-bg);
-  color: var(--gold-light);
-  padding: 8px 16px;
-  font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-}
-.art-body {
-  padding: 1.2rem 1.5rem;
-  background: rgba(13,34,64,0.03);
-  font-size: 0.95rem;
-  line-height: 1.8;
-  color: var(--ink);
-  font-style: italic;
-}
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0; }
+.col { padding: 1.2rem; border: 1px solid; border-radius: 2px; }
+.col.a { border-color: rgba(13,34,64,0.2); background: rgba(13,34,64,0.04); }
+.col.b { border-color: rgba(122,58,26,0.2); background: rgba(122,58,26,0.04); }
+.col-hd { font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.6rem; }
+.col.a .col-hd { color: var(--blue-deep); }
+.col.b .col-hd { color: var(--terra); }
+.col p { font-size: 0.88rem; line-height: 1.7; color: #333; }
 
 .quiz { border: 1px solid rgba(200,168,96,0.3); margin-bottom: 1rem; overflow: hidden; cursor: pointer; }
 .quiz-q { background: var(--cover-bg); color: var(--bg); padding: 1rem 1.2rem; font-size: 0.93rem; line-height: 1.65; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
@@ -141,17 +131,18 @@ p.t em { color: var(--blue-deep); font-style: italic; }
 .quiz-a { background: #fff; padding: 0 1.2rem; font-size: 0.9rem; line-height: 1.78; color: #1e1810; max-height: 0; overflow: hidden; transition: all 0.35s ease; }
 .quiz-a.open { padding: 1rem 1.2rem; max-height: 500px; }
 
-.orn { text-align: center; color: var(--border); letter-spacing: 0.8em; font-size: 0.75rem; margin: 2.5rem 0; }
+.gl-item { padding: 1rem 0; border-bottom: 1px solid rgba(200,168,96,0.2); }
+.gl-term { font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.9rem; color: var(--terra); margin-bottom: 0.3rem; }
+.gl-term em { font-family: 'EB Garamond', serif; font-style: italic; color: var(--blue-deep); font-size: 0.85rem; margin-left: 6px; font-weight: 400; }
+.gl-def { font-size: 0.9rem; line-height: 1.72; color: #444; padding-left: 1rem; border-left: 2px solid rgba(200,168,96,0.25); }
 
-.tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; font-family: 'Cinzel', serif; }
-.tg-b { background: rgba(13,34,64,0.1); color: var(--blue-deep); }
-.tg-r { background: rgba(122,58,26,0.1); color: var(--terra); }
-.tg-g { background: rgba(74,94,42,0.1); color: var(--olive); }
+.orn { text-align: center; color: var(--border); letter-spacing: 0.8em; font-size: 0.75rem; margin: 2.5rem 0; }
 
 @media (max-width: 600px) {
   .content, .toc { padding: 0 22px 40px; }
   .cover { padding: 60px 22px 60px; }
   .topbar { padding: 14px 22px; }
+  .two { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -160,211 +151,173 @@ p.t em { color: var(--blue-deep); font-style: italic; }
 <div class="topbar">
   <a href="direito-economico.html">← Direito Econômico e Financeiro</a>
   <span>/</span>
-  <span>Aula 09-05-2026</span>
+  <span>Aula 09/05/2026</span>
 </div>
 
 <div class="doc">
 
 <div class="cover">
   <div class="cover-frame"></div>
-  <span class="cover-label">UVA Marapendi · Direito Econômico e Financeiro · Aula 4</span>
-  <h1 class="cover-title">Infrações à Ordem Econômica<em>e Controle Antitruste</em></h1>
+  <span class="cover-label">UVA Marapendi · Direito Econômico e Financeiro · Aula 09/05/2026</span>
+  <h1 class="cover-title">CADE — Controle Antitruste<em>e Infrações à Ordem Econômica</em></h1>
   <div class="cover-divider"></div>
-  <p class="cover-sub">Modalidades de Controle · Art. 36 e 37 · Sanções · Responsabilidade Solidária · Desconsideração da Personalidade Jurídica</p>
+  <p class="cover-sub">Atos de Concentração · Art. 88 · Infrações · Art. 36 e 37 · Sanções · Responsabilidade · Desconsideração da Personalidade Jurídica</p>
   <div class="cover-meta">
     <span>Prof. Irapuã Beltrão</span>
     <span>Lei 12.529/2011</span>
-    <span>Aula 09/05/2026</span>
+    <span>Baseado na aula transcrita</span>
   </div>
 </div>
 
 <div class="toc">
   <span class="toc-label">Sumário</span>
   <ul class="toc-list">
-    <li><a href="#controle"><span class="toc-num">1</span><span>Modalidades de Controle pelas Autoridades Antitruste</span><span class="toc-dots"></span></a></li>
-    <li><a href="#infracoes"><span class="toc-num">2</span><span>Infrações à Ordem Econômica — Características</span><span class="toc-dots"></span></a></li>
-    <li><a href="#tipificacao"><span class="toc-num">3</span><span>Técnica de Tipificação Peculiar — Arts. 36 e 36 §3º</span><span class="toc-dots"></span></a></li>
-    <li><a href="#art36"><span class="toc-num">4</span><span>Art. 36 — As 4 Condutas Infracionais</span><span class="toc-dots"></span></a></li>
-    <li><a href="#sancoes"><span class="toc-num">5</span><span>Art. 37 — Sanções e Multas</span><span class="toc-dots"></span></a></li>
-    <li><a href="#aplicacao"><span class="toc-num">6</span><span>Aplicação Territorial e Destinatários da Lei</span><span class="toc-dots"></span></a></li>
-    <li><a href="#solidaria"><span class="toc-num">7</span><span>Responsabilidade Solidária — Arts. 32 e 33</span><span class="toc-dots"></span></a></li>
-    <li><a href="#desconsideracao"><span class="toc-num">8</span><span>Desconsideração da Personalidade Jurídica — Art. 18</span><span class="toc-dots"></span></a></li>
-    <li><a href="#rev"><span class="toc-num">9</span><span>Revisão e Perguntas de Prova</span><span class="toc-dots"></span></a></li>
+    <li><a href="#cade"><span class="toc-num">1</span><span>O CADE — Características e Papel</span><span class="toc-dots"></span></a></li>
+    <li><a href="#cade-vs-agencias"><span class="toc-num">2</span><span>CADE vs. Agências Reguladoras</span><span class="toc-dots"></span></a></li>
+    <li><a href="#duas-formas"><span class="toc-num">3</span><span>As Duas Formas de Atuação do CADE</span><span class="toc-dots"></span></a></li>
+    <li><a href="#art88"><span class="toc-num">4</span><span>Art. 88 — Controle dos Atos de Concentração</span><span class="toc-dots"></span></a></li>
+    <li><a href="#infracoes"><span class="toc-num">5</span><span>Infrações à Ordem Econômica — Características</span><span class="toc-dots"></span></a></li>
+    <li><a href="#art36"><span class="toc-num">6</span><span>Art. 36 — Tipificação Peculiar e as 4 Condutas</span><span class="toc-dots"></span></a></li>
+    <li><a href="#art37"><span class="toc-num">7</span><span>Art. 37 — Sanções Pecuniárias</span><span class="toc-dots"></span></a></li>
+    <li><a href="#territorialidade"><span class="toc-num">8</span><span>Territorialidade Ampliada — Art. 2º</span><span class="toc-dots"></span></a></li>
+    <li><a href="#destinatarios"><span class="toc-num">9</span><span>Destinatários da Lei — Art. 31</span><span class="toc-dots"></span></a></li>
+    <li><a href="#solidaria"><span class="toc-num">10</span><span>Responsabilidade Solidária e Desconsideração</span><span class="toc-dots"></span></a></li>
+    <li><a href="#rev"><span class="toc-num">11</span><span>Revisão e Perguntas de Prova</span><span class="toc-dots"></span></a></li>
+    <li><a href="#gloss"><span class="toc-num">12</span><span>Glossário</span><span class="toc-dots"></span></a></li>
   </ul>
 </div>
 
 <div class="content">
 
 <!-- CAP 1 -->
-<div class="chapter" id="controle">
+<div class="chapter" id="cade">
   <div class="ch-marker"><span class="ch-num">Capítulo 1</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Modalidades de Controle pelas Autoridades Antitruste</h2>
-  <p class="ch-intro">O CADE exerce dois tipos de controle sobre o mercado — um preventivo (estruturas) e um repressivo (condutas).</p>
+  <h2 class="ch-title">O CADE — Características e Papel</h2>
+  <p class="ch-intro">O Conselho Administrativo de Defesa Econômica é a figura central do sistema antitruste brasileiro — uma autarquia com poderes muito particulares.</p>
   <div class="sec">
-    <div class="two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.5rem 0;">
-      <div style="padding:1.2rem;border:1px solid rgba(13,34,64,0.2);background:rgba(13,34,64,0.04);border-radius:2px;">
-        <div style="font-family:'Cinzel',serif;font-size:0.85rem;font-weight:600;color:var(--blue-deep);margin-bottom:0.6rem;">🏛️ Controle das Estruturas</div>
-        <p style="font-size:0.88rem;line-height:1.7;color:#333;">Análise de <strong>atos e contratos</strong> de concentração econômica — fusões, incorporações, associações. Feito <em>antes</em> da operação acontecer. Base: <strong>Art. 88</strong>.</p>
-      </div>
-      <div style="padding:1.2rem;border:1px solid rgba(122,58,26,0.2);background:rgba(122,58,26,0.04);border-radius:2px;">
-        <div style="font-family:'Cinzel',serif;font-size:0.85rem;font-weight:600;color:var(--terra);margin-bottom:0.6rem;">⚖️ Controle de Condutas</div>
-        <p style="font-size:0.88rem;line-height:1.7;color:#333;">Controle de condutas que possam <strong>caracterizar infração à ordem econômica</strong>. Feito <em>depois</em> da conduta. Base: <strong>Art. 35</strong>.</p>
-      </div>
+    <p class="t">O CADE nasce na <strong>década de 1960</strong>, é reestruturado nos anos 1990 e recebe seu contorno atual pela <strong>Lei 12.529/2011</strong>. Como o professor destacou na aula, "o Cade sendo um órgão de fiscalização que faz uma análise absolutamente não setorial — ele pega qualquer tipo de prática, desde posto de gasolina a atos de planos de saúde ou qualquer outro tipo de atuação dos agentes econômicos".</p>
+    <div class="box bx-ex">
+      <span class="bx-lbl">📋 O que é o CADE</span>
+      <ul>
+        <li><strong>Autarquia federal</strong> vinculada ao Ministério da Justiça, sede em Brasília</li>
+        <li>Braço do <strong>Sistema Brasileiro de Defesa da Concorrência (SBDC)</strong>, junto com a SEAE</li>
+        <li>Fiscalização <strong>não setorial</strong> — abrange todos os agentes econômicos</li>
+        <li>Tem poderes muito particulares que nenhuma outra autarquia tem — inclusive a <strong>desconsideração da personalidade jurídica</strong></li>
+      </ul>
     </div>
-
-    <div class="sec-title"><span class="sec-num">1.1</span> Art. 88 — Atos de Concentração</div>
-    <p class="t">Serão submetidos ao CADE pelas partes envolvidas na operação os <strong>atos de concentração econômica</strong> em que, <em>cumulativamente</em>:</p>
-
-    <div class="art-box">
-      <div class="art-head">ART. 88 — CRITÉRIOS CUMULATIVOS PARA SUBMISSÃO AO CADE</div>
-      <div class="art-body">
-        <strong>Inciso I:</strong> pelo menos um dos grupos envolvidos tenha registrado, no último balanço, faturamento bruto anual ou volume de negócios total no País, no ano anterior à operação, equivalente ou superior a <strong>R$ 400.000.000,00 (quatrocentos milhões de reais)</strong>; e<br><br>
-        <strong>Inciso II:</strong> pelo menos um outro grupo envolvido tenha registrado faturamento bruto anual ou volume de negócios total no País equivalente ou superior a <strong>R$ 30.000.000,00 (trinta milhões de reais)</strong>.
-      </div>
-    </div>
-
-    <div class="box bx-warn">
-      <span class="bx-lbl">⚠️ Ponto de prova — valores do Art. 88</span>
-      <p>Os dois critérios são <strong>cumulativos</strong> — precisam ser atendidos ao mesmo tempo. Grupo maior: R$ 400 milhões. Grupo menor: R$ 30 milhões. Se apenas um dos critérios for atingido, não há obrigação de submeter ao CADE.</p>
-    </div>
-
-    <div class="sec-title"><span class="sec-num">1.2</span> Art. 35 — Controle de Condutas</div>
-    <div class="art-box">
-      <div class="art-head">ART. 35</div>
-      <div class="art-body">
-        "A repressão das infrações da ordem econômica <strong>não exclui a punição de outros ilícitos previstos em lei</strong>."
-      </div>
-    </div>
-    <p class="t">Isso significa que punir administrativamente pelo CADE não impede punição civil ou penal pelo mesmo fato. As esferas de responsabilidade são independentes.</p>
+    <p class="t">O professor destacou que a atuação do CADE se insere na lógica do <strong>Art. 174 da Constituição</strong>, que prevê o papel de fiscalização do Estado na atividade econômica — ao lado das funções de incentivo e planejamento.</p>
   </div>
 </div>
 
 <div class="orn">✦ · ✦ · ✦</div>
 
 <!-- CAP 2 -->
-<div class="chapter" id="infracoes">
+<div class="chapter" id="cade-vs-agencias">
   <div class="ch-marker"><span class="ch-num">Capítulo 2</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Infrações à Ordem Econômica — Características</h2>
-  <p class="ch-intro">Por que é tão difícil identificar e punir infrações à ordem econômica?</p>
+  <h2 class="ch-title">CADE vs. Agências Reguladoras</h2>
+  <p class="ch-intro">Uma distinção fundamental que o professor fez questão de deixar clara na aula.</p>
   <div class="sec">
-    <div class="box bx-ex">
-      <span class="bx-lbl">📋 Características das infrações à ordem econômica</span>
-      <ul>
-        <li><strong>Ilícito de difícil identificação</strong> — práticas anticoncorrenciais muitas vezes são disfarçadas como condutas comerciais legítimas</li>
-        <li><strong>Altos conhecimentos técnicos</strong>, especialização e prática profissional exigidos — tanto para praticá-las quanto para detectá-las e julgá-las</li>
-      </ul>
+    <div class="two">
+      <div class="col a">
+        <div class="col-hd">🏛️ Agências Reguladoras</div>
+        <p>Fiscalização <strong>setorial</strong> — cada uma cuida de um segmento específico. ANATEL (telecomunicações), ANS (planos de saúde), ANP (petróleo), ANCINE (cinema). Estuda-se mais em <strong>Direito Administrativo</strong>.</p>
+      </div>
+      <div class="col b">
+        <div class="col-hd">⚖️ CADE</div>
+        <p>Fiscalização <strong>não setorial</strong> — analisa comportamentos de qualquer agente econômico, independente do segmento. Uma empresa de telefonia e uma de plano de saúde estão igualmente sujeitas.</p>
+      </div>
     </div>
-    <p class="t">É por isso que o CADE conta com o <strong>Departamento de Estudos Econômicos (DEE)</strong> — dirigido por um Economista-Chefe — justamente para dar suporte técnico especializado às investigações e julgamentos.</p>
+
+    <div class="box bx-warn">
+      <span class="bx-lbl">⚠️ Ponto importante — não há bis in idem</span>
+      <p>Se a ANS puniu uma operadora de plano de saúde, isso <strong>não impede</strong> o CADE de punir também a mesma empresa. Como diz o Art. 35: "a repressão das infrações da ordem econômica <strong>não exclui a punição de outros ilícitos previstos em lei</strong>." As esferas são independentes — não há bis in idem.</p>
+    </div>
   </div>
 </div>
 
 <div class="orn">✦ · ✦ · ✦</div>
 
 <!-- CAP 3 -->
-<div class="chapter" id="tipificacao">
+<div class="chapter" id="duas-formas">
   <div class="ch-marker"><span class="ch-num">Capítulo 3</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Técnica de Tipificação Peculiar</h2>
-  <p class="ch-intro">O Art. 36 usa uma técnica diferente do Direito Penal — tipos abertos em dois níveis.</p>
+  <h2 class="ch-title">As Duas Formas de Atuação do CADE</h2>
+  <p class="ch-intro">O professor organizou toda a aula em torno dessa distinção central — preventiva versus repressiva.</p>
   <div class="sec">
-    <div class="box bx-tip">
-      <span class="bx-lbl">💡 A técnica em dois níveis</span>
-      <p><strong>Art. 36 (caput)</strong> — infrações em <em>sentido amplo</em>: descreve os efeitos proibidos de forma genérica. Qualquer conduta que produza esses efeitos é infração, independentemente de como foi praticada.<br><br>
-      <strong>Art. 36 §3º</strong> — infrações em <em>sentido estrito</em>: traz um rol <strong>exemplificativo</strong> (não taxativo) de XIX condutas que tipicamente configuram infração. O rol se reporta ao caput — não é autônomo.</p>
+    <div class="two">
+      <div class="col a">
+        <div class="col-hd">🔵 Preventiva — Atos de Concentração</div>
+        <p>Análise <strong>abstrata</strong> de fusões, incorporações e associações <em>antes</em> que aconteçam. Base: <strong>Art. 88</strong>. Não analisa se as empresas são boas ou ruins — analisa o <em>risco potencial</em> da concentração.</p>
+      </div>
+      <div class="col b">
+        <div class="col-hd">🔴 Repressiva — Infrações à Ordem Econômica</div>
+        <p>Análise de <strong>condutas concretas</strong> já praticadas pelos agentes econômicos. Base: <strong>Arts. 35 e 36</strong>. Aqui há fatos reais, comportamentos identificados e consequências punitivas correspondentes.</p>
+      </div>
     </div>
-    <p class="t">A diferença é importante: mesmo que uma conduta não esteja listada nos XIX incisos do §3º, <strong>ainda pode ser infração</strong> se produzir os efeitos descritos no caput do Art. 36. O rol é exemplificativo, não exaustivo.</p>
+
+    <div class="box bx-qt">
+      <span class="bx-lbl">💭 Como o professor explicou</span>
+      <p>"No artigo 88 ele está pensando em abstrato — simplesmente a referência de que existam elementos que possam ser caracterizados como eventos de concentração. Já do outro lado, a gente quer efetivamente imaginar que agora se analisa as condutas — atos que foram praticados. Esses atos que foram praticados são caracterizadores de um elemento onde você tem a discussão sobre os fatos concretos."</p>
+    </div>
   </div>
 </div>
 
 <div class="orn">✦ · ✦ · ✦</div>
 
 <!-- CAP 4 -->
-<div class="chapter" id="art36">
+<div class="chapter" id="art88">
   <div class="ch-marker"><span class="ch-num">Capítulo 4</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Art. 36 — As 4 Condutas Infracionais</h2>
-  <p class="ch-intro">O coração do sistema antitruste brasileiro — o que constitui infração à ordem econômica.</p>
+  <h2 class="ch-title">Art. 88 — Controle dos Atos de Concentração</h2>
+  <p class="ch-intro">Quando empresas se juntam, o CADE precisa analisar se isso pode criar riscos para a concorrência.</p>
   <div class="sec">
+    <p class="t">Quando uma empresa compra outra, quando há uma fusão ou incorporação, o CADE analisa se essa concentração pode criar riscos: formação de monopólio, controle abusivo de preços, redução da oferta de bens e serviços. A análise é <strong>abstrata</strong> — não se questiona se as empresas praticaram algo ruim, apenas se a concentração <em>potencialmente</em> pode criar riscos futuros.</p>
+
+    <p class="t">Como o professor explicou, "não é quando uma padaria do bairro compra outra" — existe um <strong>corte pelo tamanho das operações</strong>:</p>
+
     <div class="art-box">
-      <div class="art-head">ART. 36 — CAPUT</div>
+      <div class="art-head">ART. 88 — CRITÉRIOS CUMULATIVOS (precisam ser atendidos os dois ao mesmo tempo)</div>
       <div class="art-body">
-        "Constituem infração da ordem econômica, <strong>independentemente de culpa</strong>, os atos sob qualquer forma manifestados, que tenham por objeto ou <strong>possam produzir</strong> os seguintes efeitos, ainda que não sejam alcançados:"
+        <strong>Inciso I:</strong> pelo menos um dos grupos envolvidos tenha faturamento bruto anual ou volume de negócios total no País equivalente ou superior a <strong>R$ 400.000.000,00 (quatrocentos milhões de reais)</strong>.<br><br>
+        <strong>Inciso II:</strong> pelo menos um outro grupo envolvido tenha faturamento bruto anual equivalente ou superior a <strong>R$ 30.000.000,00 (trinta milhões de reais)</strong>.
       </div>
     </div>
 
-    <div class="box bx-warn">
-      <span class="bx-lbl">⚠️ 2 pontos críticos do caput</span>
-      <p><strong>1. Independentemente de culpa</strong> — é responsabilidade objetiva. Não precisa provar intenção. Basta que o ato produza ou possa produzir os efeitos proibidos.<br><br>
-      <strong>2. Ainda que não sejam alcançados</strong> — não precisa que o efeito se consume. Tentativa já configura infração.</p>
-    </div>
-
-    <table class="tbl">
-      <thead><tr><th>Inciso</th><th>Conduta</th><th>O que significa</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>I</td>
-          <td>Limitar, falsear ou de qualquer forma <strong>prejudicar a livre concorrência ou a livre iniciativa</strong></td>
-          <td>O mais amplo — pega cartéis, acordos de preço, divisão de mercado</td>
-        </tr>
-        <tr>
-          <td>II</td>
-          <td><strong>Dominar mercado relevante</strong> de bens ou serviços</td>
-          <td>Monopolização abusiva — não basta ter posição dominante, precisa abusar</td>
-        </tr>
-        <tr>
-          <td>III</td>
-          <td><strong>Aumentar arbitrariamente os lucros</strong></td>
-          <td>Preços abusivos — exploração do consumidor em posição de domínio</td>
-        </tr>
-        <tr>
-          <td>IV</td>
-          <td>Exercer de forma abusiva <strong>posição dominante</strong></td>
-          <td>Usar o poder de mercado para eliminar concorrentes ou prejudicar fornecedores</td>
-        </tr>
-      </tbody>
-    </table>
-
     <div class="box bx-tip">
-      <span class="bx-lbl">💡 Para não confundir — inciso II vs IV</span>
-      <p><strong>Inciso II (dominar mercado):</strong> foca na conquista abusiva da posição dominante — como chegou lá.<br><br>
-      <strong>Inciso IV (exercer abusivamente posição dominante):</strong> foca no uso abusivo do poder já conquistado — o que faz com ele.</p>
+      <span class="bx-lbl">💡 Por que dois critérios cumulativos?</span>
+      <p>Para evitar análises desnecessárias. Se a Volkswagen compra um terreno de um vizinho pequeno, não há risco concorrencial. Os dois lados da operação precisam ser relevantes. Como o professor disse: "qual é o tamanho da comprada? Se o outro braço dessa operação não for também minimamente impactante na atividade comercial, não há análise."</p>
     </div>
+
+    <div class="box bx-warn">
+      <span class="bx-lbl">⚠️ Detalhe importante — grupo, não empresa isolada</span>
+      <p>O CADE analisa o <strong>tamanho do grupo econômico</strong>, não de uma empresa isolada. Criar várias pessoas jurídicas para fugir do limite não funciona — a lei busca o faturamento do grupo inteiro envolvido na operação.</p>
+    </div>
+
+    <p class="t">O professor mencionou que esses valores de R$ 400 milhões e R$ 30 milhões vieram da lei de 2011 e que o CADE já estuda atualizá-los — 15 anos depois eles podem precisar ser repensados.</p>
   </div>
 </div>
 
 <div class="orn">✦ · ✦ · ✦</div>
 
 <!-- CAP 5 -->
-<div class="chapter" id="sancoes">
+<div class="chapter" id="infracoes">
   <div class="ch-marker"><span class="ch-num">Capítulo 5</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Art. 37 — Sanções e Multas</h2>
-  <p class="ch-intro">As penas para quem pratica infração à ordem econômica — variam conforme o infrator.</p>
+  <h2 class="ch-title">Infrações à Ordem Econômica — Características</h2>
+  <p class="ch-intro">Por que é tão difícil identificar e punir essas infrações — e por que o professor as chamou de "distintas do geral".</p>
   <div class="sec">
-    <table class="tbl">
-      <thead><tr><th>Inciso</th><th>Quem</th><th>Multa</th><th>Observação</th></tr></thead>
-      <tbody>
-        <tr>
-          <td><strong>I</strong></td>
-          <td>Empresa</td>
-          <td><strong>0,1% a 20%</strong> do faturamento bruto no ramo de atividade em que ocorreu a infração</td>
-          <td>Nunca inferior à vantagem auferida, quando possível estimar</td>
-        </tr>
-        <tr>
-          <td><strong>II</strong></td>
-          <td>Pessoas físicas ou jurídicas que não exercem atividade empresarial, associações</td>
-          <td>Entre <strong>R$ 50.000,00</strong> e <strong>R$ 2.000.000.000,00</strong> (dois bilhões)</td>
-          <td>Quando não é possível usar o critério do faturamento bruto</td>
-        </tr>
-        <tr>
-          <td><strong>III</strong></td>
-          <td>Administrador responsável pela infração</td>
-          <td><strong>1% a 20%</strong> da multa aplicada à empresa (inciso I) ou à pessoa jurídica (inciso II)</td>
-          <td>Exige comprovação de <strong>culpa ou dolo</strong> — não é objetiva!</td>
-        </tr>
-      </tbody>
-    </table>
+    <p class="t">Diferentemente de um ilícito civil comum (alguém causou prejuízo a outra pessoa) ou de um ilícito penal (conduta claramente descrita em tipo fechado), as infrações à ordem econômica têm características muito particulares:</p>
 
-    <div class="box bx-warn">
-      <span class="bx-lbl">⚠️ Diferença importante — culpa no Art. 37</span>
-      <p>A infração em si (Art. 36) é objetiva — <strong>independe de culpa</strong>. Mas a responsabilidade pessoal do <strong>administrador</strong> (Art. 37, III) exige prova de <strong>culpa ou dolo</strong>. São regimes diferentes!</p>
+    <div class="box bx-ex">
+      <span class="bx-lbl">📋 Por que são difíceis de identificar</span>
+      <ul>
+        <li><strong>Tipos muito abertos</strong> — "aumento arbitrário de lucros" e "posição dominante abusiva" são conceitos que precisam ser construídos caso a caso</li>
+        <li><strong>Alto padrão técnico</strong> exigido — a análise econômica é complexa. Por isso o CADE tem um Economista-Chefe no DEE</li>
+        <li><strong>Comportamentos empresariais sofisticados</strong> — muitas vezes disfarçados de condutas comerciais legítimas</li>
+        <li><strong>Consequências não são imediatas</strong> — o dano à concorrência pode se materializar a longo prazo</li>
+      </ul>
+    </div>
+
+    <div class="box bx-qt">
+      <span class="bx-lbl">💭 Como o professor explicou</span>
+      <p>"Não estamos falando de alguém que pegou um determinado equipamento e causou prejuízo a outra pessoa. Não é simplesmente uma análise de 'o sujeito praticou um preço abusivo' — esse conceito, por si só, é muito mais abstrato do que eventualmente alguém poderia imaginar. São ilícitos que envolvem conhecimentos técnicos absolutamente especializados, bastante minuciosos, e uma prática profissional absolutamente distinta."</p>
     </div>
   </div>
 </div>
@@ -372,42 +325,147 @@ p.t em { color: var(--blue-deep); font-style: italic; }
 <div class="orn">✦ · ✦ · ✦</div>
 
 <!-- CAP 6 -->
-<div class="chapter" id="aplicacao">
+<div class="chapter" id="art36">
   <div class="ch-marker"><span class="ch-num">Capítulo 6</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Aplicação Territorial e Destinatários da Lei</h2>
-  <p class="ch-intro">Quem está sujeito à Lei 12.529/2011 e onde ela se aplica.</p>
+  <h2 class="ch-title">Art. 36 — Tipificação Peculiar e as 4 Condutas</h2>
+  <p class="ch-intro">O professor chamou de "técnica de tipificação peculiar" — muito diferente do que estamos acostumados no Direito.</p>
   <div class="sec">
-    <div class="sec-title"><span class="sec-num">6.1</span> Aplicação Territorial — Art. 2º</div>
-    <div class="art-box">
-      <div class="art-head">ART. 2º — LEI 12.529/2011</div>
-      <div class="art-body">
-        "Aplica-se esta Lei, sem prejuízo de convenções e tratados de que seja signatário o Brasil, às práticas cometidas no todo ou em parte no território nacional ou que nele <strong>produzam ou possam produzir efeitos</strong>."
-      </div>
-    </div>
-    <p class="t">O critério é o <strong>efeito no território nacional</strong> — não onde a prática foi cometida. Uma empresa estrangeira que combina preços fora do Brasil mas afeta o mercado brasileiro está sujeita à lei.</p>
 
-    <div class="sec-title"><span class="sec-num">6.2</span> Destinatários — Art. 31</div>
+    <div class="sec-title"><span class="sec-num">6.1</span> A Técnica em Dois Níveis</div>
+    <div class="box bx-tip">
+      <span class="bx-lbl">💡 Infrações em sentido amplo vs. estrito</span>
+      <p><strong>Art. 36 (caput)</strong> — infrações em sentido <em>amplo</em>: descreve os efeitos proibidos de forma genérica. Qualquer conduta que produza esses efeitos é infração, independentemente de como foi praticada.<br><br>
+      <strong>Art. 36 §3º</strong> — infrações em sentido <em>estrito</em>: traz um rol <strong>exemplificativo</strong> (não taxativo!) de XIX condutas específicas. O rol se reporta ao caput — não é autônomo. Uma conduta não listada ainda pode ser infração se produzir os efeitos do caput.</p>
+    </div>
+
+    <p class="t">Como o professor destacou: "isso é realmente muito distinto, porque a tipificação que nós normalmente estamos acostumados parte do pressuposto que os tipos são esses, e ali a gente contempla os tipos fechados. Nesse caso, a gente fala que é uma listagem simplificativa."</p>
+
+    <div class="sec-title"><span class="sec-num">6.2</span> As 4 Condutas do Art. 36</div>
+
     <div class="art-box">
-      <div class="art-head">ART. 31 — LEI 12.529/2011</div>
+      <div class="art-head">ART. 36 — CAPUT — DOIS PONTOS CRÍTICOS</div>
       <div class="art-body">
-        Esta Lei aplica-se às <strong>pessoas físicas ou jurídicas de direito público ou privado</strong>, bem como a quaisquer associações de entidades ou pessoas, constituídas de fato ou de direito, ainda que temporariamente, com ou sem personalidade jurídica, mesmo que exerçam atividade sob regime de <strong>monopólio legal</strong>.
+        "Constituem infração da ordem econômica, <strong>independentemente de culpa</strong>, os atos sob qualquer forma manifestados, que tenham por objeto ou possam produzir os seguintes efeitos, <strong>ainda que não sejam alcançados</strong>."
       </div>
     </div>
-    <div class="box bx-tip">
-      <span class="bx-lbl">💡 A chave do Art. 31</span>
-      <p>Ao Direito da Concorrência interessa os <strong>EFEITOS</strong> nas relações de concorrência — independente da forma jurídica que se reveste o agente. Nem o monopólio legal escapa: se a empresa estatal que detém monopólio praticar conduta anticoncorrencial, está sujeita à lei.</p>
+
+    <div class="box bx-warn">
+      <span class="bx-lbl">⚠️ Os dois pontos mais importantes do caput</span>
+      <p><strong>1. "Independentemente de culpa"</strong> = responsabilidade <em>objetiva</em>. Não precisa provar intenção, negligência ou imprudência. Basta que o ato produza ou possa produzir os efeitos proibidos.<br><br>
+      <strong>2. "Ainda que não sejam alcançados"</strong> = a tentativa já configura infração. Não precisa que o efeito se consume — basta que possa acontecer.</p>
     </div>
+
+    <table class="tbl">
+      <thead><tr><th>Inciso</th><th>Conduta proibida</th><th>O que significa na prática</th></tr></thead>
+      <tbody>
+        <tr><td>I</td><td>Limitar, falsear ou de qualquer forma prejudicar a <strong>livre concorrência ou a livre iniciativa</strong></td><td>O mais amplo — cartéis, acordos de preço, divisão de mercado entre concorrentes</td></tr>
+        <tr><td>II</td><td><strong>Dominar mercado relevante</strong> de bens ou serviços</td><td>Monopolização abusiva — concentração que elimina a concorrência</td></tr>
+        <tr><td>III</td><td><strong>Aumentar arbitrariamente os lucros</strong></td><td>Preços abusivos — exploração do consumidor em posição de domínio</td></tr>
+        <tr><td>IV</td><td>Exercer de forma abusiva <strong>posição dominante</strong></td><td>Usar o poder de mercado para eliminar concorrentes ou prejudicar fornecedores</td></tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
 <div class="orn">✦ · ✦ · ✦</div>
 
 <!-- CAP 7 -->
-<div class="chapter" id="solidaria">
+<div class="chapter" id="art37">
   <div class="ch-marker"><span class="ch-num">Capítulo 7</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Responsabilidade Solidária — Arts. 32 e 33</h2>
-  <p class="ch-intro">Quem responde junto quando há infração à ordem econômica.</p>
+  <h2 class="ch-title">Art. 37 — Sanções Pecuniárias</h2>
+  <p class="ch-intro">A grande sanção do CADE é pecuniária — multas calculadas de formas diferentes conforme o infrator.</p>
   <div class="sec">
+    <p class="t">Como o professor enfatizou: "a grande punição que nós temos como sendo aplicável são punições pecuniárias. A grande sanção que o CADE me traz é uma sanção pecuniária — multas." E mais: "a multa também é aberta, porque ela vai identificar uma margem de aplicação que vai olhar o faturamento bruto daquelas empresas em geral."</p>
+
+    <table class="tbl">
+      <thead><tr><th>Quem</th><th>Multa</th><th>Observação importante</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Empresa</strong> (inciso I)</td><td><strong>0,1% a 20%</strong> do faturamento bruto no ramo de atividade em que ocorreu a infração</td><td>Nunca inferior à vantagem auferida, quando possível estimar. Responsabilidade <strong>objetiva</strong></td></tr>
+        <tr><td><strong>Pessoa física / jurídica sem faturamento</strong> (inciso II)</td><td>Entre <strong>R$ 50.000,00</strong> e <strong>R$ 2.000.000.000,00</strong> (dois bilhões)</td><td>Quando não é possível usar o critério do faturamento bruto</td></tr>
+        <tr><td><strong>Administrador</strong> responsável (inciso III)</td><td><strong>1% a 20%</strong> da multa aplicada à empresa ou pessoa jurídica</td><td>Exige prova de <strong>culpa ou dolo</strong> — não é objetiva!</td></tr>
+      </tbody>
+    </table>
+
+    <div class="box bx-warn">
+      <span class="bx-lbl">⚠️ A grande diferença — empresa vs. administrador</span>
+      <p>O professor sublinhou com muita ênfase: "As infrações do artigo 36 são infrações independentes de culpa ou dolo — responsabilidade objetiva. Mas observe que para punir o administrador, pessoa física, a coisa mudou um pouquinho de figura, porque eu já preciso ter essa demonstração de culpa ou dolo." São regimes completamente diferentes!</p>
+    </div>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<!-- CAP 8 -->
+<div class="chapter" id="territorialidade">
+  <div class="ch-marker"><span class="ch-num">Capítulo 8</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Territorialidade Ampliada — Art. 2º</h2>
+  <p class="ch-intro">A noção de soberania do CADE é muito diferente do que estamos acostumados no Direito.</p>
+  <div class="sec">
+    <div class="art-box">
+      <div class="art-head">ART. 2º — LEI 12.529/2011</div>
+      <div class="art-body">
+        "Aplica-se esta Lei, sem prejuízo de convenções e tratados de que seja signatário o Brasil, às práticas cometidas no todo ou em parte no território nacional ou que nele <strong>produzam ou possam produzir efeitos</strong>."
+      </div>
+    </div>
+
+    <p class="t">O critério não é onde a prática foi cometida — é o <strong>efeito no território nacional</strong>. Uma empresa estrangeira que combina preços fora do Brasil, mas afeta o mercado brasileiro, está sujeita à lei brasileira.</p>
+
+    <div class="box bx-qt">
+      <span class="bx-lbl">💭 Como o professor explicou</span>
+      <p>"A nossa lógica de soberania aqui é um pouco distinta — nós não estamos pensando os atos e fatos que sejam realizados apenas dentro do território nacional. Se os atos foram praticados no exterior por empresas que estejam no exterior, e mesmo estando no exterior nós teríamos consequências dentro do território nacional, a mera existência dessas consequências acaba produzindo ali a aplicabilidade das nossas normas."</p>
+    </div>
+
+    <div class="box bx-tip">
+      <span class="bx-lbl">💡 Princípio dos efeitos</span>
+      <p>Isso é o chamado <strong>princípio dos efeitos</strong> no direito internacional — o Estado pode exercer jurisdição sobre atos praticados fora do seu território quando esses atos produzem efeitos dentro dele. É uma visão de soberania consequencialista, não territorialista clássica.</p>
+    </div>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<!-- CAP 9 -->
+<div class="chapter" id="destinatarios">
+  <div class="ch-marker"><span class="ch-num">Capítulo 9</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Destinatários da Lei — Art. 31</h2>
+  <p class="ch-intro">Quem está sujeito à Lei 12.529/2011 — a resposta é: praticamente todo mundo.</p>
+  <div class="sec">
+    <div class="art-box">
+      <div class="art-head">ART. 31 — LEI 12.529/2011</div>
+      <div class="art-body">
+        Esta Lei aplica-se às <strong>pessoas físicas ou jurídicas de direito público ou privado</strong>, bem como a quaisquer associações de entidades ou pessoas, constituídas de fato ou de direito, ainda que temporariamente, com ou sem personalidade jurídica, mesmo que exerçam atividade sob regime de <strong>monopólio legal</strong>.
+      </div>
+    </div>
+
+    <div class="box bx-ex">
+      <span class="bx-lbl">📋 Quem está sujeito — todos</span>
+      <ul>
+        <li>Pessoas físicas e jurídicas de direito público ou privado</li>
+        <li>Associações e entidades, mesmo sem personalidade jurídica</li>
+        <li>Cooperativas — o professor mencionou como exemplo: "elas podem produzir atos que sejam eventualmente ofensivos à ordem econômica também"</li>
+        <li>Empresas sob <strong>monopólio legal</strong> — nem o monopólio estatal escapa</li>
+        <li>Agentes no exterior — pela lógica do Art. 2º</li>
+      </ul>
+    </div>
+
+    <div class="box bx-qt">
+      <span class="bx-lbl">💭 A chave do Art. 31 — efeitos, não forma jurídica</span>
+      <p>"Ao Direito da Concorrência vai interessar os EFEITOS nas relações de concorrência, independente da forma jurídica que se reveste o agente." Ou seja, não importa se você é SA, LTDA, cooperativa, associação sem fins lucrativos ou empresa pública — se produz efeitos concorrenciais, está sujeito.</p>
+    </div>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<!-- CAP 10 -->
+<div class="chapter" id="solidaria">
+  <div class="ch-marker"><span class="ch-num">Capítulo 10</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Responsabilidade Solidária e Desconsideração</h2>
+  <p class="ch-intro">Os dois instrumentos mais particulares que a lei deu ao CADE — únicos no ordenamento jurídico brasileiro.</p>
+  <div class="sec">
+
+    <div class="sec-title"><span class="sec-num">10.1</span> Responsabilidade Solidária — Arts. 32 e 33</div>
+
     <div class="art-box">
       <div class="art-head">ART. 32</div>
       <div class="art-body">
@@ -425,96 +483,146 @@ p.t em { color: var(--blue-deep); font-style: italic; }
     <div class="box bx-ex">
       <span class="bx-lbl">📋 Quem responde solidariamente</span>
       <ul>
-        <li><strong>Art. 32:</strong> a empresa + seus dirigentes e administradores (responsabilidade individual)</li>
-        <li><strong>Art. 33:</strong> todas as empresas do mesmo grupo econômico (mesmo as que não participaram diretamente da infração)</li>
+        <li><strong>Art. 32:</strong> a empresa + seus dirigentes e administradores</li>
+        <li><strong>Art. 33:</strong> todas as empresas do mesmo grupo econômico, mesmo as que não participaram diretamente</li>
       </ul>
     </div>
-    <p class="t">O conceito de <strong>grupo econômico</strong> abrange tanto o grupo de fato (controle sem estrutura formal) quanto o grupo de direito (holding, subsidiárias). A responsabilidade solidária impede que o grupo se esconda atrás de uma empresa de fachada.</p>
-  </div>
-</div>
 
-<div class="orn">✦ · ✦ · ✦</div>
+    <div class="sec-title"><span class="sec-num">10.2</span> Desconsideração da Personalidade Jurídica — Art. 18</div>
 
-<!-- CAP 8 -->
-<div class="chapter" id="desconsideracao">
-  <div class="ch-marker"><span class="ch-num">Capítulo 8</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Desconsideração da Personalidade Jurídica — Art. 18</h2>
-  <p class="ch-intro">Quando a empresa usa sua personalidade jurídica para fugir da responsabilidade — o CADE pode ignorá-la.</p>
-  <div class="sec">
     <div class="art-box">
-      <div class="art-head">ART. 18 — LEI 12.529/2011</div>
+      <div class="art-head">ART. 18 — O INSTRUMENTO MAIS PECULIAR DO CADE</div>
       <div class="art-body">
         "A personalidade jurídica do responsável por infração da ordem econômica <strong>poderá ser desconsiderada</strong> quando houver da parte deste abuso de direito, excesso de poder, infração da lei, fato ou ato ilícito ou violação dos estatutos ou contrato social.<br><br>
         Parágrafo único. A desconsideração também será efetivada quando houver <strong>falência, estado de insolvência, encerramento ou inatividade</strong> da pessoa jurídica provocados por <strong>má administração</strong>."
       </div>
     </div>
 
-    <div class="box bx-ex">
-      <span class="bx-lbl">📋 Hipóteses de desconsideração — Art. 18</span>
-      <ul>
-        <li><strong>Caput:</strong> abuso de direito, excesso de poder, infração da lei, ato ilícito, violação dos estatutos</li>
-        <li><strong>Parágrafo único:</strong> falência, insolvência, encerramento ou inatividade da empresa provocados por má administração</li>
-      </ul>
+    <div class="box bx-warn">
+      <span class="bx-lbl">⚠️ Por que isso é único no direito brasileiro</span>
+      <p>O professor sublinhou com muita intensidade: "Quando se fala de desconsideração da personalidade jurídica, isso é uma medida tipicamente associada à atuação do poder judiciário. A gente normalmente não tem isso como uma figura recorrente fora do Judiciário. Por isso que eu destaco com muita intensidade que é algo muito particular do Cade, algo que só se deu a ele."</p>
     </div>
 
     <div class="box bx-tip">
-      <span class="bx-lbl">💡 Por que isso importa</span>
-      <p>A desconsideração permite que a multa do CADE seja cobrada diretamente dos <strong>sócios e administradores</strong>, mesmo que a empresa não tenha patrimônio. Impede o "esvaziamento" da empresa para fugir das sanções.</p>
+      <span class="bx-lbl">💡 Por que isso importa na prática</span>
+      <p>Permite cobrar a multa do CADE diretamente dos sócios e administradores, mesmo que a empresa não tenha patrimônio. Impede o "esvaziamento" da empresa para fugir das sanções — prática comum de infratores sofisticados.</p>
     </div>
   </div>
 </div>
 
 <div class="orn">✦ · ✦ · ✦</div>
 
-<!-- CAP 9 -->
+<!-- CAP 11 -->
 <div class="chapter" id="rev">
-  <div class="ch-marker"><span class="ch-num">Capítulo 9</span><div class="ch-line"></div></div>
+  <div class="ch-marker"><span class="ch-num">Capítulo 11</span><div class="ch-line"></div></div>
   <h2 class="ch-title">Revisão e Perguntas de Prova</h2>
-  <p class="ch-intro">Clique na pergunta para revelar a resposta.</p>
+  <p class="ch-intro">Clique na pergunta para revelar a resposta. Se conseguir explicar com suas palavras antes de abrir, está pronta.</p>
   <div class="sec">
 
     <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>Quais são as duas modalidades de controle das autoridades antitruste?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">1) Controle das estruturas de mercado — análise de atos e contratos de concentração econômica (fusões, incorporações) feito ANTES da operação. Base: Art. 88. Critérios: faturamento de R$ 400 milhões (grupo maior) e R$ 30 milhões (grupo menor), cumulativamente. 2) Controle de condutas — investigação e punição de condutas que caracterizem infração à ordem econômica. Base: Art. 35. A punição administrativa não exclui outras punições (civil, penal).</div>
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Qual a diferença entre o CADE e as agências reguladoras?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">As agências reguladoras fazem fiscalização setorial — cada uma cuida de um segmento específico (ANATEL, ANS, ANP). O CADE faz fiscalização não setorial — analisa comportamentos de qualquer agente econômico, independente do segmento. A fiscalização do CADE se aplica de postos de gasolina a planos de saúde. Além disso, as sanções do CADE não excluem as punições setoriais das agências — não há bis in idem.</div>
     </div>
 
     <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>O que significa "independentemente de culpa" no caput do Art. 36?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Significa que a infração à ordem econômica é de responsabilidade objetiva — não precisa provar intenção ou negligência. Basta que o ato produza ou possa produzir os efeitos proibidos, ainda que não sejam alcançados. Isso diferencia do Art. 37, III (responsabilidade do administrador), que exige prova de culpa ou dolo.</div>
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Quais são as duas formas de atuação do CADE e qual a diferença entre elas?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">1) Preventiva — controle dos atos de concentração (Art. 88): análise abstrata de fusões e incorporações antes que aconteçam. Não analisa se as empresas são boas ou ruins, apenas o risco potencial da concentração. 2) Repressiva — infrações à ordem econômica (Arts. 35 e 36): análise de condutas concretas já praticadas, com fatos reais e consequências punitivas. A diferença essencial: preventiva é abstrata (risco potencial), repressiva é concreta (conduta praticada).</div>
+    </div>
+
+    <div class="quiz" onclick="toggleQ(this)">
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Quais são os critérios cumulativos do Art. 88 para submissão ao CADE?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">Dois critérios cumulativos (os dois precisam ser atendidos): Inciso I — pelo menos um dos grupos envolvidos tenha faturamento bruto anual igual ou superior a R$ 400.000.000,00 (quatrocentos milhões); Inciso II — pelo menos um outro grupo envolvido tenha faturamento igual ou superior a R$ 30.000.000,00 (trinta milhões). O CADE analisa o faturamento do grupo econômico inteiro, não de uma empresa isolada.</div>
+    </div>
+
+    <div class="quiz" onclick="toggleQ(this)">
+      <div class="quiz-q"><span class="quiz-badge">Q</span>O que significa "independentemente de culpa" no Art. 36 e por que isso é importante?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">Significa que a infração à ordem econômica é de responsabilidade objetiva — não precisa provar intenção, negligência ou imprudência. Basta que o ato produza ou possa produzir os efeitos proibidos, ainda que esses efeitos não sejam alcançados. Isso é fundamental porque contrasta com a responsabilidade do administrador (Art. 37, III), que exige prova de culpa ou dolo.</div>
     </div>
 
     <div class="quiz" onclick="toggleQ(this)">
       <div class="quiz-q"><span class="quiz-badge">Q</span>Quais são os 4 efeitos proibidos do Art. 36?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">I - Limitar, falsear ou de qualquer forma prejudicar a livre concorrência ou a livre iniciativa. II - Dominar mercado relevante de bens ou serviços. III - Aumentar arbitrariamente os lucros. IV - Exercer de forma abusiva posição dominante.</div>
+      <div class="quiz-a">I — Limitar, falsear ou prejudicar a livre concorrência ou a livre iniciativa. II — Dominar mercado relevante de bens ou serviços. III — Aumentar arbitrariamente os lucros. IV — Exercer de forma abusiva posição dominante. Obs: a tentativa já configura infração ("ainda que não sejam alcançados") e o rol do §3º é exemplificativo — outras condutas que produzam esses efeitos também são infrações.</div>
     </div>
 
     <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>Quais são as multas do Art. 37 para empresa, pessoa física e administrador?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Empresa (inciso I): 0,1% a 20% do faturamento bruto no ramo de atividade — nunca inferior à vantagem auferida. Pessoas que não exercem atividade empresarial (inciso II): entre R$ 50.000,00 e R$ 2.000.000.000,00 (dois bilhões). Administrador (inciso III): 1% a 20% da multa aplicada à empresa — mas exige prova de culpa ou dolo.</div>
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Qual a diferença entre a multa da empresa e a multa do administrador no Art. 37?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">Empresa (inciso I): 0,1% a 20% do faturamento bruto no ramo de atividade — responsabilidade objetiva, independe de culpa. Administrador (inciso III): 1% a 20% da multa aplicada à empresa — mas exige prova de culpa ou dolo. São regimes diferentes: a infração em si (Art. 36) é objetiva, mas para atingir pessoalmente o administrador precisa demonstrar culpa ou dolo.</div>
     </div>
 
     <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>Qual é o critério de aplicação territorial da Lei 12.529/2011?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">O critério é o efeito no território nacional — não onde a prática foi cometida. Aplica-se a práticas cometidas no todo ou em parte no território nacional, ou que nele produzam ou possam produzir efeitos. Uma empresa estrangeira que afeta o mercado brasileiro está sujeita à lei.</div>
+      <div class="quiz-q"><span class="quiz-badge">Q</span>O que é a territorialidade ampliada do Art. 2º e por que é diferente do direito tradicional?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">O critério não é onde a prática foi cometida, mas o efeito no território nacional. A lei aplica-se a práticas cometidas no todo ou em parte no Brasil, ou que aqui produzam ou possam produzir efeitos. Isso é diferente do conceito tradicional de territorialidade — uma empresa estrangeira que pratica cartel fora do Brasil, mas afeta o mercado brasileiro, está sujeita à lei brasileira. É uma visão consequencialista de soberania.</div>
     </div>
 
     <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>Quando cabe a desconsideração da personalidade jurídica no CADE (Art. 18)?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Caput: quando houver abuso de direito, excesso de poder, infração da lei, ato ilícito ou violação dos estatutos/contrato social. Parágrafo único: quando houver falência, insolvência, encerramento ou inatividade da pessoa jurídica provocados por má administração. Permite cobrar a multa diretamente dos sócios e administradores.</div>
-    </div>
-
-    <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>O que é responsabilidade solidária nos Arts. 32 e 33?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Art. 32: a empresa e seus dirigentes/administradores respondem solidariamente pela infração. Art. 33: todas as empresas do mesmo grupo econômico (de fato ou de direito) respondem solidariamente. Impede que o grupo use uma empresa de fachada para escapar das sanções.</div>
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Por que a desconsideração da personalidade jurídica do CADE é única no direito brasileiro?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">Porque desconsideração da personalidade jurídica é uma medida tipicamente associada ao poder judiciário — nenhuma outra autarquia tem esse poder. O CADE pode, como agente administrativo, desconsiderar a personalidade jurídica quando houver abuso de direito, excesso de poder, infração da lei, ou falência/insolvência por má administração. Isso permite cobrar multas diretamente dos sócios e administradores, impedindo o esvaziamento da empresa para fugir das sanções.</div>
     </div>
 
   </div>
 </div>
 
-<div class="box bx-qt" style="margin-top:2rem;">
-  <span class="bx-lbl">📚 Base desta aula</span>
-  <p>Lei nº 12.529/2011 — Estrutura o Sistema Brasileiro de Defesa da Concorrência (SBDC) e dispõe sobre a prevenção e repressão às infrações contra a ordem econômica.<br><br>
-  Material baseado nos slides da Aula 4 — UVA Marapendi, Direito Econômico e Financeiro, Prof. Irapuã Beltrão, 09/05/2026.</p>
+<div class="orn">✦ · ✦ · ✦</div>
+
+<!-- CAP 12 -->
+<div class="chapter" id="gloss">
+  <div class="ch-marker"><span class="ch-num">Capítulo 12</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Glossário</h2>
+  <p class="ch-intro">Termos técnicos e siglas usados na aula.</p>
+  <div class="sec">
+
+    <div class="gl-item">
+      <div class="gl-term">CADE</div>
+      <div class="gl-def">Conselho Administrativo de Defesa Econômica. Autarquia federal vinculada ao Ministério da Justiça. Criado em 1962, reestruturado nos anos 90, regulamentado atualmente pela Lei 12.529/2011.</div>
+    </div>
+
+    <div class="gl-item">
+      <div class="gl-term">SBDC</div>
+      <div class="gl-def">Sistema Brasileiro de Defesa da Concorrência. Composto pelo CADE e pela SEAE (Secretaria de Acompanhamento Econômico do Ministério da Fazenda).</div>
+    </div>
+
+    <div class="gl-item">
+      <div class="gl-term">Atos de concentração</div>
+      <div class="gl-def">Fusões, incorporações, associações e outras formas de reunião de empresas. Sujeitos à análise prévia do CADE quando atingem os limiares do Art. 88.</div>
+    </div>
+
+    <div class="gl-item">
+      <div class="gl-term">Responsabilidade objetiva</div>
+      <div class="gl-def">Responsabilidade que independe de culpa ou dolo. Basta a prática do ato e a ocorrência (ou possibilidade) do dano. É o regime das infrações à ordem econômica do Art. 36.</div>
+    </div>
+
+    <div class="gl-item">
+      <div class="gl-term">Princípio dos efeitos</div>
+      <div class="gl-def">Princípio de direito internacional pelo qual o Estado pode exercer jurisdição sobre atos praticados fora do seu território quando esses atos produzem efeitos dentro dele. Base do Art. 2º da Lei 12.529/2011.</div>
+    </div>
+
+    <div class="gl-item">
+      <div class="gl-term">Bis in idem</div>
+      <div class="gl-def">Expressão latina que significa "duas vezes a mesma coisa" — punir alguém duas vezes pelo mesmo fato. O Art. 35 da lei deixa claro que a punição do CADE não configura bis in idem com a punição de agências reguladoras setoriais.</div>
+    </div>
+
+    <div class="gl-item">
+      <div class="gl-term">Posição dominante</div>
+      <div class="gl-def">Situação em que uma empresa tem poder de mercado suficiente para influenciar preços ou condições de mercado. Ter posição dominante não é ilícito — o ilícito é exercê-la de forma abusiva (Art. 36, IV).</div>
+    </div>
+
+    <div class="gl-item">
+      <div class="gl-term">Mercado relevante</div>
+      <div class="gl-def">O mercado em que se avalia o poder de uma empresa — definido tanto pelo produto (substitutos) quanto pela geografia (onde as empresas competem). Conceito central para analisar domínio de mercado (Art. 36, II).</div>
+    </div>
+
+    <div class="gl-item">
+      <div class="gl-term">Grupo econômico</div>
+      <div class="gl-def">Conjunto de empresas com vínculos de controle ou coligação, de fato ou de direito. Todas as empresas do grupo respondem solidariamente pelas infrações praticadas por qualquer delas (Art. 33).</div>
+    </div>
+
+    <div class="box bx-qt" style="margin-top:2rem;">
+      <span class="bx-lbl">📚 Base desta aula</span>
+      <p>Lei nº 12.529/2011 — Estrutura o Sistema Brasileiro de Defesa da Concorrência (SBDC).<br><br>
+      Material baseado na transcrição da aula de 09/05/2026 e nos slides da Parte 4 — UVA Marapendi, Direito Econômico e Financeiro, Prof. Irapuã Beltrão.</p>
+    </div>
+
+  </div>
 </div>
 
 </div><!-- /content -->
