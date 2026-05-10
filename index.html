@@ -3,45 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Filosofia do Direito — Cinthia Sales</title>
+<title>Cinthia Sales — Espaço de Estudos</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #1a1209;
     --cream: #faf6ee;
+    --paper: #f4ede0;
     --gold: #a07828;
     --gold-light: #c9932a;
     --rust: #7a3a1a;
+    --sage: #4a6741;
     --blue: #1e3a5f;
     --muted: #6b6050;
     --border: #d4b97a;
     --bg: #f4ede0;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); font-family: 'Source Serif 4', Georgia, serif; color: var(--ink); min-height: 100vh; }
 
-  .topbar {
-    padding: 16px 40px;
-    border-bottom: 1px solid rgba(160,120,40,0.15);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    background: white;
+  body {
+    background: var(--bg);
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
   }
-  .topbar a { color: var(--gold-light); text-decoration: none; }
-  .topbar a:hover { color: var(--rust); }
 
+  /* HEADER */
   header {
-    padding: 50px 40px 40px;
+    padding: 60px 40px 40px;
     max-width: 900px;
     margin: 0 auto;
-    border-bottom: 1px solid rgba(160,120,40,0.15);
+    border-bottom: 1px solid rgba(160,120,40,0.2);
   }
 
-  .materia-label {
-    font-size: 0.62rem;
+  .site-label {
+    font-size: 0.65rem;
     letter-spacing: 0.4em;
     text-transform: uppercase;
     color: var(--gold);
@@ -49,22 +46,25 @@
     display: block;
   }
 
-  h1 {
+  .site-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 900;
     color: var(--ink);
-    line-height: 1.15;
+    line-height: 1.1;
     margin-bottom: 0.5rem;
   }
 
-  .desc {
+  .site-title span { color: var(--gold-light); }
+
+  .site-desc {
     font-size: 1rem;
     color: var(--muted);
     font-style: italic;
     line-height: 1.7;
   }
 
+  /* MAIN */
   main {
     max-width: 900px;
     margin: 0 auto;
@@ -81,6 +81,7 @@
     align-items: center;
     gap: 1rem;
   }
+
   .section-label::after {
     content: '';
     flex: 1;
@@ -88,158 +89,224 @@
     background: rgba(160,120,40,0.2);
   }
 
-  .aulas-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+  /* MATÉRIAS GRID */
+  .materias {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
     margin-bottom: 3rem;
   }
 
-  .aula-card {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1rem;
-    padding: 1.3rem 1.5rem;
+  .materia-card {
     background: white;
-    border: 1px solid rgba(160,120,40,0.15);
+    border: 1px solid rgba(160,120,40,0.2);
     border-radius: 3px;
+    padding: 1.5rem;
     text-decoration: none;
     color: var(--ink);
-    transition: all 0.2s;
-    align-items: center;
+    transition: all 0.25s;
+    display: block;
+    position: relative;
+    overflow: hidden;
   }
 
-  .aula-card:hover {
-    border-color: rgba(160,120,40,0.35);
-    transform: translateX(4px);
-    box-shadow: 0 2px 12px rgba(30,24,16,0.07);
+  .materia-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--gold-light);
+    transform: scaleY(0);
+    transition: transform 0.25s;
+    transform-origin: bottom;
   }
 
-  .aula-num {
-    font-size: 0.6rem;
-    color: var(--muted);
-    letter-spacing: 0.15em;
-    margin-bottom: 0.3rem;
+  .materia-card:hover {
+    border-color: rgba(160,120,40,0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(30,24,16,0.08);
+  }
+
+  .materia-card:hover::before { transform: scaleY(1); }
+
+  .materia-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
     display: block;
   }
 
-  .aula-titulo {
+  .materia-curso {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+
+  .materia-nome {
     font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--ink);
-    margin-bottom: 0.3rem;
     line-height: 1.3;
+    margin-bottom: 0.5rem;
   }
 
-  .aula-sub {
-    font-size: 0.8rem;
+  .materia-desc {
+    font-size: 0.82rem;
     color: var(--muted);
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
-  .aula-meta {
-    text-align: right;
+  .materia-aulas {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  /* AULAS RECENTES */
+  .aulas-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-bottom: 3rem;
+  }
+
+  .aula-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.2rem;
+    background: white;
+    border: 1px solid rgba(160,120,40,0.15);
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--ink);
+    transition: all 0.2s;
+  }
+
+  .aula-row:hover {
+    border-color: rgba(160,120,40,0.3);
+    box-shadow: 0 2px 12px rgba(30,24,16,0.06);
+  }
+
+  .aula-tag {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 3px 8px;
+    border-radius: 2px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+  }
+
+  .tag-fil { background: rgba(30,58,95,0.1); color: var(--blue); }
+  .tag-eco { background: rgba(74,103,65,0.1); color: var(--sage); }
+
+  .aula-nome {
+    flex: 1;
+    font-size: 0.93rem;
+    color: var(--ink);
   }
 
   .aula-data {
     font-size: 0.72rem;
     color: var(--muted);
-    display: block;
-    margin-bottom: 0.3rem;
+    flex-shrink: 0;
   }
 
   .aula-arrow {
-    font-size: 1.1rem;
-    color: var(--gold-light);
+    color: var(--gold);
+    font-size: 0.8rem;
+    flex-shrink: 0;
   }
 
-  .ref-box {
-    background: rgba(30,58,95,0.06);
-    border: 1px solid rgba(30,58,95,0.15);
-    border-radius: 3px;
-    padding: 1.2rem 1.5rem;
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(160,120,40,0.15);
+    padding: 24px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
-  .ref-title {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--blue);
-    margin-bottom: 0.6rem;
-    display: block;
-  }
-
-  .ref-box p {
-    font-size: 0.88rem;
-    color: var(--ink);
-    line-height: 1.7;
+  footer p {
+    font-size: 0.75rem;
+    color: var(--muted);
   }
 
   @media (max-width: 600px) {
-    .topbar, header, main { padding-left: 24px; padding-right: 24px; }
-    .aula-card { grid-template-columns: 1fr; }
-    .aula-meta { text-align: left; }
+    header, main, footer { padding-left: 24px; padding-right: 24px; }
+    .materias { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <a href="../index.html">← Portal de Estudos</a>
-  <span>/</span>
-  <span>Filosofia do Direito</span>
-</div>
-
 <header>
-  <span class="materia-label">UVA Marapendi · Direito · 2026</span>
-  <h1>Filosofia do Direito</h1>
-  <p class="desc">Métodos, Aristóteles, Jusnaturalismo e as grandes correntes do pensamento jurídico.</p>
+  <span class="site-label">Portal de Estudos Pessoal</span>
+  <h1 class="site-title">Cinthia <span>Sales</span></h1>
+  <p class="site-desc">Anotações, resumos e materiais organizados por matéria — UVA Marapendi · 2026</p>
 </header>
 
 <main>
 
-  <div class="section-label">Aulas</div>
+  <div class="section-label">Matérias</div>
 
-  <div class="aulas-list">
-
-    <a class="aula-card" href="aristoteles-justica.html">
-      <div>
-        <span class="aula-num">Aula · 09/05/2026</span>
-        <div class="aula-titulo">A Justiça em Aristóteles</div>
-        <div class="aula-sub">Virtude · Justiça Total · Distributiva · Corretiva · Equidade · Régua de Lesbos</div>
-      </div>
-      <div class="aula-meta">
-        <span class="aula-data">09/05/2026</span>
-        <span class="aula-arrow">→</span>
-      </div>
+  <div class="materias">
+    <a class="materia-card" href="filosofia-direito.html">
+      <span class="materia-icon">⚖️</span>
+      <span class="materia-curso">UVA Marapendi · Direito</span>
+      <div class="materia-nome">Filosofia do Direito</div>
+      <p class="materia-desc">Métodos, Aristóteles, Jusnaturalismo e as grandes escolas do pensamento jurídico.</p>
+      <div class="materia-aulas">2 aulas registradas</div>
     </a>
 
-    <a class="aula-card" href="metodos.html">
-      <div>
-        <span class="aula-num">Aula · 2026</span>
-        <div class="aula-titulo">Métodos na Filosofia do Direito</div>
-        <div class="aula-sub">Método Dedutivo · Método Indutivo · Jusnaturalismo · Escola Histórica · Positivismo</div>
-      </div>
-      <div class="aula-meta">
-        <span class="aula-data">2026</span>
-        <span class="aula-arrow">→</span>
-      </div>
+    <a class="materia-card" href="direito-economico.html">
+      <span class="materia-icon">📘</span>
+      <span class="materia-curso">UVA Marapendi · Direito</span>
+      <div class="materia-nome">Direito Econômico e Financeiro</div>
+      <p class="materia-desc">Intervenção do Estado, Art. 170, CADE, Sistema Financeiro Nacional e os 9 princípios da Ordem Econômica.</p>
+      <div class="materia-aulas">1 guia completo</div>
     </a>
-
   </div>
 
-  <div class="section-label">Referências</div>
+  <div class="section-label">Aulas Recentes</div>
 
-  <div class="ref-box">
-    <span class="ref-title">📚 Bibliografia Principal</span>
-    <p>
-      ARISTÓTELES. <strong>Ética a Nicômaco</strong>. Livro V — Da Justiça. Séc. IV a.C.<br><br>
-      NADER, Paulo. <strong>Filosofia do Direito</strong>. 21. ed. Rio de Janeiro: Forense, 2012. Capítulo 8 — Métodos na Filosofia do Direito.
-    </p>
+  <div class="aulas-list">
+    <a class="aula-row" href="aristoteles-justica.html">
+      <span class="aula-tag tag-fil">Fil. Direito</span>
+      <span class="aula-nome">A Justiça em Aristóteles — Virtude, Distributiva, Corretiva e Equidade</span>
+      <span class="aula-data">09/05/2026</span>
+      <span class="aula-arrow">→</span>
+    </a>
+    <a class="aula-row" href="metodos.html">
+      <span class="aula-tag tag-fil">Fil. Direito</span>
+      <span class="aula-nome">Métodos na Filosofia do Direito — Dedutivo, Indutivo e Grandes Escolas</span>
+      <span class="aula-data">2026</span>
+      <span class="aula-arrow">→</span>
+    </a>
+    <a class="aula-row" href="guia-completo.html">
+      <span class="aula-tag tag-eco">Dir. Econômico</span>
+      <span class="aula-nome">Guia Completo — Art. 170, Intervenção do Estado, CADE e Sistema Financeiro</span>
+      <span class="aula-data">2026</span>
+      <span class="aula-arrow">→</span>
+    </a>
   </div>
 
 </main>
+
+<footer>
+  <p>Cinthia Sales · Portal de Estudos Pessoal · 2026</p>
+  <p>cinthia-sales.github.io</p>
+</footer>
 
 </body>
 </html>
