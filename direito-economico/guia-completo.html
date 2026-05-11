@@ -3,641 +3,90 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guia Completo — Direito Econômico e Financeiro</title>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet">
+<title>Guia Completo — Direito Econômico e Financeiro — Cínthia Sales</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #f4ede0;
-  --paper: #faf6ee;
-  --ink: #1e1810;
-  --marble: #e8dfc8;
-  --gold: #c9932a;
-  --gold-light: #e8b455;
-  --terra: #7a3a1a;
-  --olive: #4a5e2a;
-  --blue-deep: #1a2e50;
-  --muted: #5a5040;
-  --border: #c8a860;
-  --shadow: rgba(30,24,16,0.10);
-  --cover-bg: #4a6b82;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); font-family: 'EB Garamond', Georgia, serif; color: var(--ink); line-height: 1.85; font-size: 17px; }
-
-.topbar {
-  background: var(--ink);
-  padding: 14px 60px;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-size: 0.8rem;
-  color: rgba(201,147,42,0.5);
-  font-family: 'EB Garamond', serif;
-}
-.topbar a { color: rgba(201,147,42,0.8); text-decoration: none; }
-.topbar a:hover { color: var(--gold-light); }
-
-.doc { max-width: 800px; margin: 0 auto; background: var(--paper); box-shadow: 0 4px 40px var(--shadow); }
-
-.cover {
-  background: var(--cover-bg);
-  padding: 80px 60px 70px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-.cover::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(74,94,42,0.2) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 70%, rgba(26,46,80,0.3) 0%, transparent 55%);
-}
-.cover-frame { position: absolute; inset: 18px; border: 1px solid rgba(201,147,42,0.2); pointer-events: none; }
-.cover-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.5em; color: rgba(201,147,42,0.7); margin-bottom: 2rem; display: block; position: relative; }
-.cover-title { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 4vw, 2.8rem); font-weight: 700; color: var(--bg); line-height: 1.15; position: relative; margin-bottom: 0.5rem; }
-.cover-title em { display: block; color: var(--gold-light); font-style: italic; font-family: 'EB Garamond', serif; font-size: 1.1em; margin-top: 0.3rem; }
-.cover-divider { width: 80px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 1.8rem auto; position: relative; }
-.cover-sub { font-size: 0.95rem; font-style: italic; color: rgba(244,237,224,0.7); position: relative; margin-bottom: 2rem; }
-.cover-meta { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; position: relative; }
-.cover-meta span { font-size: 0.7rem; color: rgba(201,147,42,0.8); letter-spacing: 0.12em; text-transform: uppercase; }
-
-.toc { background: var(--marble); padding: 40px 60px; border-bottom: 2px solid var(--border); }
-.toc-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; display: block; }
-.toc-list { list-style: none; }
-.toc-list li { margin-bottom: 0.35rem; }
-.toc-list li a { text-decoration: none; color: var(--ink); font-size: 0.95rem; display: flex; align-items: baseline; gap: 0.5rem; transition: color 0.2s; }
-.toc-list li a:hover { color: var(--gold); }
-.toc-num { font-family: 'Cinzel', serif; font-size: 0.7rem; color: var(--gold); min-width: 22px; }
-.toc-dots { flex: 1; border-bottom: 1px dotted rgba(160,120,40,0.3); margin: 0 8px; position: relative; top: -3px; }
-
-.content { padding: 0 60px 60px; }
-.chapter { padding-top: 60px; }
-.ch-marker { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-.ch-num { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
-.ch-line { flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
-.ch-title { font-family: 'Cinzel', serif; font-size: clamp(1.3rem, 3vw, 1.9rem); font-weight: 600; color: var(--ink); line-height: 1.25; margin-bottom: 0.5rem; }
-.ch-intro { font-size: 1rem; font-style: italic; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(200,168,96,0.25); }
-
-.sec { margin-bottom: 2.5rem; }
-.sec-title { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; color: var(--terra); margin-bottom: 0.8rem; display: flex; align-items: baseline; gap: 0.5rem; }
-.sec-num { color: var(--gold); font-size: 0.85rem; }
-
-p.t { font-size: 1rem; line-height: 1.9; color: #1e1810; margin-bottom: 1rem; }
-p.t strong { color: var(--terra); font-weight: 600; }
-p.t em { color: var(--blue-deep); font-style: italic; }
-
-.box { margin: 1.5rem 0; padding: 1.2rem 1.5rem; border-left: 4px solid; }
-.bx-ex   { border-color: var(--blue-deep); background: rgba(26,46,80,0.05); }
-.bx-warn { border-color: var(--terra);     background: rgba(122,58,26,0.05); }
-.bx-tip  { border-color: var(--olive);     background: rgba(74,94,42,0.05); }
-.bx-qt   { border-color: var(--gold);      background: rgba(160,120,40,0.07); font-style: italic; }
-.bx-lbl  { font-family: 'Cinzel', serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.25em; display: block; margin-bottom: 0.6rem; }
-.bx-ex .bx-lbl { color: var(--blue-deep); }
-.bx-warn .bx-lbl { color: var(--terra); }
-.bx-tip .bx-lbl { color: var(--olive); }
-.bx-qt .bx-lbl { color: var(--gold); }
-.box p, .box li { font-size: 0.95rem; line-height: 1.78; color: #1e1810; }
-.box ul { list-style: none; padding: 0; }
-.box ul li { padding: 0.3rem 0 0.3rem 1.3rem; position: relative; border-bottom: 1px solid rgba(0,0,0,0.05); }
-.box ul li:last-child { border-bottom: none; }
-.box ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); }
-
-.tbl { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.88rem; }
-.tbl th { background: var(--ink); color: var(--gold-light); padding: 10px 14px; text-align: left; font-family: 'Cinzel', serif; font-weight: 400; font-size: 0.62rem; letter-spacing: 0.15em; }
-.tbl td { padding: 10px 14px; border-bottom: 1px solid rgba(200,168,96,0.2); vertical-align: top; line-height: 1.65; }
-.tbl tr:nth-child(even) td { background: rgba(200,168,96,0.06); }
-.tbl td:first-child { font-weight: 600; color: var(--terra); }
-
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin: 1.5rem 0; }
-.col { padding: 1.2rem; border: 1px solid; border-radius: 2px; }
-.col.a { border-color: rgba(26,46,80,0.3); background: rgba(26,46,80,0.04); }
-.col.b { border-color: rgba(74,94,42,0.3); background: rgba(74,94,42,0.04); }
-.col-hd { font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.6rem; }
-.col.a .col-hd { color: var(--blue-deep); }
-.col.b .col-hd { color: var(--olive); }
-.col p, .col li { font-size: 0.88rem; line-height: 1.7; color: #333; }
-.col ul { list-style: none; padding: 0; }
-.col ul li { padding: 0.2rem 0 0.2rem 1.2rem; position: relative; }
-.col ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 0.8rem; }
-
-.quiz { border: 1px solid rgba(200,168,96,0.3); margin-bottom: 1rem; overflow: hidden; cursor: pointer; }
-.quiz-q { background: var(--ink); color: var(--bg); padding: 1rem 1.2rem; font-size: 0.93rem; line-height: 1.65; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-.quiz-badge { background: var(--gold); color: var(--ink); width: 24px; height: 24px; border-radius: 50%; font-family: 'Cinzel', serif; font-size: 0.6rem; text-align: center; line-height: 24px; flex-shrink: 0; }
-.quiz-arr { color: var(--gold); font-size: 0.75rem; transition: transform 0.3s; flex-shrink: 0; }
-.quiz.open .quiz-arr { transform: rotate(180deg); }
-.quiz-a { background: #fff; padding: 0 1.2rem; font-size: 0.9rem; line-height: 1.78; color: #1e1810; max-height: 0; overflow: hidden; transition: all 0.35s ease; }
-.quiz-a.open { padding: 1rem 1.2rem; max-height: 500px; }
-
-.gl-item { padding: 1rem 0; border-bottom: 1px solid rgba(200,168,96,0.2); }
-.gl-term { font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.9rem; color: var(--terra); margin-bottom: 0.3rem; }
-.gl-term em { font-family: 'EB Garamond', serif; font-style: italic; color: var(--blue-deep); font-size: 0.85rem; margin-left: 6px; font-weight: 400; }
-.gl-def { font-size: 0.9rem; line-height: 1.72; color: #444; padding-left: 1rem; border-left: 2px solid rgba(200,168,96,0.25); }
-
-.orn { text-align: center; color: var(--border); letter-spacing: 0.8em; font-size: 0.75rem; margin: 2.5rem 0; }
-
-.tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 600; font-family: 'Cinzel', serif; }
-.tg-b { background: rgba(26,46,80,0.1); color: var(--blue-deep); }
-.tg-g { background: rgba(74,94,42,0.1); color: var(--olive); }
-.tg-r { background: rgba(122,58,26,0.1); color: var(--terra); }
-
-@media (max-width: 600px) {
-  .content, .toc { padding: 0 22px 40px; }
-  .cover { padding: 60px 22px 60px; }
-  .two { grid-template-columns: 1fr; }
-  .topbar { padding: 14px 22px; }
-}
+:root{--ink:#1e1810;--bg:#f4ede0;--paper:#faf6ee;--marble:#e8dfc8;--gold:#a07828;--terra:#7a3a1a;--olive:#4a5e2a;--blue-deep:#1a2e50;--muted:#6b6050;--border:#c8a860;--cap:#4a6b82;--cap-dark:#2d3e4d;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);font-family:'Source Serif 4',Georgia,serif;color:var(--ink);line-height:1.85;font-size:17px;}
+.topbar{background:var(--cap-dark);padding:12px 40px;display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.55);border-bottom:1px solid rgba(255,255,255,.1);}
+.topbar a{color:#fff;text-decoration:none;font-weight:600;}
+.topbar span{color:rgba(255,255,255,.3);}
+header{background:var(--cap);padding:50px 40px 45px;text-align:center;}
+.header-label{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.8rem;display:block;}
+.header-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:.4rem;}
+.header-desc{font-size:.97rem;color:rgba(255,255,255,.7);font-style:italic;line-height:1.6;}
+.header-meta{margin-top:.6rem;font-size:.8rem;color:rgba(255,255,255,.45);}
+.doc{max-width:800px;margin:0 auto;background:var(--paper);}
+.toc-section{background:var(--marble);padding:28px 40px;border-bottom:2px solid var(--border);}
+.toc-label{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;}
+.toc-list{list-style:none;}
+.toc-list li{margin-bottom:.3rem;}
+.toc-list li a{text-decoration:none;color:var(--ink);font-size:.92rem;display:flex;align-items:baseline;gap:.5rem;transition:color .2s;}
+.toc-list li a:hover{color:var(--gold);}
+.toc-num{font-size:.7rem;color:var(--gold);min-width:22px;}
+.toc-dots{flex:1;border-bottom:1px dotted rgba(160,120,40,.3);margin:0 8px;position:relative;top:-3px;}
+.content{padding:0 40px 60px;}
+.chapter{padding-top:50px;}
+.ch-marker{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;}
+.ch-num{font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+.ch-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+.ch-title{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:.5rem;}
+.ch-intro{font-size:.95rem;font-style:italic;color:var(--muted);line-height:1.75;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(200,168,96,.25);}
+.sec{margin-bottom:2rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--terra);margin-bottom:.7rem;display:flex;align-items:baseline;gap:.5rem;}
+.sec-num{color:var(--gold);font-size:.85rem;}
+p.t{font-size:1rem;line-height:1.9;color:#1e1810;margin-bottom:.9rem;}
+p.t strong{color:var(--terra);font-weight:700;}
+p.t em{color:var(--blue-deep);font-style:italic;}
+.box{margin:1.2rem 0;padding:1.1rem 1.4rem;border-left:4px solid;}
+.bx-ex{border-color:var(--blue-deep);background:rgba(26,46,80,.05);}
+.bx-warn{border-color:var(--terra);background:rgba(122,58,26,.05);}
+.bx-tip{border-color:var(--olive);background:rgba(74,94,42,.05);}
+.bx-qt{border-color:var(--gold);background:rgba(160,120,40,.07);font-style:italic;}
+.bx-lbl{font-size:.62rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;display:block;margin-bottom:.5rem;}
+.bx-ex .bx-lbl{color:var(--blue-deep);}
+.bx-warn .bx-lbl{color:var(--terra);}
+.bx-tip .bx-lbl{color:var(--olive);}
+.bx-qt .bx-lbl{color:var(--gold);}
+.box p,.box li{font-size:.93rem;line-height:1.78;color:#1e1810;}
+.box ul{list-style:none;padding:0;}
+.box ul li{padding:.25rem 0 .25rem 1.2rem;position:relative;border-bottom:1px solid rgba(0,0,0,.04);}
+.box ul li:last-child{border-bottom:none;}
+.box ul li::before{content:'→';position:absolute;left:0;color:var(--gold);}
+.tbl{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.87rem;}
+.tbl th{background:var(--cap-dark);color:rgba(255,255,255,.9);padding:9px 13px;text-align:left;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:400;}
+.tbl td{padding:9px 13px;border-bottom:1px solid rgba(200,168,96,.2);vertical-align:top;line-height:1.6;}
+.tbl tr:nth-child(even) td{background:rgba(200,168,96,.05);}
+.tbl td:first-child{font-weight:700;color:var(--terra);}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0;}
+.col{padding:1.1rem;border:1px solid;border-radius:2px;}
+.col.a{border-color:rgba(26,46,80,.25);background:rgba(26,46,80,.04);}
+.col.b{border-color:rgba(74,94,42,.25);background:rgba(74,94,42,.04);}
+.col-hd{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:.5rem;}
+.col.a .col-hd{color:var(--blue-deep);}
+.col.b .col-hd{color:var(--olive);}
+.col p{font-size:.87rem;line-height:1.7;color:#333;}
+.quiz{border:1px solid rgba(200,168,96,.3);margin-bottom:.8rem;overflow:hidden;cursor:pointer;}
+.quiz-q{background:var(--cap-dark);color:#faf6ee;padding:.9rem 1.1rem;font-size:.92rem;line-height:1.6;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.quiz-badge{background:var(--gold);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.6rem;text-align:center;line-height:22px;flex-shrink:0;}
+.quiz-arr{color:var(--gold);font-size:.75rem;transition:transform .3s;flex-shrink:0;}
+.quiz.open .quiz-arr{transform:rotate(180deg);}
+.quiz-a{background:#fff;padding:0 1.1rem;font-size:.9rem;line-height:1.78;color:#1e1810;max-height:0;overflow:hidden;transition:all .35s ease;}
+.quiz-a.open{padding:.9rem 1.1rem;max-height:600px;}
+.gl-item{padding:.9rem 0;border-bottom:1px solid rgba(200,168,96,.2);}
+.gl-term{font-family:'Playfair Display',serif;font-weight:700;font-size:.95rem;color:var(--terra);margin-bottom:.25rem;}
+.gl-def{font-size:.88rem;line-height:1.72;color:#444;padding-left:1rem;border-left:2px solid rgba(200,168,96,.25);}
+.orn{text-align:center;color:var(--border);letter-spacing:.8em;font-size:.75rem;margin:2rem 0;}
+@media(max-width:600px){.topbar,.content,.toc-section,header{padding-left:20px;padding-right:20px;}.two{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
-
-<div class="topbar">
-  <a href="index.html">← Portal</a>
-  <span>/</span>
-  <a href="index.html">Direito Econômico e Financeiro</a>
-  <span>/</span>
-  <span>Guia Completo</span>
-</div>
-
+<div class="topbar"><a href="../index.html">← Portal de Estudos</a><span>/</span><a href="index.html">📘 Direito Econômico e Financeiro</a><span>/</span><span>Guia Completo</span></div>
+<header><span class="header-label">UVA — Campus Barra Marapendi · Direito Econômico e Financeiro · 2026.1</span><h1 class="header-title">📘 Guia Completo — Direito Econômico e Financeiro</h1><p class="header-desc">Intervenção do Estado · Art. 170 · 9 Princípios · CADE · Sistema Financeiro Nacional</p><p class="header-meta">Prof. Irapuã Beltrão · CF/88 Arts. 170–177 e 192 · Lei 12.529/2011</p></header>
 <div class="doc">
-
-<div class="cover">
-  <div class="cover-frame"></div>
-  <span class="cover-label">UVA Marapendi · Filosofia do Direito</span>
-  <h1 class="cover-title">Direito Econômico<em>e Financeiro</em></h1>
-  <div class="cover-divider"></div>
-  <p class="cover-sub">Intervenção do Estado · Constituição Econômica · CADE · Sistema Financeiro Nacional</p>
-  <div class="cover-meta">
-    <span>Prof. Irapuã Beltrão</span>
-    <span>CF/88 · Arts. 170–177 e 192</span>
-    <span>Lei 12.529/2011</span>
-  </div>
+<div class="toc-section"><span class="toc-label">Sumário</span><ul class="toc-list"><li><a href="#intro"><span class="toc-num">1</span><span>Por que o Estado precisa intervir na economia?</span><span class="toc-dots"></span></a></li><li><a href="#def"><span class="toc-num">2</span><span>O que é Direito Econômico</span><span class="toc-dots"></span></a></li><li><a href="#cf"><span class="toc-num">3</span><span>A Constituição de 1988 — Estrutura</span><span class="toc-dots"></span></a></li><li><a href="#art170"><span class="toc-num">4</span><span>Art. 170 — Os 9 Princípios da Ordem Econômica</span><span class="toc-dots"></span></a></li><li><a href="#intervencao"><span class="toc-num">5</span><span>Intervenção do Estado — Direta e Indireta</span><span class="toc-dots"></span></a></li><li><a href="#direta"><span class="toc-num">6</span><span>Intervenção Direta — Art. 173</span><span class="toc-dots"></span></a></li><li><a href="#indireta"><span class="toc-num">7</span><span>Intervenção Indireta — Art. 174</span><span class="toc-dots"></span></a></li><li><a href="#monopolios"><span class="toc-num">8</span><span>Monopólios da União — Art. 177</span><span class="toc-dots"></span></a></li><li><a href="#cade"><span class="toc-num">9</span><span>O CADE — Defesa da Concorrência</span><span class="toc-dots"></span></a></li><li><a href="#sfn"><span class="toc-num">10</span><span>Sistema Financeiro Nacional — Art. 192</span><span class="toc-dots"></span></a></li><li><a href="#rev"><span class="toc-num">11</span><span>Revisão e Perguntas de Prova</span><span class="toc-dots"></span></a></li><li><a href="#gloss"><span class="toc-num">12</span><span>Glossário e Referências</span><span class="toc-dots"></span></a></li></ul></div>
+<div class="content"><div class="chapter" id="intro"><div class="ch-marker"><span class="ch-num">Capítulo 1</span><div class="ch-line"></div></div><h2 class="ch-title">Por que o Estado precisa intervir na economia?</h2><p class="ch-intro">A tensão central de toda a matéria — liberdade do mercado versus proteção da sociedade.</p><div class="sec"><p class="t">No século XIX dominava o <strong>liberalismo clássico</strong>: o Estado não devia se meter na economia — era o <em>guarda-noturno</em>, só garantia a ordem. Nome técnico: <strong>abstencionismo</strong> ou <strong>laissez-faire</strong> (deixe fazer, em francês).</p><p class="t">O problema: mercado livre sem regras gera monopólios, abandona regiões pobres, e não garante serviços essenciais onde não é lucrativo. <strong>O mercado é eficiente, mas não tem compromisso com o bem-estar mínimo dos cidadãos.</strong></p><div class="box bx-qt"><span class="bx-lbl">💭 A tensão central</span><p>O Direito Econômico existe para regular a tensão entre dois valores em conflito: <strong>liberdade do mercado</strong> (livre iniciativa) × <strong>proteção da sociedade</strong> (justiça social). Todo o conteúdo da matéria gira em torno dessa tensão.</p></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="def"><div class="ch-marker"><span class="ch-num">Capítulo 2</span><div class="ch-line"></div></div><h2 class="ch-title">O que é Direito Econômico</h2><p class="ch-intro">Conjunto de regras jurídicas que regula a organização da economia, a condução pelo Estado e a disciplina dos agentes privados.</p><div class="sec"><table class="tbl"><thead><tr><th>Autor</th><th>Definição</th><th>Por que importa</th></tr></thead><tbody><tr><td>Washington Peluso ⭐</td><td>Regula a política econômica. Usa o princípio da economicidade.</td><td>Mais cobrado em prova</td></tr><tr><td>João Bosco Leopoldino</td><td>Conjunto de normas que rege as medidas de política econômica tomadas pelo Estado</td><td>Definição direta</td></tr><tr><td>Julio Queiroz</td><td>Permeia todos os ramos do Direito — Penal, Comercial, Administrativo, Internacional</td><td>Explica o caráter eclético</td></tr></tbody></table><div class="two"><div class="col a"><div class="col-hd">🔵 Maleabilidade</div><p>Usa instrumentos rápidos do Executivo — decretos, regulamentos, medidas provisórias. A economia muda rápido demais para o processo legislativo normal.</p></div><div class="col b"><div class="col-hd">🟢 Ecletismo</div><p>Mistura Direito Público e Privado. O Estado (público) regula agentes privados (privado): essa mistura é inevitável.</p></div></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="cf"><div class="ch-marker"><span class="ch-num">Capítulo 3</span><div class="ch-line"></div></div><h2 class="ch-title">A Constituição de 1988 — Estrutura</h2><p class="ch-intro">Onde encontrar o Direito Econômico e Financeiro na CF/88.</p><div class="sec"><div class="box bx-ex"><span class="bx-lbl">📋 Título VII — Da Ordem Econômica e Financeira</span><ul><li><strong>Cap. I:</strong> Princípios gerais da atividade econômica (Art. 170 a 181) — o mais importante</li><li><strong>Cap. II:</strong> Da política urbana (Art. 182 e 183)</li><li><strong>Cap. III:</strong> Da política agrícola, fundiária e reforma agrária (Art. 184 a 191)</li><li><strong>Cap. IV:</strong> Do Sistema Financeiro Nacional (Art. 192)</li></ul></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="art170"><div class="ch-marker"><span class="ch-num">Capítulo 4</span><div class="ch-line"></div></div><h2 class="ch-title">Art. 170 — Os 9 Princípios da Ordem Econômica</h2><p class="ch-intro">O artigo mais cobrado em prova. Fundamentos, finalidade e os 9 princípios.</p><div class="sec"><div class="box bx-qt"><span class="bx-lbl">💭 Caput do Art. 170</span><p>A ordem econômica, fundada na <strong>valorização do trabalho humano</strong> e na <strong>livre iniciativa</strong>, tem por fim assegurar a todos <strong>existência digna</strong>, conforme os ditames da <strong>justiça social</strong>, observados os seguintes princípios...</p></div><table class="tbl"><thead><tr><th>#</th><th>Princípio</th><th>Exemplo prático</th></tr></thead><tbody><tr><td>I</td><td>Soberania nacional</td><td>Setores estratégicos não controlados por estrangeiros</td></tr><tr><td>II</td><td>Propriedade privada</td><td>Direito de ter bens. Mas com limites...</td></tr><tr><td>III</td><td><strong>Função social da propriedade</strong></td><td>Terra improdutiva pode ser desapropriada para reforma agrária</td></tr><tr><td>IV</td><td><strong>Livre concorrência</strong></td><td>Base do CADE e do sistema antitruste</td></tr><tr><td>V</td><td>Defesa do consumidor</td><td>Base do CDC</td></tr><tr><td>VI</td><td>Defesa do meio ambiente</td><td>Licença ambiental obrigatória</td></tr><tr><td>VII</td><td>Redução das desigualdades regionais e sociais</td><td>Incentivos fiscais para empresas no Nordeste</td></tr><tr><td>VIII</td><td>Busca do pleno emprego</td><td>Políticas de geração de emprego como dever do Estado</td></tr><tr><td>IX</td><td>Tratamento favorecido para micro e pequenas empresas</td><td>Simples Nacional, MEI</td></tr></tbody></table><div class="sec"><div class="sec-title"><span class="sec-num">4.1</span>As 3 Dimensões da Ordem Econômica (Moreira Neto)</div><table class="tbl"><thead><tr><th>Dimensão</th><th>A pergunta</th><th>Elementos</th></tr></thead><tbody><tr><td><strong>Ontológica</strong> — o que é</td><td>Quais são os fundamentos concretos?</td><td>O trabalho, os meios de produção, a iniciativa econômica</td></tr><tr><td><strong>Axiológica</strong> — que valores</td><td>Quais valores guiam o Estado?</td><td>Soberania, função social da propriedade, livre concorrência</td></tr><tr><td><strong>Teleológica</strong> — que fins</td><td>Quais resultados o Estado quer?</td><td>Existência digna, defesa do consumidor, meio ambiente, pleno emprego</td></tr></tbody></table></div><div class="box bx-tip"><span class="bx-lbl">💡 Analogia para lembrar</span><p>Ontológica = os tijolos (o que você tem). Axiológica = a planta (os princípios que guiam). Teleológica = o objetivo — a casa onde as pessoas vivem bem.</p></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="intervencao"><div class="ch-marker"><span class="ch-num">Capítulo 5</span><div class="ch-line"></div></div><h2 class="ch-title">Intervenção do Estado — Os 2 Tipos</h2><p class="ch-intro">Estado como jogador (entra em campo) ou como árbitro (impõe as regras de fora).</p><div class="sec"><table class="tbl"><thead><tr><th></th><th>Direta (Art. 173)</th><th>Indireta (Art. 174)</th></tr></thead><tbody><tr><td>Metáfora</td><td>Estado como <strong>jogador</strong></td><td>Estado como <strong>árbitro</strong></td></tr><tr><td>O Estado faz</td><td>Cria empresas, produz bens, presta serviços</td><td>Fiscaliza, incentiva, planeja</td></tr><tr><td>Exemplos</td><td>Petrobras, BB, Caixa, Correios</td><td>BACEN regulando bancos, CADE, incentivos fiscais</td></tr></tbody></table></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="direta"><div class="ch-marker"><span class="ch-num">Capítulo 6</span><div class="ch-line"></div></div><h2 class="ch-title">Intervenção Direta — Art. 173</h2><p class="ch-intro">O Estado como empresário — exceção, não regra. Subsidiariedade.</p><div class="sec"><div class="box bx-warn"><span class="bx-lbl">⚠️ Princípio da Subsidiariedade</span><p>A exploração direta da atividade econômica pelo Estado <strong>só será permitida quando necessária</strong> aos imperativos da <strong>segurança nacional</strong> ou a <strong>relevante interesse coletivo</strong>. O Estado como empresário é exceção, não regra.</p></div><table class="tbl"><thead><tr><th>Tipo</th><th>O que é</th><th>Exemplo</th></tr></thead><tbody><tr><td>Empresa Pública</td><td>100% do capital do governo</td><td>Correios, BNDES</td></tr><tr><td>Sociedade de Economia Mista</td><td>Capital dividido: governo (majoritário) + acionistas privados</td><td>Petrobras, Banco do Brasil</td></tr><tr><td>Participação Societária</td><td>Estado como acionista minoritário</td><td>BNDESPAR em empresas privadas</td></tr></tbody></table><div class="box bx-tip"><span class="bx-lbl">💡 Isonomia fiscal — §2º</span><p>Empresa estatal que compete com privadas <strong>não pode ter vantagem tributária</strong> que o concorrente privado não tem. Caso contrário, seria concorrência desleal.</p></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="indireta"><div class="ch-marker"><span class="ch-num">Capítulo 7</span><div class="ch-line"></div></div><h2 class="ch-title">Intervenção Indireta — Art. 174</h2><p class="ch-intro">O Estado como agente normativo e regulador — fiscaliza, incentiva e planeja.</p><div class="sec"><div class="box bx-qt"><span class="bx-lbl">💭 Art. 174</span><p>Como agente normativo e regulador da atividade econômica, o Estado exercerá as funções de <strong>fiscalização</strong>, <strong>incentivo</strong> e <strong>planejamento</strong>, sendo este <strong>determinante para o setor público</strong> e <strong>indicativo para o setor privado</strong>.</p></div><table class="tbl"><thead><tr><th>Ferramenta</th><th>O que é</th><th>Exemplo real</th></tr></thead><tbody><tr><td>🔍 Fiscalização</td><td>Controle de juridicidade — verifica se os agentes cumprem a lei</td><td>BACEN fiscalizando reservas dos bancos</td></tr><tr><td>💡 Incentivo (Fomento)</td><td>Usa benefícios fiscais para induzir comportamentos — sem obrigar</td><td>Simples Nacional, financiamento BNDES</td></tr><tr><td>📋 Planejamento</td><td>Traça diretrizes de desenvolvimento nacional</td><td>PPA — obrigatório para o governo; indicativo para privados</td></tr></tbody></table><div class="box bx-warn"><span class="bx-lbl">⚠️ Tabelamento de preços = INCONSTITUCIONAL</span><p>O Estado não pode fixar preços para o setor privado por decreto. Viola a livre iniciativa e a livre concorrência.</p></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="monopolios"><div class="ch-marker"><span class="ch-num">Capítulo 8</span><div class="ch-line"></div></div><h2 class="ch-title">Monopólios da União — Art. 177</h2><p class="ch-intro">Atividades que só o governo federal pode explorar — e a flexibilização da EC 09/95.</p><div class="sec"><div class="box bx-ex"><span class="bx-lbl">📋 Os 5 monopólios da União</span><ul><li>Pesquisa e lavra das jazidas de <strong>petróleo, gás natural e hidrocarbonetos</strong></li><li>Refinação do petróleo nacional ou estrangeiro</li><li>Importação e exportação dos produtos e derivados básicos</li><li>Transporte marítimo do petróleo bruto e derivados por dutos</li><li>Pesquisa, lavra, enriquecimento e comércio de <strong>minerais e materiais nucleares</strong></li></ul></div><div class="box bx-tip"><span class="bx-lbl">💡 A flexibilização — EC 09/95</span><p>O monopólio continua sendo da União, mas a <strong>execução</strong> pode ser delegada a privados por contrato. Foi isso que abriu o pré-sal para Shell, Total e outras empresas privadas.</p></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="cade"><div class="ch-marker"><span class="ch-num">Capítulo 9</span><div class="ch-line"></div></div><h2 class="ch-title">O CADE — Defesa da Concorrência</h2><p class="ch-intro">Conselho Administrativo de Defesa Econômica — autarquia federal que protege a livre concorrência.</p><div class="sec"><table class="tbl"><thead><tr><th>Ano</th><th>Marco</th></tr></thead><tbody><tr><td>1962</td><td>Criação — Lei nº 4.137/62</td></tr><tr><td>1994</td><td>Lei 8.884/94 — torna-se autarquia federal</td></tr><tr><td>2011</td><td>Lei 12.529/2011 — estrutura atual, cria o SBDC</td></tr></tbody></table><div class="box bx-ex"><span class="bx-lbl">📋 3 órgãos internos</span><ul><li><strong>Tribunal Administrativo</strong> — 1 Presidente + 6 Conselheiros. Mandato de 4 anos sem recondução. Julga os processos</li><li><strong>Superintendência-Geral</strong> — Investiga e instrui os processos, abre inquéritos</li><li><strong>DEE</strong> — Departamento de Estudos Econômicos. Dirigido por Economista-Chefe</li></ul></div><table class="tbl"><thead><tr><th>Papel</th><th>O que faz</th><th>Detalhe</th></tr></thead><tbody><tr><td>🛡️ Preventivo</td><td>Analisa atos de concentração (fusões) ANTES que aconteçam</td><td><strong>240 dias</strong> máximos</td></tr><tr><td>⚖️ Repressivo</td><td>Investiga e pune infrações contra a ordem econômica (cartéis)</td><td>Revisável pelo Judiciário</td></tr><tr><td>📚 Educativo</td><td>Cursos, palestras, relatório anual</td><td>Art. 7º, XVIII</td></tr></tbody></table><div class="box bx-warn"><span class="bx-lbl">⚠️ SBDC</span><p>Art. 3º, Lei 12.529/2011: composto por <strong>CADE</strong> + <strong>SEAE</strong> (Secretaria de Acompanhamento Econômico do Ministério da Fazenda).</p></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="sfn"><div class="ch-marker"><span class="ch-num">Capítulo 10</span><div class="ch-line"></div></div><h2 class="ch-title">Sistema Financeiro Nacional — Art. 192</h2><p class="ch-intro">A parte Financeiro da disciplina — quem regula o dinheiro, o crédito e o mercado de capitais.</p><div class="sec"><table class="tbl"><thead><tr><th>Sigla</th><th>Nome completo</th><th>O que faz</th></tr></thead><tbody><tr><td><strong>CMN</strong></td><td>Conselho Monetário Nacional</td><td>Órgão máximo. Define política monetária e de crédito.</td></tr><tr><td><strong>BACEN</strong></td><td>Banco Central do Brasil</td><td>Executa políticas do CMN, regula bancos, controla inflação via Selic. O banco dos bancos.</td></tr><tr><td><strong>CVM</strong></td><td>Comissão de Valores Mobiliários</td><td>Regula mercado de capitais — ações, debêntures, fundos.</td></tr></tbody></table><div class="box bx-tip"><span class="bx-lbl">💡 Como econômico e financeiro se conectam</span><p>O lado econômico regula quem produz e como compete. O lado financeiro regula quem financia essa produção. São inseparáveis.</p></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="rev"><div class="ch-marker"><span class="ch-num">Capítulo 11</span><div class="ch-line"></div></div><h2 class="ch-title">Revisão e Perguntas de Prova</h2><p class="ch-intro">Clique na pergunta para revelar a resposta.</p><div class="sec"><div class="quiz" onclick="toggleQ(this)"><div class="quiz-q"><span class="quiz-badge">Q</span>Qual a definição de Direito Econômico segundo Washington Peluso?<span class="quiz-arr">▼</span></div><div class="quiz-a">Para Washington Peluso, o Direito Econômico tem como objeto a política econômica e como sujeito quem dela participa. Usa o princípio da economicidade — as normas devem buscar o melhor custo-benefício social. É o mais cobrado porque é o mais completo.</div></div><div class="quiz" onclick="toggleQ(this)"><div class="quiz-q"><span class="quiz-badge">Q</span>Quais são os 2 fundamentos, a finalidade e os 9 princípios do Art. 170?<span class="quiz-arr">▼</span></div><div class="quiz-a">Fundamentos: valorização do trabalho humano + livre iniciativa. Finalidade: existência digna + justiça social. 9 princípios: I. Soberania; II. Propriedade privada; III. Função social; IV. Livre concorrência; V. Defesa do consumidor; VI. Meio ambiente; VII. Redução das desigualdades; VIII. Pleno emprego; IX. Tratamento favorecido para MPE.</div></div><div class="quiz" onclick="toggleQ(this)"><div class="quiz-q"><span class="quiz-badge">Q</span>Qual a diferença entre intervenção direta e indireta do Estado?<span class="quiz-arr">▼</span></div><div class="quiz-a">Direta (Art. 173): Estado como jogador — cria empresas, só permitida em casos de segurança nacional ou relevante interesse coletivo (subsidiariedade). Indireta (Art. 174): Estado como árbitro — fiscaliza, incentiva e planeja. Planejamento é determinante para o setor público e indicativo para o privado.</div></div><div class="quiz" onclick="toggleQ(this)"><div class="quiz-q"><span class="quiz-badge">Q</span>O que é o CADE? Quais são seus 3 papéis e sua estrutura?<span class="quiz-arr">▼</span></div><div class="quiz-a">CADE = Conselho Administrativo de Defesa Econômica. Autarquia federal, Lei 12.529/2011. 3 papéis: Preventivo (analisa fusões — 240 dias); Repressivo (investiga e pune cartéis); Educativo (cursos, relatórios). Estrutura: Tribunal (1 pres + 6 conselheiros) + Superintendência-Geral + DEE. SBDC = CADE + SEAE.</div></div><div class="quiz" onclick="toggleQ(this)"><div class="quiz-q"><span class="quiz-badge">Q</span>O que são as 3 dimensões da Ordem Econômica segundo Moreira Neto?<span class="quiz-arr">▼</span></div><div class="quiz-a">Ontológica (o que é): os fundamentos concretos — trabalho, meios de produção, iniciativa econômica. Axiológica (que valores): soberania, função social, livre concorrência. Teleológica (que fins): existência digna, defesa do consumidor, meio ambiente, pleno emprego.</div></div><div class="quiz" onclick="toggleQ(this)"><div class="quiz-q"><span class="quiz-badge">Q</span>Quais são os monopólios da União e o que mudou com a EC 09/95?<span class="quiz-arr">▼</span></div><div class="quiz-a">Monopólios: petróleo e gás, refinação, importação/exportação de derivados, transporte por dutos, minerais nucleares. Antes da EC 09/95: União tinha que explorar diretamente. Depois: o monopólio continua da União, mas a execução pode ser delegada a privados por contrato — o que abriu o pré-sal para Shell, Total e outras.</div></div></div></div><div class="orn">✦ · ✦ · ✦</div><div class="chapter" id="gloss"><div class="ch-marker"><span class="ch-num">Capítulo 12</span><div class="ch-line"></div></div><h2 class="ch-title">Glossário e Referências</h2><p class="ch-intro">Siglas, termos técnicos e referências bibliográficas.</p><div class="sec"><div class="gl-item"><div class="gl-term">Laissez-faire</div><div class="gl-def">Deixe fazer. Expressão que resume o liberalismo clássico — Estado sem intervenção na economia.</div></div><div class="gl-item"><div class="gl-term">Economicidade</div><div class="gl-def">Princípio de Washington Peluso: as normas devem buscar o melhor custo-benefício social.</div></div><div class="gl-item"><div class="gl-term">Subsidiariedade</div><div class="gl-def">Princípio do Art. 173: o Estado só intervém diretamente na economia quando necessário à segurança nacional ou ao relevante interesse coletivo.</div></div><div class="gl-item"><div class="gl-term">CADE</div><div class="gl-def">Conselho Administrativo de Defesa Econômica. Autarquia federal, Lei 12.529/2011.</div></div><div class="gl-item"><div class="gl-term">SBDC</div><div class="gl-def">Sistema Brasileiro de Defesa da Concorrência. CADE + SEAE.</div></div><div class="gl-item"><div class="gl-term">CMN</div><div class="gl-def">Conselho Monetário Nacional. Órgão máximo do Sistema Financeiro. Define a política monetária e de crédito.</div></div><div class="gl-item"><div class="gl-term">BACEN</div><div class="gl-def">Banco Central do Brasil. Executa as políticas do CMN, regula os bancos, controla a inflação via Selic.</div></div><div class="gl-item"><div class="gl-term">EC 09/95</div><div class="gl-def">Emenda Constitucional que flexibilizou os monopólios da União — permitiu contratar empresas privadas para executar atividades antes exclusivas do Estado.</div></div><div class="box bx-qt"><span class="bx-lbl">📚 Referências</span><p>SOUZA, Washington Peluso Albino de. Direito Econômico.<br>FONSECA, João Bosco Leopoldino da. Direito Econômico.<br>CF/88, Arts. 170–177 e 192. Lei 12.529/2011.<br>UVA Campus Barra Marapendi, Direito Econômico e Financeiro, Prof. Irapuã Beltrão, 2026.1.</p></div></div></div><div class="orn">✦ · ✦ · ✦</div></div>
 </div>
-
-<div class="toc">
-  <span class="toc-label">Sumário</span>
-  <ul class="toc-list">
-    <li><a href="#intro"><span class="toc-num">1</span><span>Por que o Estado precisa intervir na economia?</span><span class="toc-dots"></span></a></li>
-    <li><a href="#def"><span class="toc-num">2</span><span>O que é Direito Econômico</span><span class="toc-dots"></span></a></li>
-    <li><a href="#cf"><span class="toc-num">3</span><span>A Constituição de 1988 — Estrutura</span><span class="toc-dots"></span></a></li>
-    <li><a href="#art170"><span class="toc-num">4</span><span>Art. 170 — Os 9 Princípios da Ordem Econômica</span><span class="toc-dots"></span></a></li>
-    <li><a href="#intervencao"><span class="toc-num">5</span><span>Intervenção do Estado — Direta e Indireta</span><span class="toc-dots"></span></a></li>
-    <li><a href="#direta"><span class="toc-num">6</span><span>Intervenção Direta — Art. 173</span><span class="toc-dots"></span></a></li>
-    <li><a href="#indireta"><span class="toc-num">7</span><span>Intervenção Indireta — Art. 174</span><span class="toc-dots"></span></a></li>
-    <li><a href="#monopolios"><span class="toc-num">8</span><span>Monopólios da União — Art. 177</span><span class="toc-dots"></span></a></li>
-    <li><a href="#cade"><span class="toc-num">9</span><span>O CADE — Defesa da Concorrência</span><span class="toc-dots"></span></a></li>
-    <li><a href="#sfn"><span class="toc-num">10</span><span>Sistema Financeiro Nacional — Art. 192</span><span class="toc-dots"></span></a></li>
-    <li><a href="#rev"><span class="toc-num">11</span><span>Revisão e Perguntas de Prova</span><span class="toc-dots"></span></a></li>
-    <li><a href="#gloss"><span class="toc-num">12</span><span>Glossário e Referências</span><span class="toc-dots"></span></a></li>
-  </ul>
-</div>
-
-<div class="content">
-
-<!-- CAP 1 -->
-<div class="chapter" id="intro">
-  <div class="ch-marker"><span class="ch-num">Capítulo 1</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Por que o Estado precisa intervir na economia?</h2>
-  <p class="ch-intro">A tensão central de toda a matéria — liberdade do mercado versus proteção da sociedade.</p>
-  <div class="sec">
-    <p class="t">No século XIX dominava o <strong>liberalismo clássico</strong>: o Estado não devia se meter na economia — era o <em>"guarda-noturno"</em>, só garantia a ordem. Nome técnico: <strong>abstencionismo</strong> ou <strong>laissez-faire</strong> ("deixe fazer", em francês).</p>
-    <p class="t">O problema: mercado livre sem regras gera monopólios, abandona regiões pobres, e não garante serviços essenciais onde não é lucrativo. <strong>O mercado é eficiente, mas não tem compromisso com o bem-estar mínimo dos cidadãos.</strong></p>
-    <div class="box bx-qt">
-      <span class="bx-lbl">💭 A tensão central</span>
-      <p>O Direito Econômico existe para regular a tensão entre dois valores em conflito: <strong>liberdade do mercado</strong> (livre iniciativa) × <strong>proteção da sociedade</strong> (justiça social). Todo o conteúdo da matéria gira em torno dessa tensão.</p>
-    </div>
-    <p class="t">A solução foi o <strong>dirigismo econômico</strong>: sistema em que o interesse público prevalece sobre o capitalismo puro, com 3 objetivos: distribuição equânime da riqueza, atendimento à ordem social, absorção de novos direitos.</p>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 2 -->
-<div class="chapter" id="def">
-  <div class="ch-marker"><span class="ch-num">Capítulo 2</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">O que é Direito Econômico</h2>
-  <p class="ch-intro">Conjunto de regras jurídicas que regula a organização da economia, a condução pelo Estado e a disciplina dos agentes privados.</p>
-  <div class="sec">
-    <div class="sec-title"><span class="sec-num">2.1</span> Os 3 Autores — Definições</div>
-    <table class="tbl">
-      <thead><tr><th>Autor</th><th>Definição</th><th>Por que importa</th></tr></thead>
-      <tbody>
-        <tr><td>Washington Peluso ⭐</td><td>Regula a <em>política econômica</em>. Usa o <strong>princípio da economicidade</strong> — normas devem buscar melhor custo-benefício social</td><td>Mais cobrado em prova. Objeto = política econômica; sujeito = quem dela participa</td></tr>
-        <tr><td>João Bosco Leopoldino</td><td>Conjunto de normas que rege as medidas de política econômica tomadas pelo Estado</td><td>Definição direta e fácil</td></tr>
-        <tr><td>Julio Queiroz</td><td>Permeia todos os ramos do Direito — Penal, Comercial, Administrativo, Internacional</td><td>Explica o caráter eclético</td></tr>
-      </tbody>
-    </table>
-
-    <div class="sec-title"><span class="sec-num">2.2</span> Duas Características Marcantes</div>
-    <div class="two">
-      <div class="col a">
-        <div class="col-hd">🔵 Maleabilidade</div>
-        <p>Usa instrumentos rápidos do Executivo — decretos, regulamentos, medidas provisórias. A economia muda rápido demais para esperar o processo legislativo normal.</p>
-      </div>
-      <div class="col b">
-        <div class="col-hd">🟢 Ecletismo</div>
-        <p>Mistura Direito Público e Privado — não é nem um nem outro puro. O Estado (público) regula agentes privados (privado): essa mistura é inevitável.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 3 -->
-<div class="chapter" id="cf">
-  <div class="ch-marker"><span class="ch-num">Capítulo 3</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">A Constituição de 1988 — Estrutura</h2>
-  <p class="ch-intro">Onde encontrar o Direito Econômico e Financeiro na CF/88.</p>
-  <div class="sec">
-    <div class="box bx-ex">
-      <span class="bx-lbl">📋 Título VII — Da Ordem Econômica e Financeira</span>
-      <ul>
-        <li><strong>Cap. I:</strong> Princípios gerais da atividade econômica (Art. 170 a 181) — o mais importante</li>
-        <li><strong>Cap. II:</strong> Da política urbana (Art. 182 e 183)</li>
-        <li><strong>Cap. III:</strong> Da política agrícola, fundiária e reforma agrária (Art. 184 a 191)</li>
-        <li><strong>Cap. IV:</strong> Do Sistema Financeiro Nacional (Art. 192) — a parte "Financeiro" do nome</li>
-      </ul>
-    </div>
-
-    <div class="sec-title"><span class="sec-num">3.1</span> Competência para Legislar</div>
-    <div class="two">
-      <div class="col a">
-        <div class="col-hd">🔵 Art. 22 — Privativa da União</div>
-        <ul>
-          <li>Inciso I: direito civil, comercial, penal, processual</li>
-          <li>Inciso VI: sistema monetário e medidas</li>
-          <li>Inciso VII: política de crédito, câmbio, seguros</li>
-          <li>Inciso VIII: comércio exterior e interestadual</li>
-        </ul>
-      </div>
-      <div class="col b">
-        <div class="col-hd">🟢 Art. 24 — Concorrente (União + Estados + DF)</div>
-        <ul>
-          <li>Inciso I: direito tributário, financeiro, <strong>econômico</strong></li>
-          <li>Inciso V: produção e consumo</li>
-          <li>§1º: União estabelece normas gerais</li>
-          <li>§2º: Estados têm competência suplementar</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 4 -->
-<div class="chapter" id="art170">
-  <div class="ch-marker"><span class="ch-num">Capítulo 4</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Art. 170 — Os 9 Princípios da Ordem Econômica</h2>
-  <p class="ch-intro">O artigo mais cobrado em prova. Fundamentos, finalidade e os 9 princípios.</p>
-  <div class="sec">
-    <div class="box bx-qt">
-      <span class="bx-lbl">💭 Caput do Art. 170</span>
-      <p>"A ordem econômica, fundada na <strong>valorização do trabalho humano</strong> e na <strong>livre iniciativa</strong>, tem por fim assegurar a todos <strong>existência digna</strong>, conforme os ditames da <strong>justiça social</strong>, observados os seguintes princípios..."</p>
-    </div>
-
-    <table class="tbl">
-      <thead><tr><th>#</th><th>Princípio</th><th>O que combate</th><th>Exemplo prático</th></tr></thead>
-      <tbody>
-        <tr><td>I</td><td>Soberania nacional</td><td>Dependência de outros países</td><td>Setores estratégicos não controlados por estrangeiros</td></tr>
-        <tr><td>II</td><td>Propriedade privada</td><td>—</td><td>Direito de ter bens. Mas com limites...</td></tr>
-        <tr><td>III</td><td><strong>Função social da propriedade</strong></td><td>Terras e imóveis ociosos</td><td>Terra improdutiva pode ser desapropriada para reforma agrária</td></tr>
-        <tr><td>IV</td><td><strong>Livre concorrência</strong></td><td>Monopólios abusivos</td><td>Base do CADE e do sistema antitruste</td></tr>
-        <tr><td>V</td><td>Defesa do consumidor</td><td>Desequilíbrio empresa × cliente</td><td>Base do CDC</td></tr>
-        <tr><td>VI</td><td>Defesa do meio ambiente</td><td>Desenvolvimento que destrói recursos</td><td>Licença ambiental obrigatória</td></tr>
-        <tr><td>VII</td><td>Redução das desigualdades regionais e sociais</td><td>Capital só no Sul/Sudeste</td><td>Incentivos fiscais para empresas no Nordeste</td></tr>
-        <tr><td>VIII</td><td>Busca do pleno emprego</td><td>Desemprego estrutural</td><td>Políticas de geração de emprego como dever do Estado</td></tr>
-        <tr><td>IX</td><td>Tratamento favorecido para micro e pequenas empresas</td><td>Pequenos não competem com gigantes</td><td>Simples Nacional, MEI</td></tr>
-      </tbody>
-    </table>
-
-    <div class="sec-title"><span class="sec-num">4.1</span> As 3 Dimensões da Ordem Econômica (Moreira Neto)</div>
-    <table class="tbl">
-      <thead><tr><th>Dimensão</th><th>A pergunta</th><th>Elementos</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Ontológica</strong> — "o que é"</td><td>Quais são os fundamentos concretos?</td><td>O trabalho, os meios de produção, a iniciativa econômica</td></tr>
-        <tr><td><strong>Axiológica</strong> — "que valores"</td><td>Quais valores guiam o Estado?</td><td>Soberania, função social da propriedade, livre concorrência</td></tr>
-        <tr><td><strong>Teleológica</strong> — "que fins"</td><td>Quais resultados o Estado quer?</td><td>Existência digna, defesa do consumidor, meio ambiente, pleno emprego</td></tr>
-      </tbody>
-    </table>
-
-    <div class="box bx-tip">
-      <span class="bx-lbl">💡 Analogia para lembrar</span>
-      <p>Ontológica = os tijolos (o que você tem). Axiológica = a planta (os princípios que guiam). Teleológica = o objetivo — a casa onde as pessoas vivem bem.</p>
-    </div>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 5 -->
-<div class="chapter" id="intervencao">
-  <div class="ch-marker"><span class="ch-num">Capítulo 5</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Intervenção do Estado — Os 2 Tipos</h2>
-  <p class="ch-intro">Estado como jogador (entra em campo) ou como árbitro (impõe as regras de fora).</p>
-  <div class="sec">
-    <table class="tbl">
-      <thead><tr><th></th><th>Direta (Art. 173)</th><th>Indireta (Art. 174)</th></tr></thead>
-      <tbody>
-        <tr><td>Metáfora</td><td>Estado como <strong>jogador</strong> — entra em campo</td><td>Estado como <strong>árbitro</strong> — impõe as regras de fora</td></tr>
-        <tr><td>O Estado faz</td><td>Cria empresas, produz bens, presta serviços</td><td>Fiscaliza, incentiva, planeja</td></tr>
-        <tr><td>Exemplos</td><td>Petrobras, BB, Caixa, Correios</td><td>BACEN regulando bancos, CADE, incentivos fiscais</td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 6 -->
-<div class="chapter" id="direta">
-  <div class="ch-marker"><span class="ch-num">Capítulo 6</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Intervenção Direta — Art. 173</h2>
-  <p class="ch-intro">O Estado como empresário — exceção, não regra. Subsidiariedade.</p>
-  <div class="sec">
-    <div class="box bx-warn">
-      <span class="bx-lbl">⚠️ Princípio da Subsidiariedade — Art. 173, caput</span>
-      <p>"Ressalvados os casos previstos nesta Constituição, a exploração direta da atividade econômica pelo Estado <strong>só será permitida quando necessária</strong> aos imperativos da <strong>segurança nacional</strong> ou a <strong>relevante interesse coletivo</strong>."<br><br>
-      O Estado como empresário é exceção, não regra. Petrobras = segurança nacional. Caixa = interesse coletivo.</p>
-    </div>
-
-    <div class="sec-title"><span class="sec-num">6.1</span> 3 Formas de Atuação Empresarial</div>
-    <table class="tbl">
-      <thead><tr><th>Tipo</th><th>O que é</th><th>Exemplo</th></tr></thead>
-      <tbody>
-        <tr><td>Empresa Pública</td><td>100% do capital do governo</td><td>Correios, BNDES</td></tr>
-        <tr><td>Sociedade de Economia Mista</td><td>Capital dividido: governo (majoritário) + acionistas privados</td><td>Petrobras, Banco do Brasil</td></tr>
-        <tr><td>Participação Societária</td><td>Estado como acionista minoritário</td><td>BNDESPAR em empresas privadas</td></tr>
-      </tbody>
-    </table>
-
-    <div class="sec-title"><span class="sec-num">6.2</span> Outros pontos do Art. 173</div>
-    <div class="box bx-ex">
-      <span class="bx-lbl">📋 Estatuto jurídico — §1º</span>
-      <ul>
-        <li>Empresas estatais que exploram atividade econômica se sujeitam ao regime das empresas privadas</li>
-        <li>Direitos civis, comerciais, trabalhistas e tributários iguais aos privados</li>
-        <li>Licitação observando os princípios da administração pública</li>
-      </ul>
-    </div>
-    <div class="box bx-tip">
-      <span class="bx-lbl">💡 Isonomia fiscal — §2º</span>
-      <p>Empresa estatal que compete com privadas <strong>não pode ter vantagem tributária</strong> que o concorrente privado não tem. Caso contrário, seria concorrência desleal — violaria a livre concorrência (Art. 170, IV).</p>
-    </div>
-    <div class="box bx-warn">
-      <span class="bx-lbl">⚠️ Repressão ao abuso — §4º</span>
-      <p>"A lei reprimirá o abuso do poder econômico que vise à <strong>dominação dos mercados</strong>, à <strong>eliminação da concorrência</strong> e ao <strong>aumento arbitrário dos lucros</strong>." → Base constitucional do CADE.</p>
-    </div>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 7 -->
-<div class="chapter" id="indireta">
-  <div class="ch-marker"><span class="ch-num">Capítulo 7</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Intervenção Indireta — Art. 174</h2>
-  <p class="ch-intro">O Estado como agente normativo e regulador — fiscaliza, incentiva e planeja.</p>
-  <div class="sec">
-    <div class="box bx-qt">
-      <span class="bx-lbl">💭 Art. 174</span>
-      <p>"Como agente normativo e regulador da atividade econômica, o Estado exercerá, na forma da lei, as funções de <strong>fiscalização</strong>, <strong>incentivo</strong> e <strong>planejamento</strong>, sendo este <strong>determinante para o setor público</strong> e <strong>indicativo para o setor privado</strong>."</p>
-    </div>
-
-    <table class="tbl">
-      <thead><tr><th>Ferramenta</th><th>O que é</th><th>Exemplo real</th></tr></thead>
-      <tbody>
-        <tr><td>🔍 Fiscalização</td><td>Controle de juridicidade — verifica se os agentes cumprem a lei</td><td>BACEN fiscalizando reservas dos bancos. ANVISA verificando normas de medicamentos</td></tr>
-        <tr><td>💡 Incentivo (Fomento)</td><td>Usa benefícios fiscais e creditícios para induzir comportamentos — sem obrigar</td><td>Simples Nacional, financiamento BNDES a juros baixos</td></tr>
-        <tr><td>📋 Planejamento</td><td>Traça diretrizes de desenvolvimento nacional</td><td>PPA — o governo é obrigado a seguir; empresa privada, não</td></tr>
-      </tbody>
-    </table>
-
-    <div class="box bx-warn">
-      <span class="bx-lbl">⚠️ Tabelamento de preços = INCONSTITUCIONAL</span>
-      <p>O Estado não pode fixar preços para o setor privado por decreto. Viola a livre iniciativa e a livre concorrência.</p>
-    </div>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 8 -->
-<div class="chapter" id="monopolios">
-  <div class="ch-marker"><span class="ch-num">Capítulo 8</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Monopólios da União — Art. 177</h2>
-  <p class="ch-intro">Atividades que só o governo federal pode explorar — e a flexibilização da EC 09/95.</p>
-  <div class="sec">
-    <div class="box bx-ex">
-      <span class="bx-lbl">📋 Os 5 monopólios da União</span>
-      <ul>
-        <li>Pesquisa e lavra das jazidas de <strong>petróleo, gás natural e hidrocarbonetos</strong></li>
-        <li>Refinação do petróleo nacional ou estrangeiro</li>
-        <li>Importação e exportação dos produtos e derivados básicos</li>
-        <li>Transporte marítimo do petróleo bruto e derivados por dutos</li>
-        <li>Pesquisa, lavra, enriquecimento e comércio de <strong>minerais e materiais nucleares</strong></li>
-      </ul>
-    </div>
-    <div class="box bx-tip">
-      <span class="bx-lbl">💡 A flexibilização — EC 09/95</span>
-      <p>O monopólio continua sendo da União, mas a <strong>execução</strong> pode ser delegada a privados por contrato. Foi isso que abriu o pré-sal para Shell, Total e outras empresas privadas.</p>
-    </div>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 9 -->
-<div class="chapter" id="cade">
-  <div class="ch-marker"><span class="ch-num">Capítulo 9</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">O CADE — Defesa da Concorrência</h2>
-  <p class="ch-intro">Conselho Administrativo de Defesa Econômica — autarquia federal que protege a livre concorrência.</p>
-  <div class="sec">
-    <div class="sec-title"><span class="sec-num">9.1</span> Linha do Tempo</div>
-    <table class="tbl">
-      <thead><tr><th>Ano</th><th>Marco</th></tr></thead>
-      <tbody>
-        <tr><td>1962</td><td>Criação — Lei nº 4.137/62</td></tr>
-        <tr><td>1991</td><td>Lei 8.158/91 — órgão judicante autônomo</td></tr>
-        <tr><td>1994</td><td>Lei 8.884/94 — torna-se autarquia federal</td></tr>
-        <tr><td>2011</td><td>Lei 12.529/2011 — estrutura atual, cria o SBDC</td></tr>
-      </tbody>
-    </table>
-
-    <div class="sec-title"><span class="sec-num">9.2</span> Estrutura Interna — Art. 5º, Lei 12.529/2011</div>
-    <div class="box bx-ex">
-      <span class="bx-lbl">📋 3 órgãos internos</span>
-      <ul>
-        <li><strong>Tribunal Administrativo</strong> — 1 Presidente + 6 Conselheiros. Mandato de 4 anos sem recondução. Julga os processos — instância máxima administrativa</li>
-        <li><strong>Superintendência-Geral</strong> — 1 Superintendente-Geral + 2 Adjuntos. Investiga e instrui os processos, abre inquéritos, coleta provas</li>
-        <li><strong>Departamento de Estudos Econômicos (DEE)</strong> — Dirigido por Economista-Chefe. Elabora estudos e pareceres econômicos. Zela pelo rigor técnico das decisões</li>
-      </ul>
-    </div>
-    <div class="box bx-tip">
-      <span class="bx-lbl">💡 Analogia</span>
-      <p>Superintendência-Geral = delegacia (investiga). DEE = perícia técnica (analisa dados). Tribunal = juiz (decide).</p>
-    </div>
-
-    <div class="sec-title"><span class="sec-num">9.3</span> Os 3 Papéis do CADE</div>
-    <table class="tbl">
-      <thead><tr><th>Papel</th><th>O que faz</th><th>Prazo/Detalhe</th></tr></thead>
-      <tbody>
-        <tr><td>🛡️ Preventivo</td><td>Analisa atos de concentração (fusões, incorporações) ANTES que aconteçam. Podem ser aprovados, aprovados com restrições ou vetados</td><td><strong>240 dias</strong> máximos para analisar</td></tr>
-        <tr><td>⚖️ Repressivo</td><td>Investiga e pune infrações contra a ordem econômica (cartéis, preços predatórios, abuso de posição dominante)</td><td>Decisões revisáveis pelo Judiciário</td></tr>
-        <tr><td>📚 Educativo</td><td>Firma parcerias com universidades, cursos, palestras, relatório anual, revista</td><td>Base: Art. 7º, XVIII da Lei 8.884/94</td></tr>
-      </tbody>
-    </table>
-
-    <div class="box bx-warn">
-      <span class="bx-lbl">⚠️ SBDC — Sistema Brasileiro de Defesa da Concorrência</span>
-      <p>Art. 3º, Lei 12.529/2011: composto por <strong>CADE</strong> + <strong>SEAE</strong> (Secretaria de Acompanhamento Econômico do Ministério da Fazenda).</p>
-    </div>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 10 -->
-<div class="chapter" id="sfn">
-  <div class="ch-marker"><span class="ch-num">Capítulo 10</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Sistema Financeiro Nacional — Art. 192</h2>
-  <p class="ch-intro">A parte "Financeiro" da disciplina — quem regula o dinheiro, o crédito e o mercado de capitais.</p>
-  <div class="sec">
-    <table class="tbl">
-      <thead><tr><th>Sigla</th><th>Nome completo</th><th>O que faz</th></tr></thead>
-      <tbody>
-        <tr><td><strong>CMN</strong></td><td>Conselho Monetário Nacional</td><td>Órgão máximo. Define política monetária e de crédito. Composto por: Ministro da Fazenda (presidente), Ministro do Planejamento e presidente do BACEN</td></tr>
-        <tr><td><strong>BACEN</strong></td><td>Banco Central do Brasil</td><td>Executa as políticas do CMN, regula bancos, controla inflação (via taxa Selic), administra reservas internacionais. É o "banco dos bancos"</td></tr>
-        <tr><td><strong>CVM</strong></td><td>Comissão de Valores Mobiliários</td><td>Regula mercado de capitais — ações, debêntures, fundos de investimento</td></tr>
-      </tbody>
-    </table>
-    <div class="box bx-tip">
-      <span class="bx-lbl">💡 Como econômico e financeiro se conectam</span>
-      <p>O lado econômico regula quem produz e como compete. O lado financeiro regula quem financia essa produção. São inseparáveis — empresa não produz sem crédito, e crédito não existe sem sistema financeiro regulado.</p>
-    </div>
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 11 -->
-<div class="chapter" id="rev">
-  <div class="ch-marker"><span class="ch-num">Capítulo 11</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Revisão e Perguntas de Prova</h2>
-  <p class="ch-intro">Clique na pergunta para revelar a resposta.</p>
-  <div class="sec">
-
-    <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>Qual a definição de Direito Econômico segundo Washington Peluso? Por que é o mais cobrado?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Para Washington Peluso, o Direito Econômico tem como objeto a política econômica e como sujeito quem dela participa. Usa o princípio da economicidade — as normas devem buscar o melhor custo-benefício social. É o mais cobrado porque é o mais completo e o professor o destaca como principal.</div>
-    </div>
-
-    <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>Quais são as 2 características marcantes do Direito Econômico?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Maleabilidade: usa instrumentos rápidos do Executivo (decretos, regulamentos, medidas provisórias) porque a economia muda rápido demais para o processo legislativo normal. Ecletismo: mistura Direito Público e Privado — o Estado (público) regula agentes privados (privado).</div>
-    </div>
-
-    <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>Quais são os 2 fundamentos, a finalidade e os 9 princípios do Art. 170?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Fundamentos: valorização do trabalho humano + livre iniciativa. Finalidade: existência digna + justiça social. 9 princípios: I. Soberania nacional; II. Propriedade privada; III. Função social da propriedade; IV. Livre concorrência; V. Defesa do consumidor; VI. Defesa do meio ambiente; VII. Redução das desigualdades regionais e sociais; VIII. Busca do pleno emprego; IX. Tratamento favorecido para micro e pequenas empresas.</div>
-    </div>
-
-    <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>Qual a diferença entre intervenção direta e indireta do Estado?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Direta (Art. 173): Estado como jogador — entra em campo criando empresas públicas e SEM, produzindo bens e serviços. Só é permitida em casos de segurança nacional ou relevante interesse coletivo (princípio da subsidiariedade). Indireta (Art. 174): Estado como árbitro — fiscaliza, incentiva (fomento) e planeja. Planejamento é determinante para o setor público e indicativo para o privado.</div>
-    </div>
-
-    <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>O que é o CADE? Quais são seus 3 papéis e sua estrutura?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">CADE = Conselho Administrativo de Defesa Econômica. Autarquia federal vinculada ao Min. da Justiça, sede em Brasília. 3 papéis: Preventivo (analisa fusões e incorporações antes que aconteçam — 240 dias); Repressivo (investiga e pune cartéis, abuso de posição dominante); Educativo (cursos, palestras, relatórios). Estrutura: Tribunal (1 pres + 6 conselheiros, 4 anos sem recondução) + Superintendência-Geral + DEE. SBDC = CADE + SEAE.</div>
-    </div>
-
-    <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>O que são as 3 dimensões da Ordem Econômica segundo Moreira Neto?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Ontológica ("o que é"): os fundamentos concretos — o trabalho, os meios de produção, a iniciativa econômica. Axiológica ("que valores"): os valores que guiam — soberania, função social da propriedade, livre concorrência. Teleológica ("que fins"): os resultados que o Estado quer — existência digna, defesa do consumidor, meio ambiente, pleno emprego.</div>
-    </div>
-
-    <div class="quiz" onclick="toggleQ(this)">
-      <div class="quiz-q"><span class="quiz-badge">Q</span>Quais são os monopólios da União (Art. 177) e o que mudou com a EC 09/95?<span class="quiz-arr">▼</span></div>
-      <div class="quiz-a">Monopólios: petróleo e gás, refinação, importação/exportação de derivados, transporte por dutos, minerais nucleares. Antes da EC 09/95: a União tinha que explorar diretamente, vedada cessão de participação. Depois da EC 09/95: o monopólio continua da União, mas a execução pode ser delegada a empresas privadas por contrato — o que abriu o pré-sal para Shell, Total e outras.</div>
-    </div>
-
-  </div>
-</div>
-
-<div class="orn">✦ · ✦ · ✦</div>
-
-<!-- CAP 12 -->
-<div class="chapter" id="gloss">
-  <div class="ch-marker"><span class="ch-num">Capítulo 12</span><div class="ch-line"></div></div>
-  <h2 class="ch-title">Glossário e Referências</h2>
-  <p class="ch-intro">Siglas, termos técnicos e referências bibliográficas.</p>
-  <div class="sec">
-
-    <div class="gl-item">
-      <div class="gl-term">Laissez-faire <em>(francês)</em></div>
-      <div class="gl-def">"Deixe fazer." Expressão que resume o liberalismo clássico — Estado sem intervenção na economia. Abstencionismo.</div>
-    </div>
-    <div class="gl-item">
-      <div class="gl-term">Economicidade</div>
-      <div class="gl-def">Princípio de Washington Peluso: as normas de Direito Econômico devem buscar o melhor custo-benefício social.</div>
-    </div>
-    <div class="gl-item">
-      <div class="gl-term">Subsidiariedade</div>
-      <div class="gl-def">Princípio do Art. 173: o Estado só intervém diretamente na economia quando necessário à segurança nacional ou ao relevante interesse coletivo. A atuação estatal como empresário é exceção.</div>
-    </div>
-    <div class="gl-item">
-      <div class="gl-term">CADE</div>
-      <div class="gl-def">Conselho Administrativo de Defesa Econômica. Autarquia federal vinculada ao Ministério da Justiça. Base: Lei 12.529/2011.</div>
-    </div>
-    <div class="gl-item">
-      <div class="gl-term">SBDC</div>
-      <div class="gl-def">Sistema Brasileiro de Defesa da Concorrência. Composto por CADE + SEAE (Secretaria de Acompanhamento Econômico do Ministério da Fazenda).</div>
-    </div>
-    <div class="gl-item">
-      <div class="gl-term">CMN</div>
-      <div class="gl-def">Conselho Monetário Nacional. Órgão máximo do Sistema Financeiro. Define a política monetária e de crédito do país.</div>
-    </div>
-    <div class="gl-item">
-      <div class="gl-term">BACEN</div>
-      <div class="gl-def">Banco Central do Brasil. Executa as políticas do CMN, regula os bancos, controla a inflação via taxa Selic. "O banco dos bancos."</div>
-    </div>
-    <div class="gl-item">
-      <div class="gl-term">CVM</div>
-      <div class="gl-def">Comissão de Valores Mobiliários. Regula o mercado de capitais — ações, debêntures, fundos de investimento.</div>
-    </div>
-    <div class="gl-item">
-      <div class="gl-term">SEM — Sociedade de Economia Mista</div>
-      <div class="gl-def">Empresa com capital dividido entre o governo (majoritário) e acionistas privados. Exemplo: Petrobras, Banco do Brasil.</div>
-    </div>
-    <div class="gl-item">
-      <div class="gl-term">EC 09/95</div>
-      <div class="gl-def">Emenda Constitucional que flexibilizou os monopólios da União — permitiu contratar empresas privadas para executar atividades antes exclusivas do Estado, como exploração do petróleo.</div>
-    </div>
-
-    <div class="box bx-qt" style="margin-top:2rem;">
-      <span class="bx-lbl">📚 Referências Bibliográficas</span>
-      <p>SOUZA, Washington Peluso Albino de. <strong>Direito Econômico</strong>.<br><br>
-      FONSECA, João Bosco Leopoldino da. <strong>Direito Econômico</strong>.<br><br>
-      MOREIRA NETO, Diogo de Figueiredo. <strong>Curso de Direito Administrativo</strong>.<br><br>
-      <strong>Constituição Federal de 1988</strong> — Arts. 22, 24, 170–177 e 192.<br>
-      <strong>Lei 12.529/2011</strong> — Estrutura do SBDC e do CADE.<br><br>
-      Material baseado nos slides da disciplina — UVA Marapendi, Direito Econômico e Financeiro, Prof. Irapuã Beltrão, 2026.</p>
-    </div>
-  </div>
-</div>
-
-</div>
-</div>
-
-<script>
-function toggleQ(el) {
-  const a = el.querySelector('.quiz-a');
-  const open = el.classList.toggle('open');
-  a.classList.toggle('open', open);
-}
-</script>
-</body>
-</html>
+<script>function toggleQ(el){const a=el.querySelector('.quiz-a');const open=el.classList.toggle('open');a.classList.toggle('open',open);}</script>
+</body></html>
