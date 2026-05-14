@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Calculadora — LCI/LCA vs Liquidez Diária</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:     #faf8f4;
+    --bg2:    #f2ede4;
+    --line:   #ddd6c8;
+    --muted:  #9a9080;
+    --text:   #2a2420;
+    --cream:  #ede8df;
+    --blue:   #2d4a6e;
+    --blue-l: #e8f0f9;
+    --green:  #2d6a4f;
+    --green-l:#d8f3dc;
+    --red:    #c0392b;
+    --red-l:  #fdecea;
+    --gold:   #c4872a;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Serif 4', serif;
+    font-weight: 300;
+    color-scheme: light;
+    min-height: 100vh;
+  }
+
+  header {
+    padding: 48px 56px 40px;
+    border-bottom: 1px solid var(--line);
+    background: var(--blue);
+  }
+  header .eyebrow { color: rgba(255,255,255,0.6); }
+  header .eyebrow::before { background: rgba(255,255,255,0.4); }
+  header h1 { color: white; }
+  header h1 em { color: #e8c97a; }
+  header .header-desc { color: rgba(255,255,255,0.7); }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--muted); }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 44px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  h1 em { font-style: italic; color: var(--blue); }
+
+  .header-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* MAIN */
+  main {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 0;
+    min-height: calc(100vh - 140px);
+  }
+
+  /* INPUTS */
+  .inputs {
+    border-right: 1px solid var(--line);
+    padding: 40px 36px;
+    background: var(--cream);
+  }
+
+  .input-group {
+    margin-bottom: 28px;
+  }
+
+  .input-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  .input-desc {
+    font-size: 11px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+
+  .input-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--line);
+    background: var(--bg);
+    padding: 0 12px;
+  }
+
+  .input-prefix {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  input[type=number], input[type=text] {
+    border: none;
+    background: transparent;
+    padding: 12px 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px;
+    color: var(--text);
+    width: 100%;
+    outline: none;
+  }
+
+  input[type=range] {
+    width: 100%;
+    accent-color: var(--blue);
+    margin-top: 4px;
+  }
+
+  .range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .range-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 20px;
+    color: var(--blue);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+
+  .sep { height: 1px; background: var(--line); margin: 24px 0; }
+
+  .calc-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--blue);
+    color: white;
+    border: none;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s;
+    margin-top: 8px;
+  }
+  .calc-btn:hover { background: #1a3a5c; }
+
+  /* RESULTS */
+  .results {
+    padding: 40px 48px;
+    overflow-y: auto;
+  }
+
+  .result-section {
+    margin-bottom: 40px;
+  }
+
+  .result-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .result-label::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+
+  /* HERO NUMBERS */
+  .hero-numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-bottom: 32px;
+  }
+
+  .hero-num {
+    background: var(--bg);
+    padding: 24px;
+  }
+  .hero-num.highlight { background: var(--blue-l); }
+  .hero-num.good { background: var(--green-l); }
+  .hero-num.bad { background: var(--red-l); }
+
+  .hero-num-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .hero-num-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .hero-num.highlight .hero-num-value { color: var(--blue); }
+  .hero-num.good .hero-num-value { color: var(--green); }
+  .hero-num.bad .hero-num-value { color: var(--red); }
+
+  .hero-num-sub {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* BREAKEVEN VISUAL */
+  .breakeven-bar {
+    margin: 20px 0 32px;
+  }
+
+  .bar-track {
+    height: 8px;
+    background: var(--line);
+    border-radius: 4px;
+    position: relative;
+    margin: 12px 0 8px;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--blue);
+    transition: width .6s ease;
+    position: relative;
+  }
+
+  .bar-marker {
+    position: absolute;
+    top: -16px;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--blue);
+    white-space: nowrap;
+  }
+
+  .bar-labels {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+  }
+
+  /* TABELA MENSAL */
+  .monthly-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .monthly-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 8px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    color: var(--muted);
+  }
+
+  .monthly-table td {
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    vertical-align: middle;
+  }
+
+  .monthly-table tr.breakeven-row td {
+    background: var(--blue-l);
+    color: var(--blue);
+    font-weight: 400;
+  }
+
+  .monthly-table tr.better td { background: var(--green-l); }
+  .monthly-table tr.worse td  { background: var(--red-l); }
+
+  .status-badge {
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: .08em;
+  }
+  .badge-better { background: var(--green-l); color: var(--green); }
+  .badge-worse  { background: var(--red-l);   color: var(--red); }
+  .badge-even   { background: var(--blue-l);  color: var(--blue); }
+
+  /* CALLOUT */
+  .callout {
+    padding: 16px 20px;
+    border-left: 3px solid var(--blue);
+    background: var(--blue-l);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+  .callout strong { color: var(--blue); }
+
+  .empty-state {
+    text-align: center;
+    padding: 80px 40px;
+    color: var(--muted);
+  }
+  .empty-icon { font-size: 40px; margin-bottom: 16px; }
+  .empty-text { font-size: 14px; line-height: 1.6; }
+
+
+  /* CHART */
+  .chart-wrap {
+    position: relative;
+    margin-bottom: 32px;
+    border: 1px solid var(--line);
+    background: white;
+    padding: 24px 16px 16px;
+  }
+  .chart-legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .legend-dot {
+    width: 24px;
+    height: 3px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .chart-tooltip {
+    position: absolute;
+    background: white;
+    border: 1px solid var(--line);
+    padding: 12px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,.08);
+    min-width: 200px;
+    z-index: 10;
+    display: none;
+  }
+  .tooltip-title {
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .tooltip-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 4px;
+    font-size: 11px;
+  }
+  .tooltip-row.highlight { color: var(--blue); font-weight: bold; }
+  .tooltip-row.green { color: var(--green); }
+  .tooltip-row.gold { color: var(--gold); }
+  .tooltip-diff {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+    font-size: 11px;
+  }
+  canvas { display: block; width: 100%; cursor: crosshair; }
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 16px 56px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 768px) {
+    main { grid-template-columns: 1fr; }
+    .inputs { border-right: none; border-bottom: 1px solid var(--line); }
+    header, .inputs, .results, footer { padding-left: 24px; padding-right: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Ferramenta de análise</div>
+  <h1>LCI/LCA Presa vs <em>Liquidez Diária</em></h1>
+  <p class="header-desc">Calcula o ponto de equilíbrio: em quantos meses a LCA/LCI com prazo supera a liquidez diária, mesmo com deságio de saída antecipada.</p>
+</header>
+
+<main>
+
+  <!-- INPUTS -->
+  <div class="inputs">
+
+    <div class="input-group">
+      <span class="input-label">Valor investido (R$)</span>
+      <div class="input-row">
+        <span class="input-prefix">R$</span>
+        <input type="number" id="valor" value="225000" step="1000">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <span class="input-label">CDI anual referência (%)</span>
+      <p class="input-desc">Taxa CDI atual do mercado</p>
+      <div class="input-row">
+        <input type="number" id="cdi" value="14.77" step="0.01">
+        <span class="input-prefix">%</span>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="input-group">
+      <span class="input-label">Taxa da LCI/LCA com prazo</span>
+      <p class="input-desc">Escolha o tipo de taxa do produto preso</p>
+      <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+        <label style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;">
+          <input type="radio" name="tipo-presa" value="cdi" checked onchange="toggleTipoPresa()"> % do CDI
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;">
+          <input type="radio" name="tipo-presa" value="aa" onchange="toggleTipoPresa()"> % ao ano
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;">
+          <input type="radio" name="tipo-presa" value="ipca" onchange="toggleTipoPresa()"> IPCA+
+        </label>
+      </div>
+      <div id="presa-cdi-group">
+        <div class="range-value" id="taxa-presa-val">91%</div>
+        <input type="range" id="taxa-presa" min="80" max="130" value="91" step="0.5"
+               oninput="document.getElementById('taxa-presa-val').textContent = this.value + '%'">
+        <div class="range-labels"><span>80%</span><span>105%</span><span>130%</span></div>
+      </div>
+      <div id="presa-aa-group" style="display:none;">
+        <p class="input-desc" style="margin-bottom:6px;">Ex: 11,18 para uma taxa de 11,18% ao ano</p>
+        <div class="input-row">
+          <input type="number" id="taxa-presa-aa" value="11.18" step="0.01">
+          <span class="input-prefix">% a.a.</span>
+        </div>
+      </div>
+      <div id="presa-ipca-group" style="display:none;">
+        <p class="input-desc" style="margin-bottom:6px;">Ex: DEB Itapoá IPCA+6,45% — digite o spread e o IPCA projetado</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <div>
+            <div class="input-label" style="margin-bottom:4px;">IPCA projetado (% a.a.)</div>
+            <div class="input-row">
+              <input type="number" id="ipca-presa" value="4.5" step="0.1" oninput="atualizaTotalIPCA('presa')">
+              <span class="input-prefix">%</span>
+            </div>
+          </div>
+          <div>
+            <div class="input-label" style="margin-bottom:4px;">Spread (% a.a.)</div>
+            <div class="input-row">
+              <input type="number" id="spread-presa" value="6.45" step="0.01" oninput="atualizaTotalIPCA('presa')">
+              <span class="input-prefix">%</span>
+            </div>
+          </div>
+        </div>
+        <p class="input-desc">Taxa total estimada: <strong id="ipca-total-presa">10,95% a.a.</strong> (isenta de IR)</p>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <span class="input-label">Taxa da liquidez diária</span>
+      <p class="input-desc">Escolha o tipo de taxa do produto de liquidez diária</p>
+      <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap;">
+        <label style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;">
+          <input type="radio" name="tipo-diaria" value="cdi" checked onchange="toggleTipoDiaria()"> % do CDI
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;">
+          <input type="radio" name="tipo-diaria" value="aa" onchange="toggleTipoDiaria()"> % ao ano
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:11px;cursor:pointer;">
+          <input type="radio" name="tipo-diaria" value="ipca" onchange="toggleTipoDiaria()"> IPCA+
+        </label>
+      </div>
+      <div id="diaria-cdi-group">
+        <div class="range-value" id="taxa-diaria-val">81.5%</div>
+        <input type="range" id="taxa-diaria" min="75" max="95" value="81.5" step="0.5"
+               oninput="document.getElementById('taxa-diaria-val').textContent = this.value + '%'">
+        <div class="range-labels"><span>75%</span><span>85%</span><span>95%</span></div>
+      </div>
+      <div id="diaria-aa-group" style="display:none;">
+        <p class="input-desc" style="margin-bottom:6px;">Ex: 11,18 para uma taxa de 11,18% ao ano</p>
+        <div class="input-row">
+          <input type="number" id="taxa-diaria-aa" value="12.00" step="0.01">
+          <span class="input-prefix">% a.a.</span>
+        </div>
+      </div>
+      <div id="diaria-ipca-group" style="display:none;">
+        <p class="input-desc" style="margin-bottom:6px;">IPCA projetado + spread</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <div>
+            <div class="input-label" style="margin-bottom:4px;">IPCA projetado (% a.a.)</div>
+            <div class="input-row">
+              <input type="number" id="ipca-diaria" value="4.5" step="0.1" oninput="atualizaTotalIPCA('diaria')">
+              <span class="input-prefix">%</span>
+            </div>
+          </div>
+          <div>
+            <div class="input-label" style="margin-bottom:4px;">Spread (% a.a.)</div>
+            <div class="input-row">
+              <input type="number" id="spread-diaria" value="5.0" step="0.01" oninput="atualizaTotalIPCA('diaria')">
+              <span class="input-prefix">%</span>
+            </div>
+          </div>
+        </div>
+        <p class="input-desc">Taxa total estimada: <strong id="ipca-total-diaria">9,50% a.a.</strong> (isenta de IR)</p>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <span class="input-label">Deságio estimado de saída antecipada (%)</span>
+      <p class="input-desc">Custo de vender no mercado secundário antes do vencimento. Assessor disse: máx 1%</p>
+      <div class="range-value" id="desagio-val">1%</div>
+      <input type="range" id="desagio" min="0" max="4" value="1" step="0.5"
+             oninput="document.getElementById('desagio-val').textContent = this.value + '%'">
+      <div class="range-labels"><span>0%</span><span>2%</span><span>4%</span></div>
+    </div>
+
+    <div class="input-group">
+      <span class="input-label">Data do aporte</span>
+      <p class="input-desc">Quando você investiu (padrão: hoje)</p>
+      <div class="input-row">
+        <input type="date" id="data-aporte" style="border:none;background:transparent;padding:12px 4px;font-family:JetBrains Mono,monospace;font-size:14px;color:#2a2420;width:100%;outline:none;" onchange="calcularPrazo()">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <span class="input-label">Data de vencimento</span>
+      <p class="input-desc">Ou informe o prazo em meses manualmente</p>
+      <div class="input-row" style="margin-bottom:8px;">
+        <input type="date" id="data-venc" style="border:none;background:transparent;padding:12px 4px;font-family:JetBrains Mono,monospace;font-size:14px;color:#2a2420;width:100%;outline:none;" onchange="calcularPrazo()">
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="input-row" style="flex:1;">
+          <input type="number" id="prazo" value="7.5" step="0.5" oninput="limparData()">
+          <span class="input-prefix">meses</span>
+        </div>
+        <span style="font-family:JetBrains Mono,monospace;font-size:10px;color:#9a9080;">ou</span>
+      </div>
+      <p class="input-desc" id="prazo-calculado" style="margin-top:6px;color:#2d4a6e;"></p>
+    </div>
+
+    <button class="calc-btn" onclick="calcular()">Calcular →</button>
+
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+    <div class="empty-state">
+      <div class="empty-icon">📊</div>
+      <p class="empty-text">Ajuste os parâmetros ao lado<br>e clique em Calcular</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>Calculadora LCI/LCA · Cinthia Sales</span>
+  <span>Apenas informativo — não constitui recomendação de investimento</span>
+</footer>
+
+<script>
+function calcularPrazo() {
+  const dataVenc   = document.getElementById('data-venc').value;
+  const dataAporte = document.getElementById('data-aporte').value;
+  if (!dataVenc) return;
+  const inicio = dataAporte ? new Date(dataAporte) : new Date();
+  const venc   = new Date(dataVenc);
+  const diff   = (venc - inicio) / (1000 * 60 * 60 * 24 * 30.44); // meses
+  if (diff <= 0) {
+    document.getElementById('prazo-calculado').textContent = 'Data inválida — escolha uma data futura';
+    return;
+  }
+  const meses = Math.round(diff * 10) / 10;
+  document.getElementById('prazo').value = meses;
+  const mesesNomes = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const label = mesesNomes[venc.getMonth()] + '/' + venc.getFullYear();
+  document.getElementById('prazo-calculado').textContent = '→ ' + meses + ' meses até ' + label;
+  calcular();
+}
+
+function limparData() {
+  document.getElementById('data-venc').value = '';
+  document.getElementById('prazo-calculado').textContent = '';
+}
+
+function getVencimentoLabel() {
+  const mesesNomes = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+  const dataVenc = document.getElementById('data-venc').value;
+  if (dataVenc) {
+    const venc = new Date(dataVenc);
+    return mesesNomes[venc.getMonth()] + '/' + venc.getFullYear();
+  }
+  const prazo  = parseFloat(document.getElementById('prazo').value);
+  const dataAp = document.getElementById('data-aporte').value;
+  const inicio = dataAp ? new Date(dataAp) : new Date();
+  inicio.setMonth(inicio.getMonth() + Math.round(prazo));
+  return mesesNomes[inicio.getMonth()] + '/' + inicio.getFullYear();
+}
+
+function toggleTipoPresa() {
+  const tipo = document.querySelector('input[name="tipo-presa"]:checked').value;
+  document.getElementById('presa-cdi-group').style.display  = tipo === 'cdi'  ? 'block' : 'none';
+  document.getElementById('presa-aa-group').style.display   = tipo === 'aa'   ? 'block' : 'none';
+  document.getElementById('presa-ipca-group').style.display = tipo === 'ipca' ? 'block' : 'none';
+  if (tipo === 'ipca') atualizaTotalIPCA('presa');
+}
+
+function toggleTipoDiaria() {
+  const tipo = document.querySelector('input[name="tipo-diaria"]:checked').value;
+  document.getElementById('diaria-cdi-group').style.display  = tipo === 'cdi'  ? 'block' : 'none';
+  document.getElementById('diaria-aa-group').style.display   = tipo === 'aa'   ? 'block' : 'none';
+  document.getElementById('diaria-ipca-group').style.display = tipo === 'ipca' ? 'block' : 'none';
+  if (tipo === 'ipca') atualizaTotalIPCA('diaria');
+}
+
+function atualizaTotalIPCA(qual) {
+  const ipca   = parseFloat(document.getElementById('ipca-' + qual).value) || 0;
+  const spread = parseFloat(document.getElementById('spread-' + qual).value) || 0;
+  // Composição: (1+IPCA)*(1+spread) - 1
+  const total  = ((1 + ipca/100) * (1 + spread/100) - 1) * 100;
+  document.getElementById('ipca-total-' + qual).textContent = total.toFixed(2) + '% a.a.';
+}
+
+function getTaxaAA(qual, cdiAnual) {
+  const tipo = document.querySelector('input[name="tipo-' + qual + '"]:checked').value;
+  if (tipo === 'cdi') {
+    const pct = parseFloat(document.getElementById('taxa-' + qual).value) / 100;
+    return pct * cdiAnual;
+  } else if (tipo === 'aa') {
+    return parseFloat(document.getElementById('taxa-' + qual + '-aa').value) / 100;
+  } else {
+    // IPCA+
+    const ipca   = parseFloat(document.getElementById('ipca-' + qual).value) / 100;
+    const spread = parseFloat(document.getElementById('spread-' + qual).value) / 100;
+    return (1 + ipca) * (1 + spread) - 1;
+  }
+}
+
+function getTaxaPresa(cdiAnual) {
+  return getTaxaAA('presa', cdiAnual) / cdiAnual;
+}
+
+function getTaxaDiaria(cdiAnual) {
+  return getTaxaAA('diaria', cdiAnual) / cdiAnual;
+}
+
+function fmt(n) {
+  return n.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function fmtPct(n) {
+  return n.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + '%';
+}
+
+function calcular() {
+  const valor      = parseFloat(document.getElementById('valor').value);
+  const cdiAnual   = parseFloat(document.getElementById('cdi').value) / 100;
+  const taxaPresa  = getTaxaPresa(cdiAnual);
+  const taxaDiaria = getTaxaDiaria(cdiAnual);
+  const desagio    = parseFloat(document.getElementById('desagio').value) / 100;
+  const prazoTotal = parseFloat(document.getElementById('prazo').value);
+
+  // Taxas mensais
+  const cdiMensal     = Math.pow(1 + cdiAnual, 1/12) - 1;
+  const taxaPrMensal  = Math.pow(1 + cdiAnual * taxaPresa, 1/12) - 1;
+  const taxaDiMensal  = Math.pow(1 + cdiAnual * taxaDiaria, 1/12) - 1;
+
+  // Se ficar até o fim — rendimento total preso
+  const rendimentoFinal = valor * (Math.pow(1 + taxaPrMensal, prazoTotal) - 1);
+  const totalFinal      = valor + rendimentoFinal;
+
+  // Rendimento se ficar até o fim na liquidez diária
+  const rendimentoDiarioFinal = valor * (Math.pow(1 + taxaDiMensal, prazoTotal) - 1);
+  const totalDiarioFinal      = valor + rendimentoDiarioFinal;
+
+  // Diferença final
+  const diferencaFinal = rendimentoFinal - rendimentoDiarioFinal;
+
+  // Calcular mês a mês
+  let rows = '';
+  let breakevenMes = null;
+
+  for (let m = 1; m <= Math.ceil(prazoTotal); m++) {
+    const mesReal = Math.min(m, prazoTotal);
+
+    // Rendimento acumulado na LCA presa ATÉ esse mês
+    const rendPreso = valor * (Math.pow(1 + taxaPrMensal, mesReal) - 1);
+
+    // Se sair antecipado: aplica deságio no rendimento acumulado
+    const rendComDesagio = rendPreso * (1 - desagio);
+    const totalComDesagio = valor + rendComDesagio;
+
+    // Rendimento na liquidez diária no mesmo período
+    const rendDiario = valor * (Math.pow(1 + taxaDiMensal, mesReal) - 1);
+    const totalDiario = valor + rendDiario;
+
+    // % CDI efetivo da LCA com deságio nesse período
+    const retornoEfetivo = rendComDesagio / valor;
+    const cdiPeriodo = Math.pow(1 + cdiAnual, mesReal/12) - 1;
+    const pctCdiEfetivo = cdiPeriodo > 0 ? (retornoEfetivo / cdiPeriodo) * 100 : 0;
+
+    const diferenca = rendComDesagio - rendDiario;
+    const isMelhor  = diferenca >= 0;
+    const isBreak   = breakevenMes === null && isMelhor;
+    if (isBreak) breakevenMes = m;
+
+    const rowClass = isBreak ? 'breakeven-row' : (isMelhor ? 'better' : 'worse');
+    const badge    = isBreak
+      ? '<span class="status-badge badge-even">✓ Ponto de equilíbrio</span>'
+      : (isMelhor
+          ? '<span class="status-badge badge-better">↑ Melhor</span>'
+          : '<span class="status-badge badge-worse">↓ Pior</span>');
+
+    const mesLabel = m === Math.ceil(prazoTotal) && prazoTotal % 1 !== 0
+      ? `${mesReal.toFixed(1)}m (venc.)`
+      : `${m}º mês`;
+
+    rows += `
+      <tr class="${rowClass}">
+        <td>${mesLabel}</td>
+        <td>R$ ${fmt(rendComDesagio)}</td>
+        <td>${fmtPct(pctCdiEfetivo)} CDI</td>
+        <td>R$ ${fmt(rendDiario)}</td>
+        <td>R$ ${diferenca >= 0 ? '+' : ''}${fmt(diferenca)}</td>
+        <td>${badge}</td>
+      </tr>`;
+  }
+
+  // Bar breakeven
+  const breakevenPct = breakevenMes ? Math.min((breakevenMes / prazoTotal) * 100, 100) : 100;
+
+  const html = `
+    <div class="result-section">
+      <div class="result-label">Resultado final (até o vencimento)</div>
+
+      <div class="hero-numbers">
+        <div class="hero-num highlight">
+          <div class="hero-num-label">Rendimento LCA presa</div>
+          <div class="hero-num-value">R$ ${fmt(rendimentoFinal)}</div>
+          <div class="hero-num-sub">${fmtPct(taxaPresa * 100)} CDI · ${prazoTotal} meses</div>
+        </div>
+        <div class="hero-num">
+          <div class="hero-num-label">Rendimento liquidez diária</div>
+          <div class="hero-num-value">R$ ${fmt(rendimentoDiarioFinal)}</div>
+          <div class="hero-num-sub">${fmtPct(taxaDiaria * 100)} CDI · mesmo período</div>
+        </div>
+        <div class="hero-num ${diferencaFinal >= 0 ? 'good' : 'bad'}">
+          <div class="hero-num-label">Ganho extra ficando até o fim</div>
+          <div class="hero-num-value">R$ ${fmt(Math.abs(diferencaFinal))}</div>
+          <div class="hero-num-sub">${diferencaFinal >= 0 ? 'a favor da LCA presa' : 'a favor da liquidez diária'}</div>
+        </div>
+        <div class="hero-num highlight">
+          <div class="hero-num-label">Ponto de equilíbrio</div>
+          <div class="hero-num-value">${breakevenMes ? breakevenMes + 'º mês' : 'Não há'}</div>
+          <div class="hero-num-sub">${breakevenMes ? 'a partir daqui já compensa' : 'liquidez diária sempre melhor'}</div>
+        </div>
+      </div>
+
+      ${breakevenMes ? `
+      <div class="callout">
+        <strong>Conclusão:</strong> A partir do <strong>${breakevenMes}º mês</strong>, mesmo saindo antes do vencimento com deságio de ${fmtPct(desagio * 100)}, a LCA presa já rende mais que a liquidez diária. Se ficar até o vencimento (${getVencimentoLabel()}), ganha <strong>R$ ${fmt(diferencaFinal)}</strong> a mais.
+      </div>
+
+      <div class="breakeven-bar">
+        <div class="result-label">Linha do tempo</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width: ${breakevenPct}%">
+            <div class="bar-marker">equilíbrio no ${breakevenMes}º mês</div>
+          </div>
+        </div>
+        <div class="bar-labels">
+          <span>Hoje</span>
+          <span>Vencimento (${prazoTotal}m)</span>
+        </div>
+      </div>` : ''}
+
+    </div>
+
+    <div class="result-section">
+      <div class="result-label">Gráfico — Análise de Cenários</div>
+      <div class="chart-wrap">
+        <div class="chart-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#2d4a6e"></div>Taxa Contratada (LCA presa)</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#888"></div>Liquidez Diária</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#c4872a"></div>Saída Antecipada (c/ deságio)</div>
+        </div>
+        <canvas id="chartCanvas" height="300"></canvas>
+        <div class="chart-tooltip" id="chartTooltip">
+          <div class="tooltip-title" id="tt-title">Mês 1</div>
+          <div class="tooltip-row highlight"><span>LCA Presa</span><span id="tt-presa">-</span></div>
+          <div class="tooltip-row"><span>Liquidez Diária</span><span id="tt-diaria">-</span></div>
+          <div class="tooltip-row gold"><span>Saída Antecipada</span><span id="tt-saida">-</span></div>
+          <div class="tooltip-diff"><span id="tt-diff">-</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-section">
+      <div class="result-label">Mês a mês — com deságio de saída</div>
+      <table class="monthly-table">
+        <thead>
+          <tr>
+            <th>Mês</th>
+            <th>Rend. LCA (c/ deságio)</th>
+            <th>% CDI efetivo</th>
+            <th>Rend. liq. diária</th>
+            <th>Diferença</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+
+  document.getElementById('results').innerHTML = html;
+
+  // Draw chart after DOM update
+  setTimeout(() => drawChart(valor, taxaPrMensal, taxaDiMensal, desagio, prazoTotal, breakevenMes), 50);
+}
+
+function drawChart(valor, taxaPrMensal, taxaDiMensal, desagio, prazoTotal, breakevenMes) {
+  const canvas = document.getElementById('chartCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  // Set real pixel size
+  const W = canvas.offsetWidth || 600;
+  const H = 300;
+  canvas.width  = W;
+  canvas.height = H;
+
+  const PAD = { top: 20, right: 20, bottom: 40, left: 80 };
+  const chartW = W - PAD.left - PAD.right;
+  const chartH = H - PAD.top  - PAD.bottom;
+
+  // Build data points (half-month steps for smooth curve)
+  const steps = Math.ceil(prazoTotal * 2);
+  const data = [];
+  for (let i = 0; i <= steps; i++) {
+    const m = (i / steps) * prazoTotal;
+    const presa  = valor * (Math.pow(1 + taxaPrMensal, m) - 1);
+    const diaria = valor * (Math.pow(1 + taxaDiMensal, m) - 1);
+    const saida  = presa * (1 - desagio);
+    data.push({ m, presa: valor + presa, diaria: valor + diaria, saida: valor + saida });
+  }
+
+  const allVals = data.flatMap(d => [d.presa, d.diaria, d.saida]);
+  const minY = Math.min(...allVals) * 0.9995;
+  const maxY = Math.max(...allVals) * 1.0005;
+
+  const xPos = m => PAD.left + (m / prazoTotal) * chartW;
+  const yPos = v => PAD.top + chartH - ((v - minY) / (maxY - minY)) * chartH;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Breakeven zone
+  if (breakevenMes) {
+    const x1 = xPos(breakevenMes - 0.8);
+    const x2 = xPos(Math.min(breakevenMes + 0.8, prazoTotal));
+    ctx.fillStyle = 'rgba(45,106,79,0.08)';
+    ctx.fillRect(x1, PAD.top, x2 - x1, chartH);
+
+    // Breakeven vertical line
+    const xB = xPos(breakevenMes);
+    ctx.setLineDash([6, 4]);
+    ctx.strokeStyle = 'rgba(45,106,79,0.5)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(xB, PAD.top);
+    ctx.lineTo(xB, PAD.top + chartH);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Breakeven dot
+    const bkData = data.find(d => Math.abs(d.m - breakevenMes) < 0.3) || data[Math.round(breakevenMes * 2)];
+    if (bkData) {
+      const yB = yPos((bkData.saida + bkData.diaria) / 2);
+      ctx.fillStyle = '#2d6a4f';
+      ctx.beginPath();
+      ctx.arc(xB, yB, 7, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+      ctx.arc(xB, yB, 4, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Breakeven label
+    ctx.fillStyle = '#2d6a4f';
+    ctx.font = 'bold 11px JetBrains Mono, monospace';
+    ctx.textAlign = 'center';
+    const labelX = Math.min(xPos(breakevenMes) + 70, W - 10);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(labelX - 60, PAD.top + 4, 120, 32);
+    ctx.strokeStyle = '#2d6a4f';
+    ctx.lineWidth = 1.5;
+    ctx.strokeRect(labelX - 60, PAD.top + 4, 120, 32);
+    ctx.fillStyle = '#2d6a4f';
+    ctx.fillText('BREAKEVEN', labelX, PAD.top + 17);
+    ctx.font = 'bold 12px JetBrains Mono, monospace';
+    ctx.fillText(breakevenMes + 'º mês', labelX, PAD.top + 30);
+  }
+
+  // Grid lines
+  ctx.strokeStyle = 'rgba(0,0,0,0.06)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = PAD.top + (chartH / 4) * i;
+    ctx.beginPath();
+    ctx.moveTo(PAD.left, y);
+    ctx.lineTo(PAD.left + chartW, y);
+    ctx.stroke();
+    // Y labels
+    const val = maxY - ((maxY - minY) / 4) * i;
+    ctx.fillStyle = '#9a9080';
+    ctx.font = '10px JetBrains Mono, monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText('R$ ' + Math.round(val/1000) + 'k', PAD.left - 6, y + 4);
+  }
+
+  // X axis labels
+  ctx.fillStyle = '#9a9080';
+  ctx.font = '10px JetBrains Mono, monospace';
+  ctx.textAlign = 'center';
+  for (let m = 0; m <= Math.ceil(prazoTotal); m++) {
+    if (m > prazoTotal) break;
+    const x = xPos(m);
+    ctx.fillText(m === 0 ? 'Início' : m + 'm', x, PAD.top + chartH + 18);
+  }
+
+  // Draw lines
+  const drawLine = (key, color, lineWidth) => {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lineWidth;
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    data.forEach((d, i) => {
+      const x = xPos(d.m);
+      const y = yPos(d[key]);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  };
+
+  drawLine('diaria', '#888888', 2);
+  drawLine('saida',  '#c4872a', 2);
+  drawLine('presa',  '#2d4a6e', 2.5);
+
+  // Store data for tooltip
+  canvas._chartData = { data, valor, xPos, yPos, prazoTotal, PAD, chartW };
+
+  // Tooltip handler
+  canvas.onmousemove = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = e.clientX - rect.left;
+    const d = canvas._chartData;
+    const mHover = ((mx - d.PAD.left) / (canvas.width - d.PAD.left - d.PAD.right)) * d.prazoTotal;
+    if (mHover < 0 || mHover > d.prazoTotal) {
+      document.getElementById('chartTooltip').style.display = 'none';
+      return;
+    }
+    // Find nearest data point
+    const nearest = d.data.reduce((prev, curr) =>
+      Math.abs(curr.m - mHover) < Math.abs(prev.m - mHover) ? curr : prev
+    );
+    const tip = document.getElementById('chartTooltip');
+    const fmt = n => 'R$ ' + n.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+    const mesLabel = nearest.m < 1 ? Math.round(nearest.m * 30) + ' dias' : nearest.m.toFixed(1) + ' meses';
+    document.getElementById('tt-title').textContent = mesLabel;
+    document.getElementById('tt-presa').textContent  = fmt(nearest.presa);
+    document.getElementById('tt-diaria').textContent = fmt(nearest.diaria);
+    document.getElementById('tt-saida').textContent  = fmt(nearest.saida);
+    const diff = nearest.saida - nearest.diaria;
+    const diffEl = document.getElementById('tt-diff');
+    diffEl.textContent = 'Diferença: ' + (diff >= 0 ? '+' : '') + fmt(diff);
+    diffEl.style.color = diff >= 0 ? '#2d6a4f' : '#c0392b';
+
+    // Position tooltip
+    const tipX = e.clientX - rect.left + 16;
+    const tipY = e.clientY - rect.top - 20;
+    tip.style.left = (tipX + 220 > rect.width ? tipX - 240 : tipX) + 'px';
+    tip.style.top  = Math.max(0, tipY) + 'px';
+    tip.style.display = 'block';
+  };
+  canvas.onmouseleave = () => {
+    document.getElementById('chartTooltip').style.display = 'none';
+  };
+}
+
+// Calcular automaticamente ao carregar
+window.onload = () => {
+  // Set aporte as today
+  const hoje = new Date();
+  const fmtDate = d => d.getFullYear() + '-' +
+    String(d.getMonth()+1).padStart(2,'0') + '-' +
+    String(d.getDate()).padStart(2,'0');
+  document.getElementById('data-aporte').value = fmtDate(hoje);
+
+  // Set vencimento ~7.5 months from now
+  const venc = new Date();
+  venc.setMonth(venc.getMonth() + 7);
+  venc.setDate(15);
+  document.getElementById('data-venc').value = fmtDate(venc);
+  calcularPrazo();
+};
+</script>
+
+</body>
+</html>
