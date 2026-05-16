@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jusnaturalismo e Santo Agostinho — Cínthia Sales</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1e1810;--bg:#f4ede0;--paper:#faf6ee;--marble:#e8dfc8;--gold:#a07828;--terra:#7a3a1a;--olive:#4a5e2a;--blue-deep:#1a2e50;--muted:#6b6050;--border:#c8a860;--cap:#5c7a4e;--cap-dark:#2d3d2a;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);font-family:'Source Serif 4',Georgia,serif;color:var(--ink);line-height:1.85;font-size:17px;}
+.topbar{background:var(--cap-dark);padding:12px 40px;display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:rgba(255,255,255,.55);border-bottom:1px solid rgba(255,255,255,.1);}
+.topbar a{color:#fff;text-decoration:none;font-weight:600;}
+.topbar span{color:rgba(255,255,255,.3);}
+header{background:var(--cap);padding:50px 40px 45px;text-align:center;}
+.header-label{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.8rem;display:block;}
+.header-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.5rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:.4rem;}
+.header-desc{font-size:.97rem;color:rgba(255,255,255,.7);font-style:italic;line-height:1.6;}
+.header-meta{margin-top:.6rem;font-size:.8rem;color:rgba(255,255,255,.45);}
+.doc{max-width:800px;margin:0 auto;background:var(--paper);}
+.toc-section{background:var(--marble);padding:28px 40px;border-bottom:2px solid var(--border);}
+.toc-label{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block;}
+.toc-list{list-style:none;}
+.toc-list li{margin-bottom:.3rem;}
+.toc-list li a{text-decoration:none;color:var(--ink);font-size:.92rem;display:flex;align-items:baseline;gap:.5rem;transition:color .2s;}
+.toc-list li a:hover{color:var(--gold);}
+.toc-num{font-size:.7rem;color:var(--gold);min-width:22px;}
+.toc-dots{flex:1;border-bottom:1px dotted rgba(160,120,40,.3);margin:0 8px;position:relative;top:-3px;}
+.content{padding:0 40px 60px;}
+.chapter{padding-top:50px;}
+.ch-marker{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;}
+.ch-num{font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);white-space:nowrap;}
+.ch-line{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent);}
+.ch-title{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:700;color:var(--ink);line-height:1.25;margin-bottom:.5rem;}
+.ch-intro{font-size:.95rem;font-style:italic;color:var(--muted);line-height:1.75;margin-bottom:1.5rem;padding-bottom:1.2rem;border-bottom:1px solid rgba(200,168,96,.25);}
+.sec{margin-bottom:2rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--terra);margin-bottom:.7rem;}
+p.t{font-size:1rem;line-height:1.9;color:#1e1810;margin-bottom:.9rem;}
+p.t strong{color:var(--terra);font-weight:700;}
+p.t em{color:var(--blue-deep);font-style:italic;}
+.box{margin:1.2rem 0;padding:1.1rem 1.4rem;border-left:4px solid;}
+.bx-ex{border-color:var(--blue-deep);background:rgba(26,46,80,.05);}
+.bx-warn{border-color:var(--terra);background:rgba(122,58,26,.05);}
+.bx-tip{border-color:var(--olive);background:rgba(74,94,42,.05);}
+.bx-qt{border-color:var(--gold);background:rgba(160,120,40,.07);font-style:italic;}
+.bx-lbl{font-size:.62rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;display:block;margin-bottom:.5rem;}
+.bx-ex .bx-lbl{color:var(--blue-deep);}
+.bx-warn .bx-lbl{color:var(--terra);}
+.bx-tip .bx-lbl{color:var(--olive);}
+.bx-qt .bx-lbl{color:var(--gold);}
+.box p,.box li{font-size:.93rem;line-height:1.78;color:#1e1810;}
+.box ul{list-style:none;padding:0;}
+.box ul li{padding:.25rem 0 .25rem 1.2rem;position:relative;border-bottom:1px solid rgba(0,0,0,.04);}
+.box ul li:last-child{border-bottom:none;}
+.box ul li::before{content:'→';position:absolute;left:0;color:var(--gold);}
+.tbl{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.87rem;}
+.tbl th{background:var(--cap-dark);color:rgba(255,255,255,.9);padding:9px 13px;text-align:left;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:400;}
+.tbl td{padding:9px 13px;border-bottom:1px solid rgba(200,168,96,.2);vertical-align:top;line-height:1.6;}
+.tbl tr:nth-child(even) td{background:rgba(200,168,96,.05);}
+.tbl td:first-child{font-weight:700;color:var(--terra);}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0;}
+.col{padding:1.1rem;border:1px solid;border-radius:2px;}
+.col.a{border-color:rgba(26,46,80,.25);background:rgba(26,46,80,.04);}
+.col.b{border-color:rgba(122,58,26,.25);background:rgba(122,58,26,.04);}
+.col-hd{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:.5rem;}
+.col.a .col-hd{color:var(--blue-deep);}
+.col.b .col-hd{color:var(--terra);}
+.col p{font-size:.87rem;line-height:1.7;color:#333;}
+.quiz{border:1px solid rgba(200,168,96,.3);margin-bottom:.8rem;overflow:hidden;cursor:pointer;}
+.quiz-q{background:var(--cap-dark);color:#faf6ee;padding:.9rem 1.1rem;font-size:.92rem;line-height:1.6;display:flex;justify-content:space-between;align-items:center;gap:1rem;}
+.quiz-badge{background:var(--gold);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.6rem;text-align:center;line-height:22px;flex-shrink:0;}
+.quiz-arr{color:var(--gold);font-size:.75rem;transition:transform .3s;flex-shrink:0;}
+.quiz.open .quiz-arr{transform:rotate(180deg);}
+.quiz-a{background:#fff;padding:0 1.1rem;font-size:.9rem;line-height:1.78;color:#1e1810;max-height:0;overflow:hidden;transition:all .35s ease;}
+.quiz-a.open{padding:.9rem 1.1rem;max-height:600px;}
+.gl-item{padding:.9rem 0;border-bottom:1px solid rgba(200,168,96,.2);}
+.gl-term{font-family:'Playfair Display',serif;font-weight:700;font-size:.95rem;color:var(--terra);margin-bottom:.25rem;}
+.gl-def{font-size:.88rem;line-height:1.72;color:#444;padding-left:1rem;border-left:2px solid rgba(200,168,96,.25);}
+.orn{text-align:center;color:var(--border);letter-spacing:.8em;font-size:.75rem;margin:2rem 0;}
+@media(max-width:600px){.topbar,.content,.toc-section,header{padding-left:20px;padding-right:20px;}.two{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="../index.html">← Portal de Estudos</a>
+  <span>/</span>
+  <a href="index.html">📗 Filosofia do Direito</a>
+  <span>/</span>
+  <span>Jusnaturalismo e Santo Agostinho</span>
+</div>
+
+<header>
+  <span class="header-label">UVA — Campus Barra Marapendi · Filosofia do Direito · 2026.1</span>
+  <h1 class="header-title">📗 Jusnaturalismo e Santo Agostinho</h1>
+  <p class="header-desc">Jusnaturalismo Racional · Hugo Grócio · Kant · Santo Agostinho · As Duas Cidades</p>
+  <p class="header-meta">Prof. Ronaldo Formiga · Aula 16/05/2026 · Baseado na transcrição da aula</p>
+</header>
+
+<div class="doc">
+<div class="toc-section">
+  <span class="toc-label">Sumário</span>
+  <ul class="toc-list">
+    <li><a href="#grocio"><span class="toc-num">1</span><span>Jusnaturalismo Moderno — Hugo Grócio</span><span class="toc-dots"></span></a></li>
+    <li><a href="#kant"><span class="toc-num">2</span><span>Kant e o Iluminismo Jurídico</span><span class="toc-dots"></span></a></li>
+    <li><a href="#caracteristicas"><span class="toc-num">3</span><span>7 Características do Jusnaturalismo Racional</span><span class="toc-dots"></span></a></li>
+    <li><a href="#derivadas"><span class="toc-num">4</span><span>Correntes Derivadas — Hobbes, Locke e Rousseau</span><span class="toc-dots"></span></a></li>
+    <li><a href="#agostinho"><span class="toc-num">5</span><span>Santo Agostinho — Vida e Contexto</span><span class="toc-dots"></span></a></li>
+    <li><a href="#cidades"><span class="toc-num">6</span><span>As Duas Cidades</span><span class="toc-dots"></span></a></li>
+    <li><a href="#natureza"><span class="toc-num">7</span><span>A Natureza Humana — Visão Pessimista</span><span class="toc-dots"></span></a></li>
+    <li><a href="#estado"><span class="toc-num">8</span><span>O Estado e o Direito em Santo Agostinho</span><span class="toc-dots"></span></a></li>
+    <li><a href="#pontos"><span class="toc-num">9</span><span>Principais Pontos do Pensamento Jurídico</span><span class="toc-dots"></span></a></li>
+    <li><a href="#rev"><span class="toc-num">10</span><span>Revisão e Perguntas de Prova</span><span class="toc-dots"></span></a></li>
+    <li><a href="#gloss"><span class="toc-num">11</span><span>Glossário</span><span class="toc-dots"></span></a></li>
+  </ul>
+</div>
+
+<div class="content">
+
+<div class="chapter" id="grocio">
+  <div class="ch-marker"><span class="ch-num">Capítulo 1</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Jusnaturalismo Moderno — Hugo Grócio</h2>
+  <p class="ch-intro">O fundador do Jusnaturalismo Moderno e a separação entre razão e teologia.</p>
+  <div class="sec">
+    <p class="t">Hugo Grócio, pensador dos séculos XVI e XVII, é considerado o <strong>fundador do Jusnaturalismo Moderno</strong>. Sua contribuição central foi separar o pensamento filosófico e jurídico dos princípios teológicos — fundamentando o direito na <strong>razão humana</strong>, não na vontade divina.</p>
+    <p class="t">Para Grócio, a verdadeira natureza do homem é a <strong>razão</strong>. Ele considerava próprio do ser humano a iniciativa de se associar e viver em comunidade — e por isso defendia a <strong>solidariedade como fundamento do direito natural</strong>.</p>
+    <div class="box bx-qt">
+      <span class="bx-lbl">💭 Definição de Grócio — Direito Natural</span>
+      <p>O direito natural é um ditame da justa razão, destinado a mostrar que um ato é moralmente torpe ou moralmente necessário, segundo seja ou não conforme a própria natureza racional do homem.</p>
+    </div>
+    <p class="t">Para Grócio, a obediência ao direito era de extrema importância — especialmente no cumprimento de contratos e na reparação de danos.</p>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="kant">
+  <div class="ch-marker"><span class="ch-num">Capítulo 2</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Kant e o Iluminismo Jurídico</h2>
+  <p class="ch-intro">O gênio do século XVIII e a defesa da razão como fundamento do direito.</p>
+  <div class="sec">
+    <p class="t">Kant, no século XVIII, é descrito pelo professor como um <strong>verdadeiro gênio</strong> — fiel representante das ideias do Iluminismo, corrente de pensamento do século XVIII que teve como base a <strong>Revolução Francesa de 1789</strong>.</p>
+    <p class="t">No campo do direito e da política, Kant defende a <strong>liberdade, a igualdade e a fraternidade</strong> como direitos naturais de cada indivíduo. A expectativa iluminista era combater o pensamento dogmático e propor a razão humana como fundamento.</p>
+    <div class="box bx-tip">
+      <span class="bx-lbl">💡 O direito segundo Kant</span>
+      <p>O direito regido pela razão seria um direito <strong>sem lacunas, sem ambiguidade</strong>. Kant reconhecia a existência do direito positivo — fruto do poder político — mas afirmava que ele deveria ser <strong>fundamentado na razão humana</strong>. O <em>dever ser</em> seria a essência do direito, garantindo a liberdade de todos.</p>
+    </div>
+    <div class="box bx-ex">
+      <span class="bx-lbl">📋 Objetivo dos juristas iluministas</span>
+      <p>A construção de um sistema jurídico que pudesse ser aplicado a toda a sociedade — universal, racional, sem lacunas. O direito como garantia da liberdade e do arbítrio de cada pessoa.</p>
+    </div>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="caracteristicas">
+  <div class="ch-marker"><span class="ch-num">Capítulo 3</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">7 Características do Jusnaturalismo Racional</h2>
+  <p class="ch-intro">Para anotar — o professor ditou essas características em aula.</p>
+  <div class="sec">
+    <table class="tbl">
+      <thead><tr><th>#</th><th>Característica</th><th>O que significa</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><strong>Maior importância à razão humana do que aos desígnios de Deus</strong></td><td>A razão substitui Deus como fundamento do direito</td></tr>
+        <tr><td>2</td><td>Vincula-se à religiosidade a capacidade de raciocinar</td><td>A razão ainda tem origem divina — mas é ela que fundamenta o direito</td></tr>
+        <tr><td>3</td><td>Substituem-se os métodos do pensamento dogmático da teologia pela razão</td><td>Fim do dogmatismo religioso como critério jurídico</td></tr>
+        <tr><td>4</td><td>Elaboram-se propostas concretas para a reformulação do direito europeu</td><td>Objetivo de tornar a aplicação do direito sistemática</td></tr>
+        <tr><td>5</td><td>O direito como garantia de liberdade dos homens</td><td>Direito existe para proteger a liberdade individual</td></tr>
+        <tr><td>6</td><td>A convivência social é responsabilidade exclusiva dos homens</td><td>Sem intervenção divina na organização social</td></tr>
+        <tr><td>7</td><td>Define-se o direito como ciência do justo</td><td>O verdadeiro direito é o direito justo</td></tr>
+      </tbody>
+    </table>
+    <div class="box bx-warn">
+      <span class="bx-lbl">⚠️ A mais importante — número 1</span>
+      <p>O professor destacou: o ponto central é a <strong>maior importância concedida à razão humana do que aos desígnios de Deus</strong>. Tudo mais decorre disso.</p>
+    </div>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="derivadas">
+  <div class="ch-marker"><span class="ch-num">Capítulo 4</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Correntes Derivadas — Hobbes, Locke e Rousseau</h2>
+  <p class="ch-intro">O jusnaturalismo liberal e o contrato social — próxima aula.</p>
+  <div class="sec">
+    <p class="t">A partir do jusnaturalismo racional derivam correntes mais recentes, a partir de <strong>Hobbes</strong> e do pensamento liberal, que tem por base as <strong>teorias do contrato social</strong>.</p>
+    <table class="tbl">
+      <thead><tr><th>Autor</th><th>Contribuição</th><th>Próxima aula?</th></tr></thead>
+      <tbody>
+        <tr><td>Hobbes</td><td>Jusnaturalismo moderno — estado de natureza e contrato social</td><td>Sim ✓</td></tr>
+        <tr><td>John Locke</td><td>Pai do empirismo. Pensamento liberal — direitos naturais do homem</td><td>Sim ✓</td></tr>
+        <tr><td>Rousseau</td><td>O Contrato Social — vontade geral como fundamento da sociedade</td><td>Sim ✓</td></tr>
+        <tr><td>Marx</td><td>Também mencionado pelo professor para aulas futuras</td><td>Sim ✓</td></tr>
+      </tbody>
+    </table>
+    <div class="box bx-qt">
+      <span class="bx-lbl">💭 Declaração dos Direitos do Homem e do Cidadão — 1789</span>
+      <p>Art. 2º: O fim de toda associação política é a conservação dos direitos naturais e imprescritíveis do homem. São eles: a <strong>liberdade, a propriedade, a segurança e a resistência à opressão</strong>. — Base dos direitos humanos.</p>
+    </div>
+    <div class="box bx-tip">
+      <span class="bx-lbl">💡 A maior contribuição do Jusnaturalismo Moderno</span>
+      <p>O conceito de <strong>sistema</strong> — um pensamento sistemático, fechado, lógico. Transformou o direito europeu de uma ciência de exegese em um sistema com caráter lógico e demonstrativo, que domina os códigos até hoje.</p>
+    </div>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="agostinho">
+  <div class="ch-marker"><span class="ch-num">Capítulo 5</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Santo Agostinho — Vida e Contexto</h2>
+  <p class="ch-intro">O Bispo de Ipona — vida curiosa, juventude dissoluta e conversão tardia.</p>
+  <div class="sec">
+    <p class="t">Santo Agostinho viveu entre <strong>354 e 430 d.C.</strong>, no norte da África. O professor destaca que ele teve uma <strong>juventude dissoluta</strong> — muitas mulheres, festas, bebidas. Só após a meia-idade mudou radicalmente de estilo de vida.</p>
+    <div class="box bx-ex">
+      <span class="bx-lbl">📋 Contexto de Santo Agostinho</span>
+      <ul>
+        <li>Seguiu inicialmente o <strong>maniqueísmo</strong> — doutrina de origem persa que proclama o conflito eterno entre bem e mal</li>
+        <li>Foi professor de gramática, retórica e eloquência em Cartago e Roma</li>
+        <li>Herdeiro direto do pensamento <strong>platônico</strong> — muitos o consideram neoplatônico</li>
+        <li>Converteu-se ao cristianismo na maturidade</li>
+        <li>Viveu no período do fim do Império Romano — Roma foi conquistada em 410 d.C.</li>
+        <li>É considerado autor da doutrina <strong>Patrística</strong> — elo de transição entre a filosofia grega e a medieval</li>
+      </ul>
+    </div>
+    <div class="box bx-warn">
+      <span class="bx-lbl">⚠️ Obra central</span>
+      <p>A obra mais importante de Santo Agostinho para o Direito é <strong>A Cidade de Deus</strong>. Ela é a base de todo o seu pensamento político e jurídico.</p>
+    </div>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="cidades">
+  <div class="ch-marker"><span class="ch-num">Capítulo 6</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">As Duas Cidades</h2>
+  <p class="ch-intro">O conceito central de Santo Agostinho — influência do maniqueísmo e de Platão.</p>
+  <div class="sec">
+    <p class="t">Em <em>A Cidade de Deus</em>, Agostinho propõe a existência de duas cidades <strong>hipotéticas</strong> — não geográficas, mas espirituais:</p>
+    <div class="two">
+      <div class="col a">
+        <div class="col-hd">🏛️ Cidade de Deus</div>
+        <p>Comunidade dos homens que vivem segundo o <strong>Espírito</strong> e buscam a justiça. É a cidade do bem. Corresponde à <strong>Igreja</strong>. Só aqui há verdadeira paz, justiça e bem.</p>
+      </div>
+      <div class="col b">
+        <div class="col-hd">🌍 Cidade Terrena</div>
+        <p>Conjunto de homens que vivem segundo a <strong>carne</strong> e os prazeres. É a cidade do mal. Corresponde ao <strong>Estado</strong>. Aqui há apenas aparência de paz, justiça e bem.</p>
+      </div>
+    </div>
+    <div class="box bx-qt">
+      <span class="bx-lbl">💭 Dois amores construíram duas cidades</span>
+      <p>O amor de si próprio levado até o desprezo de Deus → cidade terrena.<br>O amor de Deus levado até o desprezo de si próprio → cidade celeste.</p>
+    </div>
+    <p class="t">A distinção entre as duas cidades é sutil — não geográfica, mas moral. <strong>Na Igreja há pecadores, no Estado há santos.</strong> O que diferencia é a forma de vida, o espírito e as finalidades com que os homens atuam.</p>
+    <div class="box bx-tip">
+      <span class="bx-lbl">💡 Conexão com Platão</span>
+      <p>Essa teoria é muito próxima da <strong>teoria das ideias de Platão</strong>: no mundo das ideias (Cidade de Deus) existem as formas puras. No mundo real (Cidade Terrena) tudo é impuro e imperfeito — apenas reflexo dos verdadeiros valores.</p>
+    </div>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="natureza">
+  <div class="ch-marker"><span class="ch-num">Capítulo 7</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">A Natureza Humana — Visão Pessimista</h2>
+  <p class="ch-intro">Adão, Eva, o pecado original e o homem como pecador irredimível.</p>
+  <div class="sec">
+    <p class="t">Santo Agostinho traz uma visão <strong>profundamente pessimista</strong> da natureza humana. Os primeiros homens — Adão e Eva — foram criados perfeitos. Mas pela desobediência ao pecado original, afastaram-se de Deus e foram punidos para sempre.</p>
+    <div class="box bx-warn">
+      <span class="bx-lbl">⚠️ As 3 tendências mais negativas do homem pecador</span>
+      <ul>
+        <li><strong>Apetite pelos bens materiais</strong> — a ganância, a busca insaciável da riqueza</li>
+        <li><strong>Paixão do poder</strong> — a vaidade do poder, o desejo de dominar outros homens</li>
+        <li><strong>Desejo sexual</strong> — a promiscuidade</li>
+      </ul>
+    </div>
+    <div class="box bx-qt">
+      <span class="bx-lbl">💭 Os apetites insaciáveis</span>
+      <p>Quando você obtém um bem, não se satisfaz — logo vem outro desejo, e outro, numa cadeia incessante que só a morte põe em termo.</p>
+    </div>
+    <p class="t">Para Agostinho, <strong>a maioria dos homens pertence à cidade terrena</strong> — assembleia de pecadores. Só uma minoria, pela graça de Deus, pertence à cidade celeste — assembleia de santos. Ele nunca acreditou no progresso histórico: o homem será sempre pecador até o fim dos tempos.</p>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="estado">
+  <div class="ch-marker"><span class="ch-num">Capítulo 8</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">O Estado e o Direito em Santo Agostinho</h2>
+  <p class="ch-intro">A consequência lógica do pessimismo — um Estado coercitivo com direito como instrumento de paz.</p>
+  <div class="sec">
+    <p class="t">Se o homem é fundamentalmente mau, o Estado deve servir essencialmente para <strong>prevenir e reprimir injustiças e crimes</strong>. Não para tornar os homens bons e virtuosos — isso seria impossível. Aqui Agostinho se afasta radicalmente de Aristóteles.</p>
+    <div class="box bx-qt">
+      <span class="bx-lbl">💭 O papel do Estado</span>
+      <p>A paz e a segurança terrena devem ser asseguradas por uma <strong>mão pesada</strong>, através da coação e da punição — em ordem a evitar que sejam destruídas pelas forças poderosas do pecado.</p>
+    </div>
+    <p class="t">O principal instrumento do Estado para obter a paz e segurança é o <strong>direito</strong>. Mas Agostinho é claro: o direito não consegue atuar sobre as consciências e mudar a vontade dos homens. Apenas atua sobre os <strong>comportamentos exteriores</strong> — evitando, punindo e reprimindo agressões.</p>
+    <div class="box bx-ex">
+      <span class="bx-lbl">📋 Analogia do professor</span>
+      <p>A lei do feminicídio pode coibir a violência contra a mulher, mas não pode coibir a <em>vontade</em> da agressão à figura feminina na sociedade patriarcal contemporânea — nos moldes agostinianos.</p>
+    </div>
+    <div class="box bx-tip">
+      <span class="bx-lbl">💡 Agostinho vs Aristóteles</span>
+      <p><strong>Aristóteles:</strong> Estado ético — existe para tornar os homens bons e virtuosos.<br><br><strong>Agostinho:</strong> Estado coercitivo — existe apenas para garantir paz e segurança exteriores. A Cidade de Deus é uma ordem de amor. O Estado é uma ordem de coerção.</p>
+    </div>
+    <p class="t">Agostinho <strong>subordinava o Estado à Igreja</strong>. A lei terrena seria condicionada pela lei eterna — e quando houvesse conflito entre ambas, a lei eterna prevaleceria por ser hierarquicamente superior.</p>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="pontos">
+  <div class="ch-marker"><span class="ch-num">Capítulo 9</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Principais Pontos do Pensamento Jurídico</h2>
+  <p class="ch-intro">Para anotar — o professor ditou esses pontos em aula.</p>
+  <div class="sec">
+    <div class="sec-title">1. Distinção entre Lei Eterna e Lei Temporal</div>
+    <table class="tbl">
+      <thead><tr><th>Tipo de Lei</th><th>Definição</th><th>Características</th></tr></thead>
+      <tbody>
+        <tr><td>Lei Eterna</td><td>A razão ou vontade de Deus que exige a manutenção da ordem natural</td><td>Universal, imutável, perfeita</td></tr>
+        <tr><td>Lei Temporal</td><td>Leis criadas pelos homens para manter a paz e a ordem na cidade terrena</td><td>Variam no tempo e no espaço</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="sec">
+    <div class="sec-title">2. Lei Injusta como Não Lei — A Tese Mais Famosa</div>
+    <p class="t">Uma <strong>lei injusta não é uma verdadeira lei</strong>. Se uma lei temporal contradiz a lei eterna ou falha em promover a justiça e o bem comum, ela perde sua validade moral e sua obrigatoriedade de consciência — tornando-se mais parecida com um ato de violência ou tirania do que com o direito.</p>
+  </div>
+  <div class="sec">
+    <div class="sec-title">3. Justiça como Dar a Cada Um o que é Seu</div>
+    <p class="t">A definição clássica de justiça — presente desde Aristóteles — é retomada por Agostinho. A justiça é a essência do direito.</p>
+  </div>
+  <div class="sec">
+    <div class="sec-title">4. Livre-arbítrio e Responsabilidade Moral</div>
+    <p class="t">O homem tem livre-arbítrio — e por isso é responsável por seus atos. A punição pelo Estado é legítima porque o homem escolheu pecar.</p>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="rev">
+  <div class="ch-marker"><span class="ch-num">Capítulo 10</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Revisão e Perguntas de Prova</h2>
+  <p class="ch-intro">Clique na pergunta para revelar a resposta.</p>
+  <div class="sec">
+    <div class="quiz" onclick="toggleQ(this)">
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Qual a contribuição central de Hugo Grócio para o Jusnaturalismo?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">Grócio separou o pensamento jurídico dos princípios teológicos, fundamentando o direito na razão humana. Defendia a solidariedade como fundamento do direito natural e definia o direito natural como um ditame da justa razão — não da vontade divina.</div>
+    </div>
+    <div class="quiz" onclick="toggleQ(this)">
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Quais são as 7 características do Jusnaturalismo Racional?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">1. Maior importância à razão humana do que aos desígnios de Deus; 2. Vincula-se à religiosidade a capacidade de raciocinar; 3. Substituem-se os métodos dogmáticos da teologia pela razão; 4. Elaboram-se propostas concretas para a reformulação do direito europeu; 5. O direito como garantia de liberdade; 6. A convivência social é responsabilidade exclusiva dos homens; 7. Define-se o direito como ciência do justo.</div>
+    </div>
+    <div class="quiz" onclick="toggleQ(this)">
+      <div class="quiz-q"><span class="quiz-badge">Q</span>O que são as duas cidades de Santo Agostinho?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">Cidade de Deus — comunidade dos que vivem segundo o Espírito, buscam a justiça, corresponde à Igreja. Cidade Terrena — conjunto dos que vivem segundo a carne, corresponde ao Estado. As duas estão em luta permanente. Só na Cidade de Deus há verdadeira paz, justiça e bem — na terrena há apenas aparência.</div>
+    </div>
+    <div class="quiz" onclick="toggleQ(this)">
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Qual a visão de Santo Agostinho sobre a natureza humana?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">Profundamente pessimista. O homem, após o pecado original, tornou-se irremediavelmente pecador. As três tendências mais negativas: apetite pelos bens materiais, paixão do poder e desejo sexual. Os apetites são insaciáveis. A maioria pertence à cidade terrena — só uma minoria se redime.</div>
+    </div>
+    <div class="quiz" onclick="toggleQ(this)">
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Qual o papel do Estado e do direito em Santo Agostinho?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">O Estado existe para prevenir e reprimir injustiças e crimes — não para tornar os homens bons. O direito é o principal instrumento do Estado para a paz e segurança. Mas o direito só age sobre comportamentos exteriores — não muda consciências. O Estado é subordinado à Igreja e a lei terrena à lei eterna.</div>
+    </div>
+    <div class="quiz" onclick="toggleQ(this)">
+      <div class="quiz-q"><span class="quiz-badge">Q</span>O que significa "lei injusta não é lei" em Santo Agostinho?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">É a tese mais famosa de Agostinho: se uma lei temporal contradiz a lei eterna ou falha em promover a justiça e o bem comum, ela perde sua validade moral e obrigatoriedade de consciência. Torna-se mais parecida com um ato de violência ou tirania do que com o direito.</div>
+    </div>
+    <div class="quiz" onclick="toggleQ(this)">
+      <div class="quiz-q"><span class="quiz-badge">Q</span>Como Santo Agostinho se aproxima de Platão?<span class="quiz-arr">▼</span></div>
+      <div class="quiz-a">Para Agostinho, a paz, a justiça e o bem da cidade terrena são apenas reflexo e imagem imperfeita dos verdadeiros valores que só existem na Cidade de Deus — assim como em Platão, no mundo real tudo é impuro e imperfeito, sendo apenas reflexo das formas puras do mundo das ideias.</div>
+    </div>
+  </div>
+</div>
+
+<div class="orn">✦ · ✦ · ✦</div>
+
+<div class="chapter" id="gloss">
+  <div class="ch-marker"><span class="ch-num">Capítulo 11</span><div class="ch-line"></div></div>
+  <h2 class="ch-title">Glossário</h2>
+  <div class="sec">
+    <div class="gl-item"><div class="gl-term">Hugo Grócio (séc. XVI–XVII)</div><div class="gl-def">Fundador do Jusnaturalismo Moderno. Separou o direito da teologia, fundamentando-o na razão. Defendia a solidariedade como base do direito natural.</div></div>
+    <div class="gl-item"><div class="gl-term">Iluminismo</div><div class="gl-def">Corrente de pensamento do século XVIII, com base na Revolução Francesa de 1789. Defendia a razão como fundamento do conhecimento e combatia o pensamento dogmático.</div></div>
+    <div class="gl-item"><div class="gl-term">Maniqueísmo</div><div class="gl-def">Doutrina religiosa de origem persa, fundada por Mani. Pregava o conflito eterno entre dois princípios — o bem e o mal. Santo Agostinho seguiu essa doutrina antes de se converter ao cristianismo.</div></div>
+    <div class="gl-item"><div class="gl-term">Patrística</div><div class="gl-def">Doutrina filosófica de Santo Agostinho. Considerada o elo de transição entre a filosofia grega e a medieval.</div></div>
+    <div class="gl-item"><div class="gl-term">Cidade de Deus</div><div class="gl-def">Principal obra de Santo Agostinho. Propõe as duas cidades hipotéticas — celeste e terrena — como chave para entender o direito e o Estado.</div></div>
+    <div class="gl-item"><div class="gl-term">Lei Eterna</div><div class="gl-def">Para Agostinho: a razão ou vontade de Deus. Universal, imutável e perfeita. Hierarquicamente superior à lei temporal.</div></div>
+    <div class="gl-item"><div class="gl-term">Lei Temporal</div><div class="gl-def">Leis criadas pelos homens para manter a paz e a ordem na cidade terrena. Podem variar no tempo e no espaço.</div></div>
+    <div class="gl-item"><div class="gl-term">Contrato Social</div><div class="gl-def">Teoria política de Locke e Rousseau. A sociedade se organiza por um acordo entre os homens — não por ordem divina. Base do liberalismo político.</div></div>
+    <div class="box bx-qt" style="margin-top:1.5rem;">
+      <span class="bx-lbl">📚 Referência</span>
+      <p>NADER, Paulo. Filosofia do Direito. 21. ed. Forense.<br>Baseado na transcrição da aula de 16/05/2026 — UVA Campus Barra Marapendi, Filosofia do Direito, Prof. Ronaldo Formiga.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<script>
+function toggleQ(el) {
+  const a = el.querySelector('.quiz-a');
+  const open = el.classList.toggle('open');
+  a.classList.toggle('open', open);
+}
+</script>
+</body>
+</html>
