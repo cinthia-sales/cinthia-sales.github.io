@@ -10,29 +10,29 @@
   --ink: #1e1810;
   --bg: #f4ede0;
   --gold: #a07828;
-  --gold-light: #c9932a;
   --muted: #6b6050;
-  --blue: #1e3a5f;
-  --fil-cap: #5c7a4e;
+  --border: #c8a860;
+  --cap: #5c7a4e;
+  --cap-dark: #2d3d2a;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--bg); font-family: 'Source Serif 4', Georgia, serif; color: var(--ink); min-height: 100vh; }
 
 .topbar {
-  padding: 14px 40px;
-  border-bottom: 1px solid rgba(92,122,78,0.2);
+  background: var(--cap-dark);
+  padding: 12px 40px;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 0.8rem;
-  color: var(--muted);
-  background: white;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.topbar a { color: var(--fil-cap); text-decoration: none; font-weight: 600; }
-.topbar a:hover { opacity: 0.8; }
+.topbar a { color: #fff; text-decoration: none; font-weight: 600; }
+.topbar span { color: rgba(255,255,255,0.3); }
 
 header {
-  background: var(--fil-cap);
+  background: var(--cap);
   padding: 50px 40px 45px;
   text-align: center;
 }
@@ -53,7 +53,7 @@ h1 {
   margin-bottom: 0.4rem;
 }
 .desc { font-size: 1rem; color: rgba(255,255,255,0.65); font-style: italic; }
-.prof-info { margin-top: 0.6rem; font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+.prof-info { margin-top: 0.6rem; font-size: 0.82rem; color: rgba(255,255,255,0.45); }
 
 main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
 
@@ -61,7 +61,7 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
   font-size: 0.62rem;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--fil-cap);
+  color: var(--cap);
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -83,7 +83,7 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
   padding: 1.3rem 1.5rem;
   background: white;
   border: 1px solid rgba(92,122,78,0.15);
-  border-left: 3px solid var(--fil-cap);
+  border-left: 3px solid var(--cap);
   border-radius: 2px;
   text-decoration: none;
   color: var(--ink);
@@ -91,7 +91,7 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
   align-items: center;
 }
 .aula-card:hover {
-  border-color: var(--fil-cap);
+  border-color: var(--cap);
   transform: translateX(4px);
   box-shadow: 0 2px 12px rgba(30,24,16,0.07);
 }
@@ -100,7 +100,7 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
 .aula-sub { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
 .aula-meta { text-align: right; }
 .aula-data { font-size: 0.72rem; color: var(--muted); display: block; margin-bottom: 0.3rem; }
-.aula-arrow { font-size: 1.1rem; color: var(--fil-cap); }
+.aula-arrow { font-size: 1.1rem; color: var(--cap); }
 
 .ref-box {
   background: rgba(92,122,78,0.06);
@@ -108,7 +108,7 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
   border-radius: 3px;
   padding: 1.2rem 1.5rem;
 }
-.ref-title { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fil-cap); margin-bottom: 0.6rem; display: block; }
+.ref-title { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--cap); margin-bottom: 0.6rem; display: block; }
 .ref-box p { font-size: 0.88rem; color: var(--ink); line-height: 1.7; }
 
 @media (max-width: 600px) {
@@ -127,7 +127,7 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
 </div>
 
 <header>
-  <span class="materia-label">UVA Marapendi · Barra Marapendi · Direito · 2026</span>
+  <span class="materia-label">UVA — Campus Barra Marapendi · Direito · 2026.1</span>
   <h1>📗 Filosofia do Direito</h1>
   <p class="desc">Métodos, Aristóteles, Jusnaturalismo e as grandes correntes do pensamento jurídico.</p>
   <p class="prof-info">Prof. Ronaldo Formiga · <span style="opacity:0.7;">2026.1</span></p>
@@ -138,6 +138,19 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
   <div class="section-label">Aulas</div>
 
   <div class="aulas-list">
+
+    <a class="aula-card" href="jusnaturalismo-medieval.html">
+      <div>
+        <span class="aula-num">Aula · 16/05/2026</span>
+        <div class="aula-titulo">Jusnaturalismo e Santo Agostinho</div>
+        <div class="aula-sub">Hugo Grócio · Kant · Iluminismo · As Duas Cidades · Natureza Humana · Lei Eterna × Lei Temporal</div>
+      </div>
+      <div class="aula-meta">
+        <span class="aula-data">16/05/2026</span>
+        <span class="aula-arrow">→</span>
+      </div>
+    </a>
+
     <a class="aula-card" href="aristoteles-justica.html">
       <div>
         <span class="aula-num">Aula · 09/05/2026</span>
@@ -152,7 +165,7 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
 
     <a class="aula-card" href="metodos.html">
       <div>
-        <span class="aula-num">Aula · 2026</span>
+        <span class="aula-num">Material de Estudo · 2026</span>
         <div class="aula-titulo">Métodos na Filosofia do Direito</div>
         <div class="aula-sub">Método Dedutivo · Método Indutivo · Jusnaturalismo · Escola Histórica · Positivismo</div>
       </div>
@@ -161,6 +174,7 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
         <span class="aula-arrow">→</span>
       </div>
     </a>
+
   </div>
 
   <div class="section-label">Referências</div>
@@ -169,7 +183,7 @@ main { max-width: 860px; margin: 0 auto; padding: 50px 40px 80px; }
     <span class="ref-title">📚 Bibliografia Principal</span>
     <p>
       ARISTÓTELES. <strong>Ética a Nicômaco</strong>. Livro V — Da Justiça. Séc. IV a.C.<br><br>
-      NADER, Paulo. <strong>Filosofia do Direito</strong>. 21. ed. Rio de Janeiro: Forense, 2012. Capítulo 8 — Métodos na Filosofia do Direito.
+      NADER, Paulo. <strong>Filosofia do Direito</strong>. 21. ed. Rio de Janeiro: Forense, 2012.
     </p>
   </div>
 
