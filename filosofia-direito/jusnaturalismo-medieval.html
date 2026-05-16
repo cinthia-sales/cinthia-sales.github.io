@@ -78,6 +78,39 @@ p.t em{color:var(--blue-deep);font-style:italic;}
 .gl-def{font-size:.88rem;line-height:1.72;color:#444;padding-left:1rem;border-left:2px solid rgba(200,168,96,.25);}
 .orn{text-align:center;color:var(--border);letter-spacing:.8em;font-size:.75rem;margin:2rem 0;}
 @media(max-width:600px){.topbar,.content,.toc-section,header{padding-left:20px;padding-right:20px;}.two{grid-template-columns:1fr;}}
+
+/* BOTÃO IMPRIMIR */
+.print-btn{position:fixed;bottom:28px;right:28px;background:var(--cap);color:white;border:none;padding:12px 20px;border-radius:50px;font-family:'Source Serif 4',serif;font-size:.82rem;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.2);z-index:999;transition:all .2s;display:flex;align-items:center;gap:6px;}
+.print-btn:hover{background:var(--cap-dark);transform:translateY(-2px);}
+
+/* CSS DE IMPRESSÃO */
+@media print{
+  .topbar{display:none!important;}
+  .print-btn{display:none!important;}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}
+  body{background:white!important;font-size:10pt;}
+  header{padding:30px 40px 25px!important;}
+  .header-title{font-size:20pt!important;}
+  .header-desc{font-size:10pt!important;}
+  .header-meta{font-size:8pt!important;}
+  .doc{max-width:100%!important;box-shadow:none!important;}
+  .toc-section{padding:16px 40px!important;}
+  .content{padding:0 40px 40px!important;}
+  .chapter{padding-top:24px!important;page-break-inside:avoid;}
+  .box{page-break-inside:avoid;}
+  .quiz{display:none!important;}
+  .orn{color:#c8a860!important;}
+  .tbl th{background-color:#2d3d2a!important;color:white!important;}
+  .tbl tr:nth-child(even) td{background-color:#f5f0e8!important;}
+  .bx-ex{background:#eef2f8!important;border-left:4px solid #1a2e50!important;}
+  .bx-warn{background:#f8efec!important;border-left:4px solid #7a3a1a!important;}
+  .bx-tip{background:#eef3ec!important;border-left:4px solid #4a5e2a!important;}
+  .bx-qt{background:#faf6ec!important;border-left:4px solid #a07828!important;}
+  .toc-list li a{text-decoration:none!important;color:#1e1810!important;}
+  .gl-item{page-break-inside:avoid;}
+  .two{display:block!important;}
+  .col{margin-bottom:8px!important;}
+}
 </style>
 </head>
 <body>
@@ -403,6 +436,8 @@ p.t em{color:var(--blue-deep);font-style:italic;}
 </div>
 </div>
 
+<button class="print-btn" onclick="window.print()">🖨️ Imprimir / PDF</button>
+
 <script>
 function toggleQ(el) {
   const a = el.querySelector('.quiz-a');
@@ -412,3 +447,4 @@ function toggleQ(el) {
 </script>
 </body>
 </html>
+<!-- CSS já está no arquivo, vou verificar onde inserir o print CSS -->
